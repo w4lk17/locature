@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Hero -->
-    <div class="bg-image overflow-hidden" style="background-image: url('assets/media/photos/photo3@2x.jpg');">
+    <div class="bg-image overflow-hidden" style="background-image: url({{ URL::asset('assets/media/photos/photo3@2x.jpg') }});">
                     <div class="bg-primary-dark-op">
                         <div class="content content-narrow content-full">
                             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center mt-5 mb-2 text-center text-sm-left">
@@ -22,10 +22,9 @@
                     </div>
                 </div>
     <!-- END Hero -->
-
-                <!-- Page Content -->
+    <!-- Page Content -->
                 <div class="content">
-                    <!-- Stats -->
+                     <!-- Stats -->
                     <div class="row">
                         <div class="col-6 col-md-3 col-lg-6 col-xl-3">
                             <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
@@ -83,7 +82,7 @@
                                     <div class="pt-3" style="height: 360px;"><canvas class="js-chartjs-dashboard-earnings"></canvas></div>
                                 </div>
                                 <div class="block-content">
-                                    <div class="row items-push text-center py-3">
+                                    {{-- <div class="row items-push text-center py-3">
                                         <div class="col-6 col-xl-3">
                                             <i class="fa fa-wallet fa-2x text-muted"></i>
                                             <div class="text-muted mt-3">$148,000</div>
@@ -100,7 +99,7 @@
                                             <i class="fa fa-users fa-2x text-muted"></i>
                                             <div class="text-muted mt-3">+46% Clients</div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -123,7 +122,7 @@
                                     <div class="pt-3" style="height: 360px;"><canvas class="js-chartjs-dashboard-sales"></canvas></div>
                                 </div>
                                 <div class="block-content">
-                                    <div class="row items-push text-center py-3">
+                                    {{-- <div class="row items-push text-center py-3">
                                         <div class="col-6 col-xl-3">
                                             <i class="fab fa-wordpress fa-2x text-muted"></i>
                                             <div class="text-muted mt-3">+20% Themes</div>
@@ -140,7 +139,7 @@
                                             <i class="fa fa-paint-brush fa-2x text-muted"></i>
                                             <div class="text-muted mt-3">+8% Graphics</div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -153,7 +152,7 @@
                         <div class="col-lg-12">
                             <div class="block block-mode-loading-oneui">
                                 <div class="block-header border-bottom">
-                                    <h3 class="block-title">Latest Customers</h3>
+                                    <h3 class="block-title">Listes des utilisateurs</h3>
                                     <div class="block-options">
                                         <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                                             <i class="si si-refresh"></i>
@@ -169,30 +168,40 @@
                                             <tr class="text-uppercase">
                                                 <th class="font-w700" style="width: 80px;">ID</th>
                                                 <th class="font-w700">Name</th>
-                                                <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 100px;">Email</th>
-                                                <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 80px;">Orders</th>
-                                                <th class="font-w700 text-center" style="width: 60px;"></th>
+                                                <th class="d-none d-sm-table-cell font-w700 " style="width: 30%;">Email</th>
+                                                <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 15%;">Access</th>
+                                                <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 15%;">Registered</th>
+                                                <th class="font-w700 text-center" style="width: 10%;"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($users as $user)
                                             <tr>
                                                 <td>
-                                                    <span class="font-w600">#01368</span>
+                                                    <span class="font-w600">{{ $user->id }}</span>
                                                 </td>
-                                                <td class="d-none d-sm-table-cell text-center">
-                                                    <img class="img-avatar img-avatar32" src="assets/media/avatars/avatar10.jpg" alt="">
+                                                <td class="d-none d-sm-table-cell">
+                                                    <a href="#">{{ $user->last_name }} {{ $user->first_name }}</a>
                                                 </td>
-                                                <td class="font-w600">
-                                                    Jesse Fisher                                </td>
+                                                <td class="d-none d-sm-table-cell ">
+                                                     {{ $user->email }}
+                                                </td>
+                                                @foreach ($user->roles as $role)
                                                 <td class="d-none d-sm-table-cell text-center">
-                                                    <a class="link-fx font-w600" href="javascript:void(0)">5</a>
+                                                    <span class="link-fx font-w600 badge badge-danger">{{ $role->name }}</span>
+                                                </td>
+                                                @endforeach
+                                                <td class="d-none d-sm-table-cell text-center">
+                                                    <a class="link-fx font-w600" href="#">{{ $user->created_at }}</a>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="left" title="Edit">
+                                                    <a href="#" data-toggle="tooltip" data-placement="left" title="Edit">
                                                         <i class="fa fa-fw fa-pencil-alt"></i>
                                                     </a>
                                                 </td>
-                                            </tr>
+                                            </tr>  
+                                            @endforeach
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -203,8 +212,67 @@
                        
                     </div>
                     <!-- END Customers and Latest Orders -->
+                    
+                    <!-- Dynamic Table with Export Buttons -->
+                    <div class="block  block-mode-loading-oneui">
+                        <div class="block-header">
+                            <h3 class="block-title">Listes des utilisateurs</h3>
+                            <div class="block-options">
+                                <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                                    <i class="si si-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="block-content block-content-full">
+                            <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
+                            <table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 80px;">ID</th>
+                                        <th>Name</th>
+                                        <th class="d-none d-sm-table-cell" style="width: 30%;">Email</th>
+                                        <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th>
+                                        <th style="width: 15%;">Registered</th>
+                                        <th class="d-none d-md-table-cell text-center" style="width: 10px;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($users as $user)
+                                    <tr>
+                                        <td class="text-center font-size-sm">{{ $user->id }}</td>
+                                        <td class="font-w600 font-size-sm">
+                                            <a href="#">{{ $user->last_name }} {{ $user->first_name }}</a>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell font-size-sm">
+                                            {{ $user->email }}
+                                        </td>
+                                        @foreach ($user->roles as $role)
+                                            <td class="d-none d-sm-table-cell">
+                                            <span class="badge badge-success">{{ $role->name }}</span>
+                                        </td>
+                                        @endforeach
+                                        
+                                        <td>
+                                            <em class="text-muted font-size-sm">{{ $user->created_at }}</em>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip" title="Detail">
+                                                    <a href="/admin/users/{{ $user->id }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip" title="Modifier">
+                                                    <a href="/admin/users/{{ $user->id }}/edit"><i class="fa fa-fw fa-pencil-alt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                        @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- END Dynamic Table with Export Buttons -->
                 </div>
-<!-- END Page Content -->
+    <!-- END Page Content -->
+    
 @endsection
-            
-                

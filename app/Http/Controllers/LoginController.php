@@ -28,12 +28,12 @@ class LoginController extends Controller
                 $slug = Sentinel::getUser()->roles()->first()->slug;
 
                 if ($slug == 'admin') {
-                    return redirect('/dashboard');
+                    return redirect('/admin/users');
                 }elseif ($slug == 'manager') {
                     return redirect('/manager/dashboard');
-                }else//if ($slug == 'client'){
-                //     return redirect('/accueil')
-                // }
+                }elseif ($slug == 'client'){
+                     return redirect('/accueil');
+                 }
                 return redirect('/');
             } else {
                 return redirect()->back()->with(['error' => 'mauvais identifiant ']);

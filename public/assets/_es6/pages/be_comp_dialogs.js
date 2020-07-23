@@ -28,7 +28,12 @@ class pageDialogs {
 
         // Init an success dialog on button click
         jQuery('.js-swal-success').on('click', e => {
-            toast.fire('Success', 'Everything was updated perfectly!', 'success');
+            //toast.fire('Success', 'Everything was updated perfectly!', 'success');
+            Swal.fire({
+                title:'success!',
+                text:'Operation effectuer avec succès!',
+                type:'success'
+            })
         });
 
         // Init an info dialog on button click
@@ -54,8 +59,8 @@ class pageDialogs {
         // Init an example confirm dialog on button click
         jQuery('.js-swal-confirm').on('click', e => {
             toast.fire({
-                title: 'Are you sure?',
-                text: 'You will not be able to recover this imaginary file!',
+                title: 'Êtes-vous sûr?',
+                text: 'Vous ne pourrez pas revenir sur cela!',
                 type: 'warning',
                 showCancelButton: true,
                 customClass: {
@@ -63,6 +68,7 @@ class pageDialogs {
                     cancelButton: 'btn btn-secondary m-1'
                 },
                 confirmButtonText: 'Yes, delete it!',
+                cancelButtonText:'Cancel',
                 html: false,
                 preConfirm: e => {
                     return new Promise(resolve => {

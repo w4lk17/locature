@@ -105,10 +105,28 @@ class MigrationCartalystSentinel extends Migration
             $table->string('cni')->nullable();
             $table->string('address')->nullable();
             $table->string('telephone')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->engine = 'InnoDB';
             $table->unique('email');
+        });
+
+        Schema::create('voitures', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->string('matricule');
+            $table->string('modele');
+            $table->string('marque');
+            $table->string('moteur');
+            $table->string('voiture_image');
+            $table->string('prix');
+            $table->boolean('reservation')->default(0);
+            $table->softDeletes();
+            $table->timestamps();
+
+            $table->engine = 'InnoDB';
+            $table->unique('matricule');
         });
     }
 
@@ -126,5 +144,6 @@ class MigrationCartalystSentinel extends Migration
         Schema::drop('role_users');
         Schema::drop('throttle');
         Schema::drop('users');
+        Schema::drop('voitures');
     }
 }

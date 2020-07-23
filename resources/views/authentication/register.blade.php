@@ -19,8 +19,8 @@
                                         </div>
                                     </div>
                                     <div class="block-content">
-                                        <div class="p-sm-3 px-lg-4 py-lg-5">
-                                            <h1 class="mb-2">Locature</h1>
+                                        <div class="p-sm-3 px-lg-4">
+                                            <h1>Locature</h1>
                                             <p>Veuillez remplir les champs suivants pour créer un nouveau compte.</p>
 
                                             <!-- Sign Up Form -->
@@ -29,30 +29,30 @@
                                             <form class="js-validation-signup" action="/register" method="POST">
                                                 {{ csrf_field() }}
                                                 
-                                                <div class="py-3">
+                                                <div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-lg form-control-alt" id="signup-username" name="last_name" placeholder="Nom">
+                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="last_name" placeholder="Nom">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-lg form-control-alt" id="signup-username" name="first_name" placeholder="Prenom">
+                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="first_name" placeholder="Prenom">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="email" class="form-control form-control-lg form-control-alt" id="signup-email" name="email" placeholder="Email">
+                                                        <input type="email" class="form-control form-control-alt" id="signup-email" name="email" placeholder="Email">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-lg form-control-alt" id="signup-username" name="cni" placeholder="numero CNI">
+                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="cni" placeholder="numero CNI">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-lg form-control-alt" id="signup-username" name="telephone" placeholder="telephone +228xxxxxxx">
+                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="telephone" placeholder="telephone +228xxxxxxx">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-lg form-control-alt" id="signup-username" name="address" placeholder="adresse">
+                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="address" placeholder="adresse">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="password" class="form-control form-control-lg form-control-alt" id="signup-password" name="password" placeholder="Mot de passe">
+                                                        <input type="password" class="form-control form-control-alt" id="signup-password" name="password" placeholder="Mot de passe">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="password" class="form-control form-control-lg form-control-alt" id="signup-password-confirm" name="password_confirm" placeholder="Confirmer le mot de passe">
+                                                        <input type="password" class="form-control form-control-alt" id="signup-password-confirm" name="password_confirm" placeholder="Confirmer le mot de passe">
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="custom-control custom-checkbox">
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="content content-full font-size-sm text-muted text-center">
-                        <strong>OneUI 4.3</strong> &copy; <span data-toggle="year-copy"></span>
+                        <strong>Locature 1.0</strong> &copy; <span data-toggle="year-copy"></span>
                     </div>
                 </div>
 <!-- END Page Content -->

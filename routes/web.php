@@ -33,7 +33,20 @@ Route::group(['middleware' => 'visitors'],function(){
 
 Route::post('/logout', 'LoginController@logout');
 
-Route::get('/dashboard', 'Admins\AdminController@dashboard');//->middleware('admin');
-Route::get('/manager/dashboard', 'Managers\ManagerController@dashboard');//->middleware('manager');
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'],function(){
+    Route::resource('users', 'Admins\User\UserController');
+    Route::get('/managers', 'ListeController@getmanager');
+    Route::get('/clients', 'ListeController@getclient');
+});
+
+// Route::resource('voitures', '\Managers\Voiture\VoitureController');
+
+
+
+Route::get('/account/profil', 'AccountController@profil');
+
+//Route::get('admin/dashboard', 'Admins\AdminController@dashboard')->middleware('admin');
+Route::get('/manager/dashboard', 'Managers\ManagerController@dashboard')->middleware('manager');
+Route::get('/accueil', 'Clients\ClientController@dashboard')->middleware('client');
 
 Route::get('/activate/{email}/{activationCode}', 'ActivationController@activate');

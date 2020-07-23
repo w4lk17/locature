@@ -1,7 +1,7 @@
 @extends('layouts.user_master')
 
 @section('content')
-    <!-- Hero -->
+                <!-- Hero -->
                 <div class="bg-image" style="background-image: url('assets/media/photos/photo36@2x.jpg');">
                     <div class="hero bg-black-75 overflow-hidden">
                         <div class="hero-inner">
@@ -10,13 +10,13 @@
                                     <i class="fa fa-circle-notch fa-3x text-primary"></i>
                                 </div>
                                 <h1 class="display-4 font-w600 mb-3 text-white invisible" data-toggle="appear" data-class="animated fadeInDown">
-                                    OneUI <span class="font-w300">4.3 Remastered</span>
+                                    LOCATURE <hr> <span class="font-w300"></span>
                                 </h1>
                                 <h2 class="h3 font-w400 text-white-50 mb-5 invisible" data-toggle="appear" data-class="animated fadeInDown" data-timeout="300">
-                                    Build your next idea with one super flexible UI framework. Reimagined and rebuilt for super modern projects.
+                                    Votre confort notre soucis
                                 </h2>
                                 <span class="m-2 d-inline-block invisible" data-toggle="appear" data-class="animated fadeInUp" data-timeout="600">
-                                    <a class="btn btn-success px-4 py-2" data-toggle="click-ripple" href="https://1.envato.market/xWy">
+                                    <a class="btn btn-success px-4 py-2" data-toggle="click-ripple" href="#">
                                         <i class="fa fa-fw fa-shopping-cart mr-1"></i> Purchase
                                     </a>
                                 </span>
@@ -110,188 +110,206 @@
                             <h3 class="font-w400 text-muted mb-5">
                                 OneUI 4.3 was carefully crafted for your new projects using the latest tech.
                             </h3>
+                            <!-- New Arrivals -->
+                            <h2 class="content-heading">New Arrivals</h2>
                             <div class="row">
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- Bootstrap 4 -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-amethyst-lighter mx-auto my-4">
-                                                <i class="fa fa-2x fa-fire text-amethyst"></i>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="block">
+                                        <div class="options-container">
+                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product1.png" alt="">
+                                            <div class="options-overlay bg-black-75">
+                                                <div class="options-overlay-content">
+                                                    <a class="btn btn-sm btn-light" href="#">
+                                                        View
+                                                    </a>
+                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
+                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
+                                                    </a>
+                                                    <div class="text-warning mt-3">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-half-alt"></i>
+                                                        <span class="text-white">(35)</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h4 class="mb-2">Bootstrap 4</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                The latest Bootstrap version now powers OneUI 4.3 framework. Flexbox support and tons of new features are ready for you to use.
-                                            </p>
+                                        </div>
+                                        <div class="block-content">
+                                            <div class="mb-2">
+                                                <div class="h4 font-w600 text-success float-right ml-1">$9</div>
+                                                <a class="h4" href="be_pages_ecom_store_product.html">Iconic</a>
+                                            </div>
+                                            <p class="font-size-sm text-muted">Beautifully crafted icon set</p>
                                         </div>
                                     </div>
-                                    <!-- END Bootstrap 4 -->
                                 </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- Sass -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-danger-light mx-auto my-4">
-                                                <i class="fab fa-2x fa-sass text-danger"></i>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="block">
+                                        <div class="options-container">
+                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product2.png" alt="">
+                                            <div class="options-overlay bg-black-75">
+                                                <div class="options-overlay-content">
+                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
+                                                        View
+                                                    </a>
+                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
+                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
+                                                    </a>
+                                                    <div class="text-warning mt-3">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <span class="text-white">(48)</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h4 class="mb-2">Sass</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                OneUI 4.3 was built with Sass, overriding and extending Bootstrap in an intelligent way to ensure a perfect and modular workflow.
-                                            </p>
+                                        </div>
+                                        <div class="block-content">
+                                            <div class="mb-2">
+                                                <div class="h4 font-w600 text-success float-right ml-1">$16</div>
+                                                <a class="h4" href="be_pages_ecom_store_product.html">Mailday</a>
+                                            </div>
+                                            <p class="font-size-sm text-muted">Pro email templates</p>
                                         </div>
                                     </div>
-                                    <!-- END Sass -->
                                 </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- ES6 -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-warning-light mx-auto my-4">
-                                                <span class="font-w700 text-warning">ES6</span>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="block">
+                                        <div class="options-container">
+                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product3.png" alt="">
+                                            <div class="options-overlay bg-black-75">
+                                                <div class="options-overlay-content">
+                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
+                                                        View
+                                                    </a>
+                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
+                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
+                                                    </a>
+                                                    <div class="text-warning mt-3">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-half-alt"></i>
+                                                        <span class="text-white">(19)</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h4 class="mb-2">ECMAScript 6</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                OneUI 4.3 was built with ES6, the new major JavaScript release which enables us writing cleaner and better code.
-                                            </p>
+                                        </div>
+                                        <div class="block-content">
+                                            <div class="mb-2">
+                                                <div class="h4 font-w600 text-success float-right ml-1">$75</div>
+                                                <a class="h4" href="be_pages_ecom_store_product.html">Office Suite</a>
+                                            </div>
+                                            <p class="font-size-sm text-muted">The best productivity apps</p>
                                         </div>
                                     </div>
-                                    <!-- END ES6 -->
                                 </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- ES6 -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-flat-lighter mx-auto my-4">
-                                                <i class="fab fa-2x fa-font-awesome text-flat"></i>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="block">
+                                        <div class="options-container">
+                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product5.png" alt="">
+                                            <div class="options-overlay bg-black-75">
+                                                <div class="options-overlay-content">
+                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
+                                                        View
+                                                    </a>
+                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
+                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
+                                                    </a>
+                                                    <div class="text-warning mt-3">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <span class="text-white">(690)</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h4 class="mb-2">FontAwesome 5</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                OneUI 4.3 comes packed with the latest Font Awesome version, bringing you over 1300 freshly made icons for your projects.
-                                            </p>
+                                        </div>
+                                        <div class="block-content">
+                                            <div class="mb-2">
+                                                <div class="h4 font-w600 text-success float-right ml-1">$44</div>
+                                                <a class="h4" href="be_pages_ecom_store_product.html">Video UI Kit</a>
+                                            </div>
+                                            <p class="font-size-sm text-muted">Media components that work</p>
                                         </div>
                                     </div>
-                                    <!-- END ES6 -->
                                 </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- Gulp -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-city-lighter mx-auto my-4">
-                                                <i class="fab fa-2x fa-gulp text-city"></i>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="block">
+                                        <div class="options-container">
+                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product6.png" alt="">
+                                            <div class="options-overlay bg-black-75">
+                                                <div class="options-overlay-content">
+                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
+                                                        View
+                                                    </a>
+                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
+                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
+                                                    </a>
+                                                    <div class="text-warning mt-3">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <span class="text-white">(480)</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h4 class="mb-2">Gulp 4</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                We created smart development tasks to help you focus on your projects. Just install the npm dependencies and use them out of the box.
-                                            </p>
+                                        </div>
+                                        <div class="block-content">
+                                            <div class="mb-2">
+                                                <div class="h4 font-w600 text-success float-right ml-1">$58</div>
+                                                <a class="h4" href="be_pages_ecom_store_product.html">Super Badges Pack</a>
+                                            </div>
+                                            <p class="font-size-sm text-muted">1000s of high quality badges</p>
                                         </div>
                                     </div>
-                                    <!-- END Gulp -->
                                 </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- webpack -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-default-lighter mx-auto my-4">
-                                                <i class="fa fa-2x fa-boxes text-default"></i>
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div class="block">
+                                        <div class="options-container">
+                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product7.png" alt="">
+                                            <div class="options-overlay bg-black-75">
+                                                <div class="options-overlay-content">
+                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
+                                                        View
+                                                    </a>
+                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
+                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
+                                                    </a>
+                                                    <div class="text-warning mt-3">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-half-alt"></i>
+                                                        <span class="text-white">(520)</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h4 class="mb-2">webpack + Babel</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                Babel makes your JavaScript code compatible with older browsers and webpack bundles your JavaScript files together.
-                                            </p>
+                                        </div>
+                                        <div class="block-content">
+                                            <div class="mb-2">
+                                                <div class="h4 font-w600 text-success float-right ml-1">$65</div>
+                                                <a class="h4" href="be_pages_ecom_store_product.html">RPG Game Pack</a>
+                                            </div>
+                                            <p class="font-size-sm text-muted">10-in-1 Anniversary Pack</p>
                                         </div>
                                     </div>
-                                    <!-- END webpack -->
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- Browsersync -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-modern-lighter mx-auto my-4">
-                                                <i class="fab fa-2x fa-chrome text-modern"></i>
-                                            </div>
-                                            <h4 class="mb-2">Browsersync</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                It will serve and sync your project across different browsers and also refresh them each time your save your files.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- END Browsersync -->
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- Autoprefixer -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-smooth-lighter mx-auto my-4">
-                                                <i class="fab fa-2x fa-autoprefixer text-smooth"></i>
-                                            </div>
-                                            <h4 class="mb-2">Autoprefixer</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                Peace of mind when working with Sass. Use the latest CSS syntax and Autoprefixer will auto add any required prefixes for older browsers.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- END Autoprefixer -->
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- Modular Approach -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-gray-light mx-auto my-4">
-                                                <i class="fa fa-2x fa-truck-loading text-dark"></i>
-                                            </div>
-                                            <h4 class="mb-2">Modular Approach</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                You can add your JavaScript or Sass overrides/customizations without altering the original files, making the update process an easy one.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- END Modular Approach -->
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- Improved Design -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-info-light mx-auto my-4">
-                                                <i class="fa fa-2x fa-brush text-info"></i>
-                                            </div>
-                                            <h4 class="mb-2">Improved Design</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                Small touches and improvements were introduced throughout the template. From colors to layout and fom custom elements to plugins.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- END Improved Design -->
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- New Features -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-success-light mx-auto my-4">
-                                                <i class="fa fa-2x fa-smile-wink text-success"></i>
-                                            </div>
-                                            <h4 class="mb-2">New Features</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                Dark header, light sidebar, flexbox based layout, page overlay, header search and even more features are now available.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- END New Features -->
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-3 invisible" data-toggle="appear">
-                                    <!-- New Features -->
-                                    <div class="block block-rounded block-fx-pop">
-                                        <div class="block-content block-content-full">
-                                            <div class="item item-rounded bg-warning-light mx-auto my-4">
-                                                <i class="fa fa-2x fa-star text-warning"></i>
-                                            </div>
-                                            <h4 class="mb-2">Free Update</h4>
-                                            <p class="font-size-sm text-muted text-left">
-                                                We love our customers, so we are giving the Remastered version away as a free update to all existing ones! Thank you all for your support!
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- END New Features -->
                                 </div>
                             </div>
+                            <div class="text-right">
+                                <a class="font-size-sm font-w600 link-fx" href="be_pages_ecom_store_products.html">View More New Arrivals..</a>
+                            </div>
+                            <!-- END New Arrivals -->
                         </div>
                     </div>
                 </div>
@@ -341,181 +359,6 @@
                                         </div>
                                         <div class="font-size-h5 text-white-50 mb-2">This is my first purchase on Themeforest and I am delighted. Everything from the design to the code is beautifully crafted and the customer support is great also. Congratulations pixelcave.</div>
                                         <div class="font-size-h6 text-white-75">For Customizability by <em>CaravelaThemes</em></div>
-                                    </div>
-                                </div>
-                                <div class="row items-push-2x">
-                                    <div class="col-md-4 invisible" data-toggle="appear">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">One of the most well thought-through and comprehensive Themeforest templates available. Consistently excellent design and broad feature base. Highly Recommended!</div>
-                                        <div class="font-size-h6 text-white-75">For Feature Availability by <em>stephenhird</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="150">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">One of the best paid for downloads I have ever made. Has so many features which have all been designed and put together absolutely brilliantly.</div>
-                                        <div class="font-size-h6 text-white-75">For Design Quality by <em>weblid</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="300">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">This is hands down the best template I have ever come across. It has absolutely everything you need right there laid out and easy to find. I couldn't recommend this template enough!</div>
-                                        <div class="font-size-h6 text-white-75">For Feature Availability by <em>dhowa021</em></div>
-                                    </div>
-                                </div>
-                                <div class="row items-push-2x">
-                                    <div class="col-md-4 invisible" data-toggle="appear">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">After using this Admin template for 6 months...we are still delighted. This template has everything. It has obviously been designed with much care and detail. Very intuitive, Easy to use. And we're still finding functionality that we hadn't discovered before. Well done to the developer and thanks for putting your heart-and-soul into this template.</div>
-                                        <div class="font-size-h6 text-white-75">For Other by <em>conorhannah</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="150">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">Easily the best admin template you can find.</div>
-                                        <div class="font-size-h6 text-white-75">For Code Quality by <em>nozebra_dk</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="300">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">I have spent two days researching admin themes. There are a couple of really good ones out there, but this one came out at the very top for me. Looks great, on both desktop and mobile, the feature set is amazing, the documentation looks very good. I haven't started implementing yet, but this deserves five stars already.</div>
-                                        <div class="font-size-h6 text-white-75">For Design Quality by <em>dvartok</em></div>
-                                    </div>
-                                </div>
-                                <div class="row items-push-2x">
-                                    <div class="col-md-4 invisible" data-toggle="appear">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">This is one of the best all-around packages I've purchased from ThemeForest. Not only is the Documentation is excellent and well-written, but the code itself is intelligently built and a pleasure to work with. Thanks for doing such great work.</div>
-                                        <div class="font-size-h6 text-white-75">For Other by <em>rshaffaf</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="150">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">This is the best UI I have ever came across, this UI theme is absolutely perfect in Every Way :) Really happy with the purchase.</div>
-                                        <div class="font-size-h6 text-white-75">For Other by <em>spmtumblr</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="300">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">The best admin template ever, no doubt of it!!</div>
-                                        <div class="font-size-h6 text-white-75">For Other by <em>kaladrian</em></div>
-                                    </div>
-                                </div>
-                                <div class="row items-push-2x">
-                                    <div class="col-md-4 invisible" data-toggle="appear">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">Everything's perfect! Good design! Best performance I've ever use! And the best thing, fastest support I've seen! 5 star satisfaction!</div>
-                                        <div class="font-size-h6 text-white-75">For Customer Support by <em>arkheacol04</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="150">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">This is an amazing, multi purpose, and very well designed and structured template. I rarely write a review but this template deserves the support. It is distinguished.</div>
-                                        <div class="font-size-h6 text-white-75">For Design Quality by <em>maa83</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="300">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">Long story short: I really enjoy using the templates made by pixelcave. The code is very flexible and well structured, the documentation is very good - everything you need.</div>
-                                        <div class="font-size-h6 text-white-75">For Code Quality by <em>Master_rg</em></div>
-                                    </div>
-                                </div>
-                                <div class="row items-push-2x mb-20-t">
-                                    <div class="col-md-4 invisible" data-toggle="appear">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">It's awesome, not only the design is marvelous, the code and documentation helps easy customization.</div>
-                                        <div class="font-size-h6 text-white-75">For Design Quality by <em>alperaydyn2</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="150">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">Awesome !!! Thanks for a so great template !!</div>
-                                        <div class="font-size-h6 text-white-75">For Feature Availability by <em>Markuitos</em></div>
-                                    </div>
-                                    <div class="col-md-4 invisible" data-toggle="appear" data-timeout="300">
-                                        <div class="text-warning my-3">
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                            <i class="fa fa-fw fa-star"></i>
-                                        </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">Awesome code, works really well, well documented!</div>
-                                        <div class="font-size-h6 text-white-75">For Flexibility by <em>corverdevelopment</em></div>
                                     </div>
                                 </div>
                             </div>
