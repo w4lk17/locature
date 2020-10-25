@@ -39,6 +39,10 @@ class User extends EloquentUser
         'password', 'remember_token',
     ];
 
+    public function voiture(){
+        return $this->hasMany("App\Voiture");
+    }
+
     public static function byEmail($email)
     {
         return static::whereEmail($email)->first();

@@ -10,9 +10,9 @@
                     </h1>
                     <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-alt">
-                            <li class="breadcrumb-item">Tables</li>
+                            <li class="breadcrumb-item">Clients</li>
                             <li class="breadcrumb-item" aria-current="page">
-                                <a class="link-fx" href="">DataTables</a>
+                                <a class="link-fx" href="">Tables</a>
                             </li>
                         </ol>
                     </nav>
@@ -38,10 +38,10 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 80px;">ID</th>
-                                        <th>Name</th>
+                                        <th>Nom</th>
                                         <th class="d-none d-sm-table-cell" style="width: 30%;">Email</th>
-                                        <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th>
-                                        <th style="width: 15%;">Registered</th>
+                                        <th class="d-none d-sm-table-cell" style="width: 15%;">Role</th>
+                                        <th style="width: 15%;">Enrégistré</th>
                                         <th class="d-none d-md-table-cell text-center" style="width: 10px;">Actions</th>
                                     </tr>
                                 </thead>
@@ -50,24 +50,26 @@
                                     <tr>
                                         <td class="text-center font-size-sm">{{ $client->id }}</td>
                                         <td class="font-w600 font-size-sm">
-                                            <a href="#">{{ $client->last_name }} {{ $client->first_name }}</a>
+                                            <a href="/admin/users/{{ $client->id }}">{{ $client->last_name }} {{ $client->first_name }}</a>
                                         </td>
                                         <td class="d-none d-sm-table-cell font-size-sm">
                                             {{ $client->email }}
                                         </td>
+                                         @foreach ($client->roles as $role)
                                         <td class="d-none d-sm-table-cell">
-                                            <span class="badge badge-success">VIP</span>
+                                            <span class="badge badge-success">{{ $role->name }}</span>
                                         </td>
+                                        @endforeach
                                         <td>
                                             <em class="text-muted font-size-sm">{{ $client->created_at }}</em>
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip" title="Detail">
-                                                    <a href="/users/{{ $client->id }}"><i class="fa fa-fw fa-eye"></i></a>
+                                                    <a href="/admin/users/{{ $client->id }}"><i class="fa fa-fw fa-eye"></i></a>
                                                 </button>
                                                 <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip" title="Modifier">
-                                                    <a href="/users/{{ $client->id }}/edit"><i class="fa fa-fw fa-pencil-alt"></i>
+                                                    <a href="/admin/users/{{ $client->id }}/edit"><i class="fa fa-fw fa-pencil-alt"></i>
                                                 </button>
                                             </div>
                                         </td>
