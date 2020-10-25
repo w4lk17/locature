@@ -41,8 +41,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'],function(){
 
 // Route::resource('voitures', '\Managers\Voiture\VoitureController');
 
-
-
 Route::get('/account/profil', 'AccountController@profil');
 
 //Route::get('admin/dashboard', 'Admins\AdminController@dashboard')->middleware('admin');
