@@ -9,9 +9,11 @@
                             <h1 class="flex-sm-fill h3"> ajouter utilisateur</h1>
                             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                                 <ol class="breadcrumb breadcrumb-alt">
-                                    <li class="breadcrumb-item">Forms</li>
+                                    <li class="breadcrumb-item">
+                                        <a class="link-fx" href="/admin/users">utilisateurs</a>
+                                    </li>
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a class="link-fx" href="">utilisateurs</a>
+                                        <a class="link-fx" href="">créer</a>
                                     </li>
                                 </ol>
                             </nav>
@@ -24,13 +26,13 @@
                     <!-- Basic -->
                     <div class="block">
                         <div class="block-header">
-                            <h3 class="block-title">Creation d'un nouveau utilisateur</h3>
+                            <h3 class="block-title">Creation dun nouveau utilisateur</h3>
                         </div>
                         <div class="block-content block-content-full">
                             <form class="js-validation-signup" action="/admin/users" method="POST">
 
                                 {{ csrf_field() }}
-                                
+
                                 <div class="row">
                                     <div class="col-md-5 offset-md-3">
                                         <div class="form-group">
@@ -47,10 +49,10 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Roles</label>
-                                            <div class="custom-control custom-radio mb-1">
+                                            {{-- <div class="custom-control custom-radio mb-1">
                                                 <input type="radio" class="custom-control-input" id="example-radio-custom1" name="role" value="admin" checked>
                                                 <label class="custom-control-label" for="example-radio-custom1">Administrateur</label>
-                                            </div>
+                                            </div> --}}
                                             <div class="custom-control custom-radio mb-1">
                                                 <input type="radio" class="custom-control-input" id="example-radio-custom2" name="role" value="manager">
                                                 <label class="custom-control-label" for="example-radio-custom2">Manager</label>
@@ -63,7 +65,7 @@
                                             <div class="col-6 text-right">
                                                 <button type="submit" class="btn js-swal-success btn-btn-block btn-success">Valider</button>
                                             </div>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
                             </form>
