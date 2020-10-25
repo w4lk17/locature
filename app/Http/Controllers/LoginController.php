@@ -21,9 +21,10 @@ class LoginController extends Controller
 
             $rememberMe = false;
 
-            if (isset($request->remember_me))
+            if (isset($request->remember_me)){
                 $rememberMe = true;
-            
+            }
+
             if (Sentinel::authenticate($request->all(), $rememberMe)) {
                 $slug = Sentinel::getUser()->roles()->first()->slug;
 
@@ -46,7 +47,7 @@ class LoginController extends Controller
 
             return redirect()->back()->with(['error' => " Votre compte n'est pas activé "]);
        }
-        
+
     }
 
     public function logout()

@@ -63,6 +63,18 @@ class MigrationCartalystSentinel extends Migration
             $table->engine = 'InnoDB';
         });
 
+        Schema::create('reservations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamp('date_depart');
+            $table->timestamp('date_retour');
+            $table->boolean('etat')->default(0);
+            $table->integer('user_id')->unsigned();
+            $table->integer('voiture_id')->unsigned();
+            $table->timestamps();
+
+            $table->engine = 'InnoDB';
+        });
+
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('slug');
@@ -121,7 +133,6 @@ class MigrationCartalystSentinel extends Migration
             $table->string('moteur');
             $table->string('voiture_image');
             $table->string('prix');
-            $table->boolean('reservation')->default(0);
             $table->softDeletes();
             $table->timestamps();
 
@@ -140,6 +151,7 @@ class MigrationCartalystSentinel extends Migration
         Schema::drop('activations');
         Schema::drop('persistences');
         Schema::drop('reminders');
+        Schema::drop('reservations');
         Schema::drop('roles');
         Schema::drop('role_users');
         Schema::drop('throttle');

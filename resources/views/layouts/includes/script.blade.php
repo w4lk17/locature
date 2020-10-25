@@ -35,6 +35,9 @@
         <script src="{{ asset('assets/js/plugins/datatables/buttons/buttons.colVis.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/es6-promise/es6-promise.auto.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/jquery-validation/additional-methods.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+
 
         <!-- Page JS Code -->
         <script src="{{ asset('assets/js/pages/be_tables_datatables.min.js') }}"></script>
@@ -43,4 +46,6 @@
         <script src="{{ asset('assets/js/pages/op_auth_signup.min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/op_auth_reminder.min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/be_comp_dialogs.min.js') }}"></script>
+        <script src="{{ asset('assets/js/pages/be_forms_validation.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
+        <script>jQuery(function(){ One.helpers('magnific-popup'); });</script>

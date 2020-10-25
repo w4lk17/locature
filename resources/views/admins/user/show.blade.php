@@ -6,13 +6,15 @@
             <div class="content content-full">
                 <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                     <h1 class="flex-sm-fill h3 my-2">
-                        Detail Utilisateur
+                        Détails Utilisateur
                     </h1>
                     <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-alt">
-                            <li class="breadcrumb-item">Utilisateurs</li>
+                            <li class="breadcrumb-item">
+                                <a class="link-fx" href="/admin/users">Utilisateurs</a>
+                            </li>
                                 <li class="breadcrumb-item" aria-current="page">
-                                <a class="link-fx" href="">Detail</a>
+                                <a class="link-fx" href="">détails</a>
                             </li>
                         </ol>
                     </nav>
@@ -29,10 +31,11 @@
                             <p>Nom : {{ $user->last_name }}</p>
                             <p>Prénom : {{ $user->first_name }}</p>
                             <p>Email : {{ $user->email }}</p>
+                            <p>Adresse : {{ $user->address }}</p>
                             @foreach ($roles as $role)
                                 <p>Role : <span class="badge badge-info">{{ $role->name }}</span></p>
                             @endforeach
-                            <p>Date d'inscription : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at)->format('j/m/Y') }}</p>
+                            <p>Date dinscription : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at)->format('j/m/Y') }}</p>
                             @if($user->last_login !== null)
                             <p>Dernière connexion : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->last_login)->format('j/m/Y') }}</p>
                             @endif

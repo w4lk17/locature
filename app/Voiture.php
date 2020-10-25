@@ -9,5 +9,23 @@ class Voiture extends Model
 {
     use SoftDeletes;
 
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'matricule',
+        'modele',
+        'marque',
+        'moteur',
+        'prix',
+        'voiture_image',
+    ];
+
     protected $dates = ['deleted_at'];
+
+    public function user(){
+            return $this->belongsTo("App\User");
+        }
 }

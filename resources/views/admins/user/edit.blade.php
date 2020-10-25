@@ -9,9 +9,11 @@
                     <h1 class="flex-sm-fill h3">Modification</h1>
                     <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-alt">
-                            <li class="breadcrumb-item">Forms</li>
+                            <li class="breadcrumb-item" >
+                                <a class="link-fx" href="/admin/users">Utilisateurs</a>
+                            </li>
                             <li class="breadcrumb-item" aria-current="page">
-                                <a class="link-fx" href="">Elements</a>
+                                <a class="link-fx" href="">modifier</a>
                             </li>
                         </ol>
                     </nav>
@@ -44,6 +46,10 @@
                                 <div class="form-group">
                                     <label for="example-password-input">Email</label>
                                     <input type="email" class="form-control form-control-alt" id="signup-email" name="email" value="{{ $user->email }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input">Adresse</label>
+                                    <input type="text" class="form-control form-control-alt" id="signup-usernamee" name="address" value="{{ $user->address }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Roles</label>

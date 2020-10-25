@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class ManagerController extends Controller
 {
-    public function dashboard()
+    public function stats()
     {
-        return view('managers.m_dashboard');
+        return view('managers.statistic');
     }
 }
