@@ -3,10 +3,11 @@
 @section('content')
 
 <!-- Page Content -->
-                <div class="hero-static">
+            <div class="bg-image" style="background-image: url('assets/media/photos/photo6@2x.jpg');">
+                <div class="hero-static bg-white-75">
                     <div class="content">
                         <div class="row justify-content-center">
-                            <div class="col-md-4 col-xl-5">
+                            <div class="col-md-8 col-lg-6 col-xl-4">
                                 <!-- Sign Up Block -->
                                 <div class="block block-themed block-fx-shadow mb-0">
                                     <div class="block-header bg-success">
@@ -28,7 +29,7 @@
                                             <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
                                             <form class="js-validation-signup" action="/register" method="POST">
                                                 {{ csrf_field() }}
-                                                
+
                                                 <div>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-alt" id="signup-username" name="last_name" placeholder="Nom">
@@ -62,7 +63,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <div class="col-md-6 col-xl-5">
+                                                    <div class="col-md-6">
                                                         <button type="submit" class="btn btn-block btn-success">
                                                             <i class="fa fa-fw fa-plus mr-1"></i> S'inscrire
                                                         </button>
@@ -81,6 +82,7 @@
                         <strong>Locature 1.0</strong> &copy; <span data-toggle="year-copy"></span>
                     </div>
                 </div>
+            </div>
 <!-- END Page Content -->
 <!-- Terms Modal -->
         <div class="modal fade" id="one-signup-terms" tabindex="-1" role="dialog" aria-labelledby="one-signup-terms" aria-hidden="true">
@@ -111,5 +113,5 @@
             </div>
         </div>
 <!-- END Terms Modal -->
-    
+
 @endsection

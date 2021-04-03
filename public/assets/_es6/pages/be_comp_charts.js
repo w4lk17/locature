@@ -42,7 +42,7 @@ class pageCompCharts {
                 {
                     label: 'This Week',
                     fill: true,
-                    backgroundColor: 'rgba(220,220,220,.3)',
+                    backgroundColor: 'rgba(220,220,220,0.3)',
                     borderColor: 'rgba(220,220,220,1)',
                     pointBackgroundColor: 'rgba(220,220,220,1)',
                     pointBorderColor: '#fff',
@@ -53,7 +53,7 @@ class pageCompCharts {
                 {
                     label: 'Last Week',
                     fill: true,
-                    backgroundColor: 'rgba(171, 227, 125, .3)',
+                    backgroundColor: 'rgba(171,227,125,0.3)',
                     borderColor: 'rgba(171, 227, 125, 1)',
                     pointBackgroundColor: 'rgba(171, 227, 125, 1)',
                     pointBorderColor: '#fff',

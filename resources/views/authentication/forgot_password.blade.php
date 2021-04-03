@@ -3,17 +3,17 @@
 @section('content')
 <!-- Page Content -->
                 <div class="bg-image" style="background-image: url('assets/media/photos/photo6@2x.jpg');">
-                    <div class="hero-static bg-white-95">
+                    <div class="hero-static bg-white-75">
                         <div class="content">
                             <div class="row justify-content-center">
-                                <div class="col-md-4 col-xl-5 py-lg-6">
+                                <div class="col-md-8 col-lg-6 col-xl-4">
                                     <!-- Reminder Block -->
                                     <div class="block block-themed block-fx-shadow mb-0">
                                         <div class="block-header">
                                             <h3 class="block-title">Reinitialisation de mot de passe</h3>
                                             <div class="block-options">
                                                 <a class="btn-block-option" href="/login" data-toggle="tooltip" data-placement="left" title="Se connecter">
-                                                    <i class="fa fa-sign-in-alt"></i>
+                                                    <i class="fa fa-sign-in-alt" aria-hidden="true"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -42,9 +42,9 @@
                                                         <input type="email" class="form-control form-control-lg form-control-alt" id="reminder-credential" name="email" placeholder=" Entrez votre adresse email">
                                                     </div>
                                                     <div class="form-group row">
-                                                        <div class="col-md-6 col-xl-5">
+                                                        <div class="col-md-6 ">
                                                             <button type="submit" class="btn btn-block btn-primary">
-                                                                <i class="fa fa-fw fa-envelope mr-1"></i> Envoyer
+                                                                <i class="fa fa-fw fa-envelope mr-1" aria-hidden="true"></i> Envoyer
                                                             </button>
                                                         </div>
                                                     </div>

@@ -19,6 +19,7 @@ class Voiture extends Model
         'modele',
         'marque',
         'moteur',
+        'chemin',
         'prix',
         'voiture_image',
     ];
@@ -26,6 +27,6 @@ class Voiture extends Model
     protected $dates = ['deleted_at'];
 
     public function user(){
-            return $this->belongsTo("App\User");
-        }
+        return $this->belongsTo("App\User");
+    }
 }

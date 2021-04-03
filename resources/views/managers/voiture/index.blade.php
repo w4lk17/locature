@@ -11,7 +11,7 @@
                                     <div class="row items-push">
                                         <div class="col-md-4 col-lg-5">
                                             <a href="/manager/voitures/{{ $voiture->id }}">
-                                                <img class="img-fluid" src="{{ asset('uploads/' . $voiture->voiture_image) }}" height="400" width="800" alt="">
+                                                <img class="img-fluid" src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" height="400" width="800" alt="">
                                             </a>
                                         </div>
                                         <div class="col-md-8 col-lg-7">

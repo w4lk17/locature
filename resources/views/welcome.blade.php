@@ -113,14 +113,15 @@
                             <!-- New Arrivals -->
                             <h2 class="content-heading">New Arrivals</h2>
                             <div class="row">
+                            @foreach ($voitures as $voiture)
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="block">
                                         <div class="options-container">
-                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product1.png" alt="">
+                                            <img class="img-fluid options-item" src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}">
                                             <div class="options-overlay bg-black-75">
                                                 <div class="options-overlay-content">
-                                                    <a class="btn btn-sm btn-light" href="#">
-                                                        View
+                                                    <a class="btn btn-sm btn-light" href="/manager/voitures/{{ $voiture->id }}">
+                                                        Voir
                                                     </a>
                                                     <a class="btn btn-sm btn-light" href="javascript:void(0)">
                                                         <i class="fa fa-plus text-success mr-1"></i> Add to cart
@@ -138,173 +139,14 @@
                                         </div>
                                         <div class="block-content">
                                             <div class="mb-2">
-                                                <div class="h4 font-w600 text-success float-right ml-1">$9</div>
+                                                <div class="h4 font-w600 text-success float-right ml-1">${{ $voiture->prix }}</div>
                                                 <a class="h4" href="be_pages_ecom_store_product.html">Iconic</a>
                                             </div>
                                             <p class="font-size-sm text-muted">Beautifully crafted icon set</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="block">
-                                        <div class="options-container">
-                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product2.png" alt="">
-                                            <div class="options-overlay bg-black-75">
-                                                <div class="options-overlay-content">
-                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
-                                                        View
-                                                    </a>
-                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
-                                                    </a>
-                                                    <div class="text-warning mt-3">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="text-white">(48)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="block-content">
-                                            <div class="mb-2">
-                                                <div class="h4 font-w600 text-success float-right ml-1">$16</div>
-                                                <a class="h4" href="be_pages_ecom_store_product.html">Mailday</a>
-                                            </div>
-                                            <p class="font-size-sm text-muted">Pro email templates</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="block">
-                                        <div class="options-container">
-                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product3.png" alt="">
-                                            <div class="options-overlay bg-black-75">
-                                                <div class="options-overlay-content">
-                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
-                                                        View
-                                                    </a>
-                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
-                                                    </a>
-                                                    <div class="text-warning mt-3">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <span class="text-white">(19)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="block-content">
-                                            <div class="mb-2">
-                                                <div class="h4 font-w600 text-success float-right ml-1">$75</div>
-                                                <a class="h4" href="be_pages_ecom_store_product.html">Office Suite</a>
-                                            </div>
-                                            <p class="font-size-sm text-muted">The best productivity apps</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="block">
-                                        <div class="options-container">
-                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product5.png" alt="">
-                                            <div class="options-overlay bg-black-75">
-                                                <div class="options-overlay-content">
-                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
-                                                        View
-                                                    </a>
-                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
-                                                    </a>
-                                                    <div class="text-warning mt-3">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="text-white">(690)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="block-content">
-                                            <div class="mb-2">
-                                                <div class="h4 font-w600 text-success float-right ml-1">$44</div>
-                                                <a class="h4" href="be_pages_ecom_store_product.html">Video UI Kit</a>
-                                            </div>
-                                            <p class="font-size-sm text-muted">Media components that work</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="block">
-                                        <div class="options-container">
-                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product6.png" alt="">
-                                            <div class="options-overlay bg-black-75">
-                                                <div class="options-overlay-content">
-                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
-                                                        View
-                                                    </a>
-                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
-                                                    </a>
-                                                    <div class="text-warning mt-3">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="text-white">(480)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="block-content">
-                                            <div class="mb-2">
-                                                <div class="h4 font-w600 text-success float-right ml-1">$58</div>
-                                                <a class="h4" href="be_pages_ecom_store_product.html">Super Badges Pack</a>
-                                            </div>
-                                            <p class="font-size-sm text-muted">1000s of high quality badges</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4 col-xl-3">
-                                    <div class="block">
-                                        <div class="options-container">
-                                            <img class="img-fluid options-item" src="assets/media/various/ecom_product7.png" alt="">
-                                            <div class="options-overlay bg-black-75">
-                                                <div class="options-overlay-content">
-                                                    <a class="btn btn-sm btn-light" href="be_pages_ecom_store_product.html">
-                                                        View
-                                                    </a>
-                                                    <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                                        <i class="fa fa-plus text-success mr-1"></i> Add to cart
-                                                    </a>
-                                                    <div class="text-warning mt-3">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <span class="text-white">(520)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="block-content">
-                                            <div class="mb-2">
-                                                <div class="h4 font-w600 text-success float-right ml-1">$65</div>
-                                                <a class="h4" href="be_pages_ecom_store_product.html">RPG Game Pack</a>
-                                            </div>
-                                            <p class="font-size-sm text-muted">10-in-1 Anniversary Pack</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            @endforeach
                             </div>
                             <div class="text-right">
                                 <a class="font-size-sm font-w600 link-fx" href="be_pages_ecom_store_products.html">View More New Arrivals..</a>

@@ -19,16 +19,16 @@ class ForgotPasswordController extends Controller
     {
         $user = User::whereEmail($request->email)->first();
 
-        if (empty($user)) 
+        if (empty($user))
             return redirect()->back()->with(['error' => " Désolé cette adresse email n'est associée à aucun compte."]);
 
-       
+
         $reminder = Reminder::exists($user) ?: Reminder::create($user);
 
         $this->sendEmail($user, $reminder->code);
 
         return redirect()->back()->with(['success' => " Reset code was sent to your email "]);
-        
+
     }
 
     public function resetPassword($email, $resetCode)
@@ -36,8 +36,8 @@ class ForgotPasswordController extends Controller
         $user = User::byEmail($email);
 
         if (empty($user))
-            //abort(404);
-            return redirect()->back()->with(['error' => " Cette adresse email n'est associée à aucun compte."]);
+            abort(404);
+            //return redirect()->back()->with(['error' => " Cette adresse email n'est associée à aucun compte."]);
 
         if (Reminder::exists($user)) {
             if (Reminder::exists($user, $resetCode)) {
@@ -48,7 +48,7 @@ class ForgotPasswordController extends Controller
         } else {
             return redirect('/');
         }
-        
+
     }
 
     public function postResetPassword(Request $request, $email, $resetCode)
@@ -67,7 +67,7 @@ class ForgotPasswordController extends Controller
             } else
                 return redirect()->back()
                     ->with('error', ' Nouveau mot de passe non enregistrer !');
-        } else { 
+        } else {
             return redirect()->back()
                     ->with('error', ' Cet Utilisateur n\'est pas dans la base ');
         }

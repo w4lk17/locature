@@ -84,16 +84,16 @@
                                             <!-- For more info and examples you can check out http://dimsemenov.com/plugins/magnific-popup/ -->
                                             <div class="row gutters-tiny js-gallery img-fluid-100">
                                                 <div class="col-12 mb-3">
-                                                    <img class="img-fluid"  src="{{ asset('uploads/' . $voiture->voiture_image) }}" alt="">
+                                                    <img class="img-fluid"  src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" alt="">
                                                 </div>
                                                 <div class="col-4">
-                                                    <img class="img-fluid" src="{{ asset('uploads/' . $voiture->voiture_image) }}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" alt="">
                                                 </div>
                                                 <div class="col-4">
-                                                    <img class="img-fluid" src="{{ asset('uploads/' . $voiture->voiture_image) }}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" alt="">
                                                 </div>
                                                 <div class="col-4">
-                                                    <img class="img-fluid" src="{{ asset('uploads/' . $voiture->voiture_image) }}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" alt="">
                                                 </div>
                                             </div>
                                             <!-- END Images -->
@@ -137,7 +137,7 @@
                                     <!-- END Vitals -->
 
                                     <!-- Author -->
-                                    <div class="block block-rounded block-bordered">
+                                    <!-- <div class="block block-rounded block-bordered">
                                         <div class="block-content block-content-full d-flex justify-content-between align-items-center">
                                             <div>
                                                 <div class="mb-2">
@@ -154,7 +154,7 @@
                                             </div>
                                             <img class="img-avatar" src="{{ asset('assets/media/avatars/avatar2.jpg') }}" alt="">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- END Author -->
                                 </div>
                             </div>

@@ -61,7 +61,7 @@
                                     <img class="img-avatar img-avatar48 img-avatar-thumb"  src="{{ asset('assets/media/avatars/avatar10.jpg') }}" alt="">
                                 </div>
                                 <div class="p-2">
-                                    <h5 class="dropdown-header text-uppercase">User Options</h5>
+                                    <h5 class="dropdown-header text-uppercase">Options Utilisateur</h5>
                                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
                                         <span>Inbox</span>
                                         <span>
@@ -75,20 +75,20 @@
                                             <i class="si si-user ml-1"></i>
                                         </span>
                                     </a>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                        <span>Compte</span>
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="/account/settings">
+                                        <span>Paramètres</span>
                                         <i class="si si-settings"></i>
                                     </a>
                                     <div role="separator" class="dropdown-divider"></div>
                                     <h5 class="dropdown-header text-uppercase">Actions</h5>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="op_auth_lock.html">
-                                        <span>Lock Account</span>
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="/account/lock">
+                                        <span>Vérouiller écran</span>
                                         <i class="si si-lock ml-1"></i>
                                     </a>
                                     <form action="/logout" method="post" id="logout_form">
                                         {{ csrf_field() }}
                                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="#" onclick="document.getElementById('logout_form').submit()">
-                                            <span>Deconnexion</span>
+                                            <span>Déconnexion</span>
                                             <i class="si si-logout ml-1"></i>
                                         </a>
                                     </form>
@@ -183,13 +183,6 @@
                             </div>
                         </div>
                         <!-- END Notifications Dropdown -->
-
-                        <!-- Toggle Side Overlay -->
-                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                        <button type="button" class="btn btn-sm btn-dual ml-2" data-toggle="layout" data-action="side_overlay_toggle">
-                            <i class="fa fa-fw fa-list-ul fa-flip-horizontal"></i>
-                        </button>
-                        <!-- END Toggle Side Overlay -->
                     </div>
                     <!-- END Right Section -->
                 </div>

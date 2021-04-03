@@ -70,6 +70,7 @@ class MigrationCartalystSentinel extends Migration
             $table->boolean('etat')->default(0);
             $table->integer('user_id')->unsigned();
             $table->integer('voiture_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->engine = 'InnoDB';

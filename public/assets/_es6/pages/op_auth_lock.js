@@ -16,14 +16,15 @@ class pageAuthLock {
         // Init Form Validation
         jQuery('.js-validation-lock').validate({
             rules: {
-                'lock-password': {
+                'password': {
                     required: true,
-                    minlength: 3
+                    minlength: 6
                 }
             },
             messages: {
-                'lock-password': {
-                    required: 'Please enter your valid password'
+                'password': {
+                    required: 'Entrer un mot de passe valide.',
+                    minlength: 'Entrer minimum 6 caracteres'
                 }
             }
         });

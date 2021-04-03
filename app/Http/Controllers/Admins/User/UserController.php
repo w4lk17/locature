@@ -17,10 +17,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(10);
+        $UserCount = User::count();
 
-        
-        
-		return view('admins.user.index', compact('users'));
+		return view('admins.user.index', compact('users', 'UserCount'));
     }
 
     /**
@@ -50,7 +49,7 @@ class UserController extends Controller
 
         $role = Sentinel::findRoleBySlug($result);
         $role->users()->attach($user);
-       
+
         return redirect('/admin/users');
     }
 
@@ -96,7 +95,7 @@ class UserController extends Controller
         $user = Sentinel::findById($id);
 
         $roleU = $user->roles()->get();
-        
+
         $role = Sentinel::findRoleByName($roleU);
         $user->roles()->detach($role);
 
@@ -105,7 +104,7 @@ class UserController extends Controller
         $role = $request->role;
 
         $role = Sentinel::findRoleByName($role);
-        
+
         $user->roles()->attach($role);
 
         return redirect('/admin/users');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Managers\Voiture;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Voiture;
+use App\Reservation;
 use App\User;
 use Sentinel;
 use Storage;
@@ -16,7 +17,14 @@ class VoitureController extends Controller
     public function getdash()
     {
         $VoitureCount = Voiture::count();
-        return view('managers.m_dashboard', compact('VoitureCount'));
+        $ReservCount = Reservation::count();
+
+        $latestCars = Voiture::latest()->limit(3)->get();
+
+        //$test = DB::table('role_users')
+        $latestReservs = Reservation::latest()->limit(5)->get();
+
+        return view('managers.m_dashboard', compact('VoitureCount', 'ReservCount', 'latestReservs', 'latestCars'));
     }
 
     /**
@@ -69,14 +77,24 @@ class VoitureController extends Controller
         $voiture->prix = $request->prix;
         $voiture->matricule = $request->matricule;
 
-        if($request->file('voiture_image')){
+       /* if($request->file('voiture_image')){
             $image = $request->file('voiture_image');
             $filename = $image->getClientOriginalName();
             $location = public_path('uploads/' . $filename);
             Image::make($image)->resize(300, 200)->save($location);
 
             $voiture->voiture_image = $filename;
-        }
+        } */
+       if($request->hasFile('voiture_image')) {
+           $image = $request->file('voiture_image');
+           $filename = $image->getClientOriginalName();
+           $path = $image->storeAs('/uploads', $filename);
+           $location = storage_path() . $path;
+           $url = Storage::url($filename);
+           //$voiture->chemin = $location;
+           $voiture->chemin = env('APP_IP') . $url;
+           $voiture->voiture_image = $filename;
+       }
 
         $voiture->save();
 
@@ -117,7 +135,7 @@ class VoitureController extends Controller
     public function update(Request $request, $id)
     {
         // validate data
-        $voiture = Voiture::find($id);
+        $voiture = Voiture::findOrFail($id);
 
         $request->validate([
             'marque' => 'required',
@@ -129,7 +147,7 @@ class VoitureController extends Controller
         ]);
 
         // save data to the database
-        $voiture = Voiture::find($id);
+        $voiture = Voiture::findOrFail($id);
 
         $user_id = Sentinel::getUser()->id;
         $voiture->user_id = $user_id;
@@ -139,20 +157,35 @@ class VoitureController extends Controller
         $voiture->prix = $request->prix;
         $voiture->matricule = $request->matricule;
 
-        if($request->file('voiture_image')){
-            // add the new photo
+        //if($request->file('voiture_image')){
+        //    // add the new photo
+        //    $image = $request->file('voiture_image');
+        //    $filename = $image->getClientOriginalName();
+        //    $location = public_path('uploads/' . $filename);
+        //    Image::make($image)->resize(300, 200)->save($location);
+        //    $oldFilename = $voiture->voiture_image;
+        //    // update the database
+        //    $voiture->voiture_image = $filename;
+        //}
+        if($request->hasFile('voiture_image')) {
             $image = $request->file('voiture_image');
             $filename = $image->getClientOriginalName();
-            $location = public_path('uploads/' . $filename);
-            Image::make($image)->resize(300, 200)->save($location);
+            $path = $image->storeAs('/uploads', $filename);
+            $location = storage_path() . $path;
             $oldFilename = $voiture->voiture_image;
-            // update the database
+
+            //update the databse
+            $voiture->chemin = $location;
             $voiture->voiture_image = $filename;
+
+            //delete the old file
+            //Storage::delete($oldFilename);
+            //Storage::disk('local')->delete($location);
         }
 
         $voiture->save();
 
-        return redirect('/manager/voitures');
+        return redirect('/manager/voitures')->with('flash', 'donnee modifier avec success');
     }
 
     /**

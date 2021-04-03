@@ -1,26 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <!-- Hero -->
-        <div class="bg-body-light">
-            <div class="content content-full">
-                <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                    <h1 class="flex-sm-fill h3 my-2">
-                        Listes des Clients
-                    </h1>
-                    <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                        <ol class="breadcrumb breadcrumb-alt">
-                            <li class="breadcrumb-item">Clients</li>
-                            <li class="breadcrumb-item" aria-current="page">
-                                <a class="link-fx" href="">Tables</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    <!-- END Hero -->
-    <!-- Page Content -->
+        <!-- Page Content -->
                 <div class="content">
                     <!-- Dynamic Table with Export Buttons -->
                     <div class="block  block-mode-loading-oneui">
@@ -82,5 +63,5 @@
                     <!-- END Dynamic Table with Export Buttons -->
                 </div>
     <!-- END Page Content -->
-    
+
 @endsection
