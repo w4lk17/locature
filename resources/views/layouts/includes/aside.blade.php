@@ -186,21 +186,21 @@
                             </li>
                         @else
                         <li class="nav-main-item">
-                            <a class="nav-main-link active" href="/accueil">
+                            <a class="nav-main-link active" href="/client/dashboard">
                                 <i class="nav-main-link-icon si si-speedometer"></i>
                                 <span class="nav-main-link-name">Tableau de bord</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link active" href="/bookings">
-                                <i class="nav-main-link-icon si si-list"></i>
-                                <span class="nav-main-link-name">Mes reservations</span>
+                            <a class="nav-main-link active" href="/client/voitures">
+                                <i class="nav-main-link-icon si si-note"></i>
+                                <span class="nav-main-link-name">Reservations</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link active" href="#">
-                                <i class="nav-main-link-icon si si-speedometer"></i>
-                                <span class="nav-main-link-name">Reservations</span>
+                            <a class="nav-main-link active" href="/client/bookings">
+                                <i class="nav-main-link-icon si si-layers"></i>
+                                <span class="nav-main-link-name">Mes reservations</span>
                             </a>
                         </li>
                         <li class="nav-main-item">

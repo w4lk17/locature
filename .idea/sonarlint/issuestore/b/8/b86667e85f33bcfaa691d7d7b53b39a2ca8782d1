@@ -1,13 +1,0 @@
-
-CWeb:BoldAndItalicTagsCheckJ"Replace this <i> tag by <em>.(­İ¾ì
-h Web:TableHeaderHasIdOrScopeCheck§";Add either an 'id' or a 'scope' attribute to this <th> tag.(³êØÓ
-m Web:TableHeaderHasIdOrScopeCheck¤";Add either an 'id' or a 'scope' attribute to this <th> tag.(öß¶Üıÿÿÿÿ
-h Web:TableHeaderHasIdOrScopeCheck¦";Add either an 'id' or a 'scope' attribute to this <th> tag.(µ¸ó—
-KWeb:BoldAndItalicTagsCheck›"Replace this <i> tag by <em>.(­İ¾ì8Ûòîî.
-PWeb:AvoidCommentedOutCodeCheck"Remove this commented out code.(Û‘»Ê8›»Æü.
-IWeb:TableWithoutCaptionCheck " Add a description to this table.(ó¼Û–
-JWeb:BoldAndItalicTagsCheckw"Replace this <i> tag by <em>.(­İ¾ì8Ûòîî.
-m Web:TableHeaderHasIdOrScopeCheck£";Add either an 'id' or a 'scope' attribute to this <th> tag.(ÌÌÒòúÿÿÿÿ
-h Web:TableHeaderHasIdOrScopeCheck¥";Add either an 'id' or a 'scope' attribute to this <th> tag.(¸±³…
-DWeb:BoldAndItalicTagsCheck»"Replace this <i> tag by <em>.(‘«¯
-CWeb:BoldAndItalicTagsCheck]"Replace this <i> tag by <em>.(­İ¾ì

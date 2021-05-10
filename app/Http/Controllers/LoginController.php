@@ -33,7 +33,7 @@ class LoginController extends Controller
                 }elseif ($slug == 'manager') {
                     return redirect('/manager/dashboard');
                 }elseif ($slug == 'client'){
-                     return redirect('/accueil');
+                     return redirect('/client/dashboard');
                  }
                 return redirect('/');
             } else {

@@ -52,8 +52,9 @@ Route::group(['prefix' => 'manager', 'middleware' => 'manager'],function(){
 
 
  //route client
-Route::group([ 'middleware' => 'client'],function(){
-    Route::get('/accueil', 'Clients\ClientController@dashboard');
+Route::group(['prefix' => 'client', 'middleware' => 'client'],function(){
+    Route::get('/dashboard', 'Clients\ClientController@dashboard');
+    Route::get('/voitures', 'Clients\ClientController@getvoitures');
 
     //Route::get('/reservations', 'Clients\ClientController@index');
     //Route::get('/reservations/create/{id}', 'Clients\ClientController@create');

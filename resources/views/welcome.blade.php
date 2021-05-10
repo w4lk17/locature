@@ -120,7 +120,7 @@
                                             <img class="img-fluid options-item" src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}">
                                             <div class="options-overlay bg-black-75">
                                                 <div class="options-overlay-content">
-                                                    <a class="btn btn-sm btn-light" href="/manager/voitures/{{ $voiture->id }}">
+                                                    <a class="btn btn-sm btn-light" href="/client/bookings/create/{{ $voiture->id }}"">
                                                         Voir
                                                     </a>
                                                     <a class="btn btn-sm btn-light" href="javascript:void(0)">

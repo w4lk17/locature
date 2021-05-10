@@ -23,7 +23,7 @@
                             <td>{{ $reservation->voiture->marque }} {{ $reservation->voiture->modele }}</td>
                             <td>{{ $reservation->date_depart }}</td>
                             <td>{{ $reservation->date_retour }}</td>
-                            <td><span class="font-w600 text-warning" >{{ $etat }}</span></td>
+                            <td><span class="font-w600 text-warning" >{{ $reservation->etat == 0 ?'En attente...': 'Complete'}}</span></td>
                             <td><a href="/bookings/{{ $reservation->id }}/edit" class="btn btn-sm btn-success">Edit</a></td>
                         </tr>
                         @endforeach

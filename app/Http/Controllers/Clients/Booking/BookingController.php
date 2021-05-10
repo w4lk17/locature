@@ -21,16 +21,11 @@ class BookingController extends Controller
         $reservations = Reservation::with('voiture')
                 ->latest('created_at', 'asc')
                 ->get();
-
         foreach($reservations as $reservation){
-            if($reservation->etat == 0){
-                $etat = "Complete";
-            }else{
-                $etat = "En attente...";
-            }
-        }
+                   $disabled = $reservation->etat;
+                }
 
-        return view('clients.booking.index', compact('reservations', 'etat'));
+        return view('clients.booking.index', compact('reservations','disabled'));
     }
 
     /**
