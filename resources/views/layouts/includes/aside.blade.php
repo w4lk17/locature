@@ -133,7 +133,6 @@
                                     <span class="nav-main-link-name">Tableau de bord</span>
                                 </a>
                             </li>
-                            <li class="nav-main-heading">Gestion des utilisateurs</li>
                             <li class="nav-main-item">
                                 <a class="nav-main-link " href="/admin/managers">
                                     <i class="nav-main-link-icon si si-list"></i>
@@ -159,7 +158,6 @@
                                     <span class="nav-main-link-name">Tableau de bord</span>
                                 </a>
                             </li>
-                            <li class="nav-main-heading">Gestion des Voitures</li>
                             <li class="nav-main-item">
                                 <a class="nav-main-link active" href="/manager/voitures">
                                     <i class="nav-main-link-icon si si-list"></i>

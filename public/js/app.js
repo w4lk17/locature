@@ -113,7 +113,7 @@ $('body').on('click', '.deleteVoiture', function (event) {
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: '/bookings/' + id,
+                    url: '/client/bookings/' + id,
                     type: 'POST',
                     data: {
                         _method: 'DELETE',
@@ -125,7 +125,7 @@ $('body').on('click', '.deleteVoiture', function (event) {
                             text:'Votre reservation a été supprimé avec succes.',
                             type:'success'
                         }).then(function () {
-                            window.location = "/bookings";
+                            window.location = "/client/bookings";
                         });
                     },
                     error: function (xhr) {

@@ -2364,6 +2364,7 @@ textarea.form-control {
 a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none;
+    cursor:not-allowed;/*add by me*/
 }
 
 .btn-primary {

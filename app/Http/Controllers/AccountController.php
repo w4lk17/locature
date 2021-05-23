@@ -21,6 +21,22 @@ class AccountController extends Controller
 
         $user = Sentinel::getUser();
 
+        $rules = [
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'address' => 'required',
+            'cni' => 'required',
+            'tel' => 'required|min:12',
+            'email' => 'required|email'
+        ];
+
+        $messages = [
+            'required'  => 'ce champ ne peut etres vide.',
+            'min'  => 'preceder le numero avec l\'indicatif du pays'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         if(!Sentinel::update($user, $request->all())){
             return redirect()->back()
                 ->with(['errorI' => 'verifier si les informations sont correcte.']);
@@ -35,14 +51,14 @@ class AccountController extends Controller
         $hasher = Sentinel::getHasher();
 
         $rules = [
-          'old_password' => 'required|min:6',
-          'confPassword' => 'required|min:6|same:password'
+            'old_password' => 'required|min:6',
+            'confPassword' => 'required|min:6|same:password'
         ];
 
         $messages = [
-          'required'  => 'ce champ ne peut etres vide.',
-          'min'    => 'le mot de passe doit contenir minimum 6 caractere .',
-          'same'  =>'le mot de passe ne correspond pas.'
+            'required'  => 'ce champ ne peut etres vide.',
+            'min'    => 'le mot de passe doit contenir minimum 6 caractere .',
+            'same'  =>'le mot de passe ne correspond pas.'
         ];
 
         $this->validate($request, $rules, $messages);
@@ -55,7 +71,7 @@ class AccountController extends Controller
 
         if (!$hasher->check($oldPassword, $user->password) || $password != $passwordConf) {
             return redirect()->back()
-            ->with(['errorM' => 'Echec mot de passe Incorrecte.']);
+            ->with(['errorM' => 'Echec ancien mot de passe incorrecte.']);
         }
 
         Sentinel::update($user, array('password' => $password));

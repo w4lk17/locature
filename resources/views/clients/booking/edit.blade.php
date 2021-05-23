@@ -5,9 +5,12 @@
         <div class="block-content">
             <div class="container">
                     <div class="card-header">
-                        <h2>{{ $voiture_info->marque }} - <small class="text-muted">{{ $voiture_info->modele }}</small></h2>
-                        <h5> Moteur - <small class="text-muted">{{ $voiture_info->moteur }}</small></h5>
-                        <h2>{{ $voiture_info->marque }} - <small class="text-muted">{{ $voiture_info->modele }}</small></h2>
+                        <h2>Marque : {{ $voiture_info->marque }} - <small class="text-muted h2">{{ $voiture_info->modele }}</small></h2>
+                        <h3>
+                            <span class="">Moteur : <small class="text-muted text-uppercase">{{ $voiture_info->moteur }}</small></span>
+                            <span class="ml-4">Imatriculation : <small class=" text-uppercase">{{ $voiture_info->matricule }}</small></span>
+                            <span class="ml-4">Prix : <small class=" text-uppercase">{{ $voiture_info->prix }}</small></span>
+                        </h3>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"></h5>
@@ -18,7 +21,7 @@
                                 <div class="col-sm-5 ">
                                     <div class="form-group">
                                         <div >
-                                            <img class="img-fluid options-item" <img src="{{ asset('/storage/uploads/' . $voiture_info->voiture_image) }}" height="200" width="300" alt=" {{ $voiture_info->marque }}">
+                                            <img class="img-fluid" <img src="{{ asset('/storage/uploads/' . $voiture_info->voiture_image) }}" height="200" width="300" alt=" {{ $voiture_info->marque }}">
                                         </div>
                                     </div>
                                 </div>
@@ -27,8 +30,8 @@
                                         <label for="val-select2">Voiture<span class="text-danger">*</span></label>
                                         <select class="js-select2 form-control" id="val-select2" name="voiture_id" style="width: 100%;" data-placeholder="{{ $voiture_info->marque }} {{ $voiture_info->modele }}">
                                             <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                            @foreach($voitures  as $voiture)
-                                                <option value="{{ $voiture->id }}">{{ $voiture->marque }} {{ $voiture->modele }}</option>
+                                            @foreach($voitures as $voiture)
+                                                <option value="{{ $reservation->voiture_id }}">{{ $voiture->marque }} {{ $voiture->modele }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -48,7 +51,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-2">
+                            <div class="row mb-4">
                                 <div class="col-sm-5">
                                     <button type="submit" class="btn btn-lg btn-primary">Submit</button>
                                 </div>

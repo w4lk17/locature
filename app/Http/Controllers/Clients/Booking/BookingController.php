@@ -21,11 +21,8 @@ class BookingController extends Controller
         $reservations = Reservation::with('voiture')
                 ->latest('created_at', 'asc')
                 ->get();
-        foreach($reservations as $reservation){
-                   $disabled = $reservation->etat;
-                }
 
-        return view('clients.booking.index', compact('reservations','disabled'));
+        return view('clients.booking.index', compact('reservations'));
     }
 
     /**
@@ -54,7 +51,7 @@ class BookingController extends Controller
 
         Reservation::create($request->all());
 
-        return redirect('/bookings')->with('success', 'Reservation efectuer avec succes!');
+        return redirect('/client/bookings')->with('success', 'Reservation efectuer avec succes!');
     }
 
     /**
@@ -109,7 +106,7 @@ class BookingController extends Controller
         $reservation->date_retour = $request->date_retour;
 
         $reservation->save();
-        return redirect('/bookings')->with('success', 'Successfully updated your reservation!');
+        return redirect('/client/bookings')->with('success', 'Successfully updated your reservation!');
     }
 
     /**
@@ -123,7 +120,7 @@ class BookingController extends Controller
         $reservation = Reservation::find($id);
         $reservation->delete();
 
-        return redirect('/bookings')->with('success', 'Successfully deleted your reservation!');
+        return redirect('/client/bookings')->with('success', 'Successfully deleted your reservation!');
     }
 
     /**

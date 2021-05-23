@@ -13,12 +13,14 @@ class ClientController extends Controller
 {
     public function dashboard()
     {
+        $BookingCount = Reservation::count();
 
-        return view('clients.dashboard');
+        return view('clients.dashboard', compact('BookingCount'));
     }
+
     public function getvoitures()
     {
-        $voitures = Voiture::all();
+        $voitures = Voiture::paginate(4);
 
         return view('clients.voitures', compact('voitures'));
     }
