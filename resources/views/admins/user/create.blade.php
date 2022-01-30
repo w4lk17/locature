@@ -22,11 +22,11 @@
                                             <input type="text" class="form-control form-control-alt" id="signup-username" name="last_name" placeholder="Nom">
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-email-input">Prenom</label>
+                                            <label for="example-text-input">Prenom</label>
                                             <input type="text" class="form-control form-control-alt" id="signup-username" name="first_name" placeholder="Prenom">
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-password-input">Email</label>
+                                            <label for="example-email-input">Email</label>
                                             <input type="email" class="form-control form-control-alt" id="signup-email" name="email" placeholder="Email">
                                         </div>
                                         <div class="form-group">

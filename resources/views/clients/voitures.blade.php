@@ -2,13 +2,15 @@
 @section('content')
 <div class="content content-boxed">
     @foreach ($voitures as $voiture)
-    <div class="block block-bordered">
+    <div class="block block col-9">
         <div class=" block block-content">
             <div class="container">
                 <div class="block  block-bordered">
                     <div class=" block-content block-content-full ribbon ribbon-modern ribbon-warning">
                         <div class="ribbon-box">
-                            <i class="fa fa-check mr-1"></i> Disponible
+                            <i class="fa fa-check mr-1"></i>{{ $voiture->disponible == 0
+                                    ? 'Disponible'
+                                    : 'Non Disponible'}}
                         </div>
                         <div class="block-content">
                             <div class="row items-push">
@@ -21,11 +23,11 @@
                                         <a class="text-primary-dark h4" href="#">{{ $voiture->modele }}</a>
                                     </h4>
                                     <div class="font-size-sm">
-                                        <p class="text-uppercase">Moteur: <span class="text-uppercase h5">{{ $voiture->moteur }}</p>
-                                        <p>Immatriculation: <span class="text-uppercase h5">{{ $voiture->matricule }}</p>
+                                        <p class="text-uppercase">Moteur: <span class="text-uppercase h5">{{ $voiture->moteur }}</span></p>
+                                        <p>Immatriculation: <span class="text-uppercase h5">{{ $voiture->matricule }}</span></p>
                                         <p>Prix: <span class="text-uppercase h5">{{ $voiture->prix }} CFA/24h</span></p>
                                     </div>
-                                    <a class="btn btn-primary" href="/client/bookings/create/{{ $voiture->id }}">Reserver</a>
+                                    <a class="btn btn-primary" href="/client/bookings/create/{{ $voiture->id }}">Détails...</a>
                                 </div>
                             </div>
                         </div>

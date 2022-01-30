@@ -48,8 +48,12 @@ Route::group(['prefix' => 'manager', 'middleware' => 'manager'],function(){
         //a revoir
     //Route::get('reservations/create/{id}', 'Clients\Booking\ReservationController@create');
     //Route::resource('reservations', 'Clients\Booking\ReservationController')->except('create');
-});
+    Route::get('/reservations', 'Managers\Reservation\ReservationController@getReservations');
+    Route::get('/reservation/{id}', 'Managers\Reservation\ReservationController@show');
+    Route::put('/confirmReserv/{id}', 'Managers\Reservation\ReservationController@confirmReserv');
+    Route::put('/cancelReserv/{id}', 'Managers\Reservation\ReservationController@cancelReserv');
 
+});
 
  //route client
 Route::group(['prefix' => 'client', 'middleware' => 'client'],function(){
@@ -75,3 +79,4 @@ Route::get('/activate/{email}/{activationCode}', 'ActivationController@activate'
 //Route::get('/manager/dashboard', 'Managers\ManagerController@dashboard')->middleware('manager');
 
 Route::get('/userChartData', 'ChartDataController@getMonthlyUserData');
+Route::get('/reservChartData', 'ChartDataController@getMonthlyReservData');

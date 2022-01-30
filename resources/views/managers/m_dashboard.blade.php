@@ -130,7 +130,7 @@
                                                 </div>
                                                 <div class="media-body py-2">
                                                     <div class="font-w600">{{ $latestCar->marque }} {{ $latestCar->modele }}
-                                                        <span class="badge badge-info float-right">${{ $latestCar->prix }}</span></div>
+                                                        <span class="badge badge-info float-right">{{ $latestCar->prix }} CFA</span></div>
                                                     <div class="font-size-sm text-muted mt-2">Par  : {{ $latestCar->user->last_name}} {{ $latestCar->user->first_name}}</div>
                                                 </div>
                                             </a>
@@ -139,7 +139,7 @@
                                 @endforeach
                                 </div>
                                 <div class="block text-center">
-                                    <a href="/manager/voitures" class="uppercase">Voir tous les voitures</a>
+                                    <a href="/manager/voitures" class="uppercase">Voir toutes les voitures</a>
                                 </div>
                             </div>
                         </div>
@@ -157,40 +157,50 @@
                                     </div>
                                 </div>
                                 <div class="block-content block-content-full">
+                                <div class="table-responsive">
                                     <table class="table table-striped table-hover table-borderless table-vcenter font-size-sm mb-0">
                                         <thead class="thead-dark">
                                             <tr class="text-uppercase">
-                                                <th class="font-w700">ID</th>
-                                                <th class="d-none d-sm-table-cell font-w700">Date</th>
-                                                <th class="font-w700">State</th>
-                                                <th class="d-none d-sm-table-cell font-w700 text-right" style="width: 120px;">Price</th>
-                                                <th class="font-w700 text-center" style="width: 60px;"></th>
+                                                <th class="d-sm-table-cell font-w700">#</th>
+                                                <th class="d-sm-table-cell font-w700">Date Depart</th>
+                                                <th class="d-sm-table-cell font-w700">Date Retour</th>
+                                                <th class="d-sm-table-cell font-w700" >Voiture</th>
+                                                <th class="d-sm-table-cell font-w700">etat</th>
+                                                <th class="font-w700 text-center" ></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                        @foreach ($latestReservs as $latestReserv)
                                             <tr>
                                                 <td>
-                                                    <span class="font-w600">#07835</span>
+                                                    <span class="font-w600">{{  $latestReserv->id}}</span>
                                                 </td>
-                                                <td class="d-none d-sm-table-cell">
-                                                    <span class="font-size-sm text-muted">today</span>
+                                                <td class="d-sm-table-cell">
+                                                    <span class="font-size-sm text-muted">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $latestReserv->date_depart)->format('j-m-Y') }}</span>
                                                 </td>
-                                                <td>
-                                                    <span class="font-w600 text-warning">Pending..</span>
+                                                <td class="d-sm-table-cell">
+                                                    <span class="font-size-sm text-muted">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $latestReserv->date_retour)->format('j-m-Y') }}</span>
                                                 </td>
-                                                <td class="d-none d-sm-table-cell text-right">
-                                                    $999,99
+                                                <td class="d-sm-table-cell">
+                                                    {{ $latestReserv->voiture->marque }}
+                                                </td>
+                                                <td class="d-sm-table-cell">
+                                                    <span class="{{ $latestReserv->etat == 0
+                                                        ? 'badge badge-warning'
+                                                        :  ($latestReserv->etat == 1
+                                                        ? 'badge badge-info'
+                                                        : 'badge badge-danger')}}">{{ $latestReserv->etat == 0 ?'En attente...' :($latestReserv->etat == 1 ?'Acceptée' :'Rejetée')}}</span>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="left" title="Manage">
-                                                        <i class="fa fa-fw fa-pencil-alt"></i>
+                                                    <a href="/manager/reservation/{{$latestReserv->id}}" data-toggle="tooltip" data-placement="left" title="Manage">
+                                                        <i class="fa fa-fw fa-eye"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-
+                                        @endforeach
                                         </tbody>
                                     </table>
+                                </div>
                                 </div>
                                 <div class="block text-center">
                                     <a href="/manager/reservations" class="uppercase btn btn-primary">Voir toutes les reservations</a>

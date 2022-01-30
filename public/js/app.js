@@ -1,6 +1,15 @@
+//sweetalert confirm dialog
+jQuery('.confirmAlert').on('click', e => {
+    //toast.fire('Success', 'Everything was updated perfectly!', 'success');
+    Swal.fire({
+        title:'success!',
+        text:'Operation effectuer avec succès!',
+        type:'success'
+    })
+});
 
-    //user delete
-$('body').on('click', '.deleteUser', function (event) {
+//user delete
+$(document).on('click', '.deleteUser', function (event) {
     event.preventDefault();
 
     let me = $(this),
@@ -25,7 +34,7 @@ $('body').on('click', '.deleteUser', function (event) {
                     _method: 'DELETE',
                     _token: token,
                 },
-                success: function (response) {
+                success: function () {
                     Swal.fire({
                         title:'Supprimé!',
                         text:'Votre fichier a été supprimé.',
@@ -34,7 +43,7 @@ $('body').on('click', '.deleteUser', function (event) {
                         window.location = "/admin/users";
                     });
                 },
-                error: function (xhr) {
+                error: function () {
                     Swal.fire(
                         'Erreur',
                         'un probleme est survenu',
@@ -47,7 +56,7 @@ $('body').on('click', '.deleteUser', function (event) {
 });
 
     //voiture delete
-$('body').on('click', '.deleteVoiture', function (event) {
+$(document).on('click', '.deleteVoiture', function (event) {
     event.preventDefault();
 
     let me = $(this),
@@ -72,7 +81,7 @@ $('body').on('click', '.deleteVoiture', function (event) {
                     _method: 'DELETE',
                     _token: token,
                 },
-                success: function (response) {
+                success: function () {
                     Swal.fire({
                         title:'Supprimé!',
                         text:'Votre fichier a été supprimé.',
@@ -81,7 +90,7 @@ $('body').on('click', '.deleteVoiture', function (event) {
                         window.location = "/manager/voitures";
                     });
                 },
-                error: function (xhr) {
+                error: function () {
                     Swal.fire(
                         'Erreur',
                         'un probleme est survenu',
@@ -94,7 +103,7 @@ $('body').on('click', '.deleteVoiture', function (event) {
 });
 
     //booking delete
-    $('body').on('click', '.deleteBooking', function (event) {
+    $(document).on('click', '.deleteBooking', function (event) {
         event.preventDefault();
 
         let me = $(this),
@@ -119,7 +128,7 @@ $('body').on('click', '.deleteVoiture', function (event) {
                         _method: 'DELETE',
                         _token: token,
                     },
-                    success: function (response) {
+                    success: function () {
                         Swal.fire({
                             title:'Supprimé!',
                             text:'Votre reservation a été supprimé avec succes.',
@@ -128,7 +137,7 @@ $('body').on('click', '.deleteVoiture', function (event) {
                             window.location = "/client/bookings";
                         });
                     },
-                    error: function (xhr) {
+                    error: function () {
                         Swal.fire(
                             'Erreur',
                             'un probleme est survenu',
@@ -148,6 +157,8 @@ jQuery(function(){ One.helpers('magnific-popup'); });
 jQuery(function(){ One.helpers('flatpickr'); });
     //Page JS Helpers (Select2 plugin)
     jQuery(function(){ One.helpers('select2'); });
+//Page JS Helpers (carousel)
+jQuery(function(){ One.helpers('slick'); });
 
 (function ($) {
 
@@ -155,7 +166,7 @@ jQuery(function(){ One.helpers('flatpickr'); });
         init: function () {
             //--set default font familly and font color
             Chart.defaults.global.defaultFontStyle = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-            Chart.defaults.global.defaultFontColor = '#999';
+            Chart.defaults.global.defaultFontColor = '#999999';
             Chart.defaults.global.defaultFontStyle              = '600';
             Chart.defaults.scale.gridLines.color                = "rgba(0,0,0,.05)";
             Chart.defaults.scale.gridLines.zeroLineColor        = "rgba(0,0,0,.1)";
@@ -163,6 +174,7 @@ jQuery(function(){ One.helpers('flatpickr'); });
             Chart.defaults.scale.ticks.stepSize                 = 5;
 
             this.ajaxGetUserMonthlyData();
+            this.ajaxGetReservMonthlyData();
             //charts.createCompletedJobsChart();
 
         },
@@ -177,6 +189,19 @@ jQuery(function(){ One.helpers('flatpickr'); });
             request.done( function ( response ) {
                 console.log( response );
                 charts.createCompletedJobsChart( response );
+            });
+        },
+
+        ajaxGetReservMonthlyData: function () {
+            let urlPath = '/reservChartData';
+            let request = $.ajax({
+                method: 'GET',
+                url: urlPath
+            });
+
+            request.done(function (response) {
+                console.log( response );
+                charts.createCompletedJobsChart(response);
             });
         },
 
@@ -240,7 +265,6 @@ jQuery(function(){ One.helpers('flatpickr'); });
             let chartBarsCon  = jQuery('.myBookingAreaChart');
 
             // Set Chart and Chart Data variables
-            let chartLines, chartBars;
             let userChartLinesBarsRadarData, bookingChartLinesBarsRadarData;
 
             // Lines/Bar/Radar Chart Data
@@ -263,7 +287,7 @@ jQuery(function(){ One.helpers('flatpickr'); });
 
             // Lines/Bar/Radar Chart Data
             bookingChartLinesBarsRadarData = {
-                labels: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
+                labels: response.months, //['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
                 datasets: [
                     {
                         label: 'Reservations',
@@ -274,18 +298,18 @@ jQuery(function(){ One.helpers('flatpickr'); });
                         pointBorderColor: '#fff',
                         pointHoverBackgroundColor: '#fff',
                         pointHoverBorderColor: 'rgba(171, 227, 125, 1)',
-                        data: [30, 32, 40, 45, 43, 38, 55]
+                        data: response.reservCountData //[30, 32, 40, 45, 43, 38, 55]
                     }
                 ]
             };
 
             // Init Charts
             if (chartLinesCon.length) {
-                chartLines = new Chart(chartLinesCon, { type: 'line', data: userChartLinesBarsRadarData });
+                new Chart(chartLinesCon, {type: 'line', data: userChartLinesBarsRadarData});
             }
 
             if (chartBarsCon.length) {
-                chartBars  = new Chart(chartBarsCon, { type: 'bar', data: bookingChartLinesBarsRadarData });
+                new Chart(chartBarsCon, {type: 'bar', data: bookingChartLinesBarsRadarData});
             }
         }
     };

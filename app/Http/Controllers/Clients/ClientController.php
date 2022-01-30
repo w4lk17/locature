@@ -13,9 +13,13 @@ class ClientController extends Controller
 {
     public function dashboard()
     {
-        $BookingCount = Reservation::count();
+        $user = Sentinel::getUser();
 
-        return view('clients.dashboard', compact('BookingCount'));
+        $BookingCount = Reservation::where('user_id', $user->id)->count();
+
+        $DispoCarsCount = Voiture::where('disponible', 0)->count();
+
+        return view('clients.dashboard', compact('BookingCount', 'DispoCarsCount'));
     }
 
     public function getvoitures()

@@ -27,6 +27,9 @@
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="{{ asset('assets/js/plugins/toastr/toastr.min.css') }}">
+        <!-- Page JS Plugins CSS -->
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/slick-carousel/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/slick-carousel/slick-theme.css') }}">
         <!-- Fonts and OneUI framework -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
         <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/oneui.min.css') }}">

@@ -11,7 +11,14 @@
 div.dataTables_wrapper div.dataTables_filter {
     text-align: right;
 }
-
+@media screen and (max-width: 767px) {
+    div.dataTables_wrapper div.dataTables_length,
+    div.dataTables_wrapper div.dataTables_filter,
+    div.dataTables_wrapper div.dataTables_info,
+    div.dataTables_wrapper div.dataTables_paginate {
+        text-align: center;
+    }
+}
 /**
   settings formulaire
 **/
@@ -42,5 +49,9 @@ label {
     border-color: red;
     padding: .375rem .75rem;
 }
-/*button desabled*/
-
+/*button disabled*/
+/*.disabled {*/
+/*    cursor: not-allowed;*/
+/*    background-color: rgb(229, 229,229);*/
+/*    pointer-events: none;*/
+/*}*/

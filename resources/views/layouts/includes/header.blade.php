@@ -33,7 +33,7 @@
                         <!-- END Open Search Section -->
 
                         <!-- Search Form (visible on larger screens) -->
-                        <form class="d-none d-sm-inline-block" action="be_pages_generic_search.html" method="POST">
+                        <form class="d-none d-sm-inline-block" action="#" method="">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
                                 <div class="input-group-append">
@@ -101,7 +101,7 @@
                         <div class="dropdown d-inline-block ml-2">
                             <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="si si-bell"></i>
-                                <span class="badge badge-primary badge-pill">6</span>
+                                <span class="badge badge-primary badge-pill">3</span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-notifications-dropdown">
                                 <div class="p-2 bg-primary text-center">
@@ -133,28 +133,6 @@
                                     <li>
                                         <a class="text-dark media py-2" href="javascript:void(0)">
                                             <div class="mr-2 ml-3">
-                                                <i class="fa fa-fw fa-times-circle text-danger"></i>
-                                            </div>
-                                            <div class="media-body pr-2">
-                                                <div class="font-w600">Update failed, restart server</div>
-                                                <small class="text-muted">26 min ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark media py-2" href="javascript:void(0)">
-                                            <div class="mr-2 ml-3">
-                                                <i class="fa fa-fw fa-plus-circle text-info"></i>
-                                            </div>
-                                            <div class="media-body pr-2">
-                                                <div class="font-w600">2 new sales, keep it up</div>
-                                                <small class="text-muted">33 min ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark media py-2" href="javascript:void(0)">
-                                            <div class="mr-2 ml-3">
                                                 <i class="fa fa-fw fa-user-plus text-success"></i>
                                             </div>
                                             <div class="media-body pr-2">
@@ -163,21 +141,10 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a class="text-dark media py-2" href="javascript:void(0)">
-                                            <div class="mr-2 ml-3">
-                                                <i class="fa fa-fw fa-check-circle text-success"></i>
-                                            </div>
-                                            <div class="media-body pr-2">
-                                                <div class="font-w600">You have a new follower</div>
-                                                <small class="text-muted">42 min ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
                                 </ul>
                                 <div class="p-2 border-top">
                                     <a class="btn btn-sm btn-light btn-block text-center" href="javascript:void(0)">
-                                        <i class="fa fa-fw fa-arrow-down mr-1"></i> Load More..
+                                        <i class="fa fa-fw fa-arrow-down mr-1"></i> Charger plus..
                                     </a>
                                 </div>
                             </div>
@@ -191,7 +158,7 @@
                 <!-- Header Search -->
                 <div id="page-header-search" class="overlay-header bg-white">
                     <div class="content-header">
-                        <form class="w-100" action="be_pages_generic_search.html" method="POST">
+                        <form class="w-100" action="#" method="">
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -218,3 +185,4 @@
                 <!-- END Header Loader -->
             </header>
 <!-- END Header -->
+

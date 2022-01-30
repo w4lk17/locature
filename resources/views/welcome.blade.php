@@ -54,11 +54,11 @@
                                     <div class="block block-rounded block-fx-pop">
                                         <div class="block-content block-content-full">
                                             <div class="my-4">
-                                                <i class="fab fa-5x fa-html5 text-city"></i>
+                                                <i class="fa fa-5x fa-car text-city"></i>
                                             </div>
-                                            <h4 class="mb-2">HTML Version</h4>
+                                            <h4 class="mb-2">Des voitures propres. Des réservations flexibles.</h4>
                                             <p class="font-size-sm text-muted text-left">
-                                                The abstract HTML version. This version can be used with any server side language/framework you prefer or currently working with.
+                                                Nous travaillons avec nos partenaires pour assurer votre sécurité au volant.
                                             </p>
                                         </div>
                                     </div>
@@ -69,11 +69,11 @@
                                     <div class="block block-rounded block-fx-pop">
                                         <div class="block-content block-content-full">
                                             <div class="my-4">
-                                                <i class="fab fa-5x fa-php text-amethyst"></i>
+                                                <i class="far fa-5x fa-calendar-alt text-amethyst"></i>
                                             </div>
-                                            <h4 class="mb-2">PHP Version</h4>
+                                            <h4 class="mb-2">Locations flexibles</h4>
                                             <p class="font-size-sm text-muted text-left">
-                                                The abstract PHP version. This version can come really handy as a starting point if you would like to build a custom PHP application.
+                                                Vous pouvez annuler ou modifier la plupart des réservations gratuitement jusqu’à 48 heures avant la prise en charge du véhicule.
                                             </p>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                     <div class="block block-rounded block-fx-pop">
                                         <div class="block-content block-content-full">
                                             <div class="my-4">
-                                                <i class="fab fa-5x fa-laravel text-city"></i>
+                                                <i class="fab fa-5x fa-laravel text-flat"></i>
                                             </div>
                                             <h4 class="mb-2">Laravel Starter Kit</h4>
                                             <p class="font-size-sm text-muted text-left">
@@ -105,15 +105,13 @@
                     <div class="content content-full">
                         <div class="py-5 text-center">
                             <h2 class="h1 mb-2">
-                                Remastered
+                                Nouvelles Arrivées
                             </h2>
                             <h3 class="font-w400 text-muted mb-5">
                                 OneUI 4.3 was carefully crafted for your new projects using the latest tech.
                             </h3>
-                            <!-- New Arrivals -->
-                            <h2 class="content-heading">New Arrivals</h2>
-                            <div class="row">
-                            @foreach ($voitures as $voiture)
+                            <div class="js-slider text-center" data-autoplay="true" data-dots="true" data-arrows="true" data-slides-to-show="4">
+                                @foreach ($voitures as $voiture)
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="block">
                                         <div class="options-container">
@@ -126,30 +124,22 @@
                                                     <a class="btn btn-sm btn-light" href="javascript:void(0)">
                                                         <i class="fa fa-plus text-success mr-1"></i> Add to cart
                                                     </a>
-                                                    <div class="text-warning mt-3">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <span class="text-white">(35)</span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="block-content">
                                             <div class="mb-2">
-                                                <div class="h4 font-w600 text-success float-right ml-1">${{ $voiture->prix }}</div>
-                                                <a class="h4" href="be_pages_ecom_store_product.html">Iconic</a>
+                                                <div class="h4 font-w600 text-success float-right ml-1">{{ $voiture->prix }} CFA</div>
+                                                <a class="h4" href="">{{ $voiture->marque }} {{ $voiture->modele }} </a>
                                             </div>
                                             <p class="font-size-sm text-muted">Beautifully crafted icon set</p>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                                @endforeach
                             </div>
                             <div class="text-right">
-                                <a class="font-size-sm font-w600 link-fx" href="be_pages_ecom_store_products.html">View More New Arrivals..</a>
+                                <a class="font-size-sm font-w600 link-fx" href="#">View More New Arrivals..</a>
                             </div>
                             <!-- END New Arrivals -->
                         </div>
@@ -163,10 +153,10 @@
                         <div class="content content-full">
                             <div class="py-5">
                                 <h2 class="h1 text-white mb-2 text-center">
-                                    Customer Reviews
+                                    Avis des clients
                                 </h2>
                                 <h3 class="font-w400 text-white-50 mb-5 text-center">
-                                    Check out what our customers have written about OneUI that made the Remastered version a reality.
+                                    Découvrez ce que nos clients ont écrit sur locature, <br> la  meilleure agence de reservation de voiture en ligne.
                                 </h3>
                                 <div class="row items-push-2x">
                                     <div class="col-md-4 invisible" data-toggle="appear">
@@ -177,7 +167,7 @@
                                             <i class="fa fa-fw fa-star"></i>
                                             <i class="fa fa-fw fa-star"></i>
                                         </div>
-                                        <div class="font-size-h5 text-white-50 mb-2">A combination of flexibility and ease of use. The design is beautiful, but I really value the ease in which I was able to integrate this into my development workflow and platform.</div>
+                                        <div class="font-size-h5 text-white-50 mb-2">A combination of flexibility and ease of uses. The design is beautiful, but I really value the ease in which I was able to integrate this into my development workflow and platform.</div>
                                         <div class="font-size-h6 text-white-75">For Other by <em>appeality</em></div>
                                     </div>
                                     <div class="col-md-4 invisible" data-toggle="appear" data-timeout="150">
@@ -212,14 +202,29 @@
                 <!-- Call To Action -->
                 <div id="one-call-to-action" class="bg-light">
                     <div class="content content-full">
-                        <div class="py-5 py-md-8 text-center">
+                        <div class="py-3 py-md-6 text-center">
                             <h2 class="hq mb-2 invisible" data-toggle="appear" data-class="animated fadeInDown">
-                                Crafted with <i class="fa fa-fw fa-heart text-danger"></i> by <a class="link-fx text-danger" href="#">pixelcave</a>
+                                Souscrivez à notre newsletter pour des promotions et des offres exclusives !
                             </h2>
                             <h3 class="font-w400 text-muted mb-4 invisible" data-toggle="appear" data-class="animated fadeInDown" data-timeout="300">
-                                Passionate web design and development with over 12.000 customers worldwide.
+                                Ne vous inquiétez pas, nous détestons le spam.
                             </h3>
-                            <span class="m-2 d-inline-block invisible" data-toggle="appear" data-class="animated fadeInUp" data-timeout="600">
+                            <form class="push" action="#" method="POST" onsubmit="return false;">
+                                <div class="form-group row justify-content-center">
+                                    <div class="col-md-10 col-xl-6">
+                                        <div class="input-group mb-2">
+                                            <input type="email" class="form-control border-0" placeholder="Addresse email..">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary">Souscrire</button>
+                                            </div>
+                                        </div>
+                                        <!--<div class="font-size-sm text-muted-50">
+                                            dontt worry, we hate spam.
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </form>
+                            <!--<span class="m-2 d-inline-block invisible" data-toggle="appear" data-class="animated fadeInUp" data-timeout="600">
                                 <a class="btn btn-success px-4 py-2" data-toggle="click-ripple" href="https://1.envato.market/xWy">
                                     <i class="fa fa-fw fa-shopping-cart mr-1"></i> Purchase
                                 </a>
@@ -228,21 +233,20 @@
                                 <a class="btn btn-primary px-4 py-2" data-toggle="click-ripple" href="/login">
                                     <i class="fa fa-fw fa-rocket mr-1"></i> Connexion
                                 </a>
-                            </span>
+                            </span>-->
                         </div>
                     </div>
                 </div>
                 <!-- END Call To Action -->
-
                 <!-- Footer -->
                 <footer id="page-footer" class="bg-white">
                     <div class="content py-5">
                         <div class="row font-size-sm">
                             <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-right">
-                                Crafted with <i class="fa fa-heart text-danger"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
+                                by <a class="font-w600" href="#" target="_blank">3kTechnologies</a>
                             </div>
                             <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-left">
-                                <a class="font-w600" href="https://1.envato.market/xWy" target="_blank">OneUI 4.3</a> &copy; <span data-toggle="year-copy"></span>
+                                <a class="font-w600" href="#" target="_blank">LOCATURE 1.0</a> &copy; <span data-toggle="year-copy"></span>
                             </div>
                         </div>
                     </div>

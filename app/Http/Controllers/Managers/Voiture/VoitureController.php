@@ -20,8 +20,6 @@ class VoitureController extends Controller
         $ReservCount = Reservation::count();
 
         $latestCars = Voiture::latest()->limit(3)->get();
-
-        //$test = DB::table('role_users')
         $latestReservs = Reservation::latest()->limit(5)->get();
 
         return view('managers.m_dashboard', compact('VoitureCount', 'ReservCount', 'latestReservs', 'latestCars'));
@@ -36,9 +34,11 @@ class VoitureController extends Controller
     {
         $voitures = Voiture::paginate(4);
 
-        //$marqueCount = Voiture::where('marque', 'TOYOTA')->count();
+        $marqueCount = Voiture::select("marque", DB::raw("count(*) as count"))
+                ->groupBy("marque")
+                ->get();
 
-        return view('managers.voiture.index', compact('voitures'));
+        return view('managers.voiture.index', compact('voitures', 'marqueCount'));
     }
 
     /**

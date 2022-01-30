@@ -35,7 +35,7 @@
 
         <!-- Stylesheets -->
         <!-- Fonts and OneUI framework -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
         <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/oneui.min.css') }}">
         <link rel="stylesheet" type="text/css"  href="{{ asset('css/style.css') }}">
 

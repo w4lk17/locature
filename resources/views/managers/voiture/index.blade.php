@@ -73,11 +73,14 @@
                                 </div>
 
                                 <div class="block-content">
-                                @foreach ($voitures as $voiture)
+                                @foreach ($marqueCount as $marqCount)
                                     <ul class="nav nav-pills flex-column push">
                                         <li class="nav-item mb-1">
                                             <a class="nav-link active d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                                                {{ $voiture->marque }} <span class="badge badge-pill badge-secondary ml-1">7k</span>
+                                                {{ $marqCount->marque }}
+                                                <span class="badge badge-pill badge-secondary ml-1">
+                                                {{ $marqCount->count}}
+                                                </span>
                                             </a>
                                         </li>
                                     </ul>

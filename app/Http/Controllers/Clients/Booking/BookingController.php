@@ -18,7 +18,9 @@ class BookingController extends Controller
      */
     public function index()
     {
+        $user =  Sentinel::getUser();
         $reservations = Reservation::with('voiture')
+                ->where('user_id', $user->id)
                 ->latest('created_at', 'asc')
                 ->get();
 
@@ -47,6 +49,17 @@ class BookingController extends Controller
     {
         $user =  Sentinel::getUser();
 
+        $rules = [
+            'date_depart' => 'required',
+            'date_retour' => 'required'
+        ];
+
+        $messages = [
+            'required'  => 'ce champ ne peut etre vide.'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         $request->request->add(['user_id' => $user->id]);
 
         Reservation::create($request->all());
@@ -62,13 +75,21 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        $reservation = Reservation::with('voiture')->get()->find($id);
+        $reservation = Reservation::with('voiture')
+                ->get()
+                ->find($id);
 
-        $voiture_id = $reservation->voiture_id;
+        if ($reservation->user_id === Sentinel::getUser()->id) {
 
-        $voiture_info = Voiture::find($voiture_id);
+            $voiture_id = $reservation->voiture_id;
 
-        return view('clients.booking.show', compact('reservation', 'voiture_info'));
+            $voiture_info = Voiture::find($voiture_id);
+
+            return view('clients.booking.show', compact('reservation', 'voiture_info'));
+        } else {
+            return redirect('/client/dashboard')
+                ->with('error', 'Vous netes pas autaurisé a effectuer cette action..');
+        }
     }
 
     /**
@@ -79,15 +100,23 @@ class BookingController extends Controller
      */
     public function edit($id)
     {
-        $reservation = Reservation::with('voiture')->get()->find($id);
+        $reservation = Reservation::with('voiture')
+                ->get()
+                ->find($id);
 
-        $voiture_id = $reservation->voiture_id;
+        if ($reservation->user_id === Sentinel::getUser()->id) {
 
-        $voiture_info = Voiture::find($voiture_id);
+            $voiture_id = $reservation->voiture_id;
 
-        $voitures = Voiture::all();
+            $voiture_info = Voiture::find($voiture_id);
 
-        return view('clients.booking.edit', compact('reservation', 'voiture_info', 'voitures'));
+            $voitures = Voiture::all()->where('disponible', 0);
+            //dd($voitures);
+            return view('clients.booking.edit', compact('reservation', 'voiture_info', 'voitures'));
+        } else {
+            return redirect('/client/dashboard')
+                            ->with('error', 'Vous netes pas autaurisé a effectuer cette action. .');
+        }
     }
 
     /**
@@ -101,12 +130,18 @@ class BookingController extends Controller
     {
         $reservation = Reservation::findOrFail($id);
 
-        $reservation->voiture_id = $request->voiture_id;
-        $reservation->date_depart = $request->date_depart;
-        $reservation->date_retour = $request->date_retour;
+        if ($reservation->user_id === Sentinel::getUser()->id) {
 
-        $reservation->save();
-        return redirect('/client/bookings')->with('success', 'Successfully updated your reservation!');
+            $reservation->voiture_id = $request->voitureId;
+            $reservation->date_depart = $request->date_depart;
+            $reservation->date_retour = $request->date_retour;
+            //dd($request->voitureId);
+            $reservation->save();
+            return redirect('/client/bookings')->with('success', 'Successfully updated your reservation!');
+        } else {
+            return redirect('/client/dashboard')
+                            ->with('error', 'Vous netes pas autaurisé a effectuer cette action.');
+        }
     }
 
     /**
@@ -118,9 +153,16 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $reservation = Reservation::find($id);
-        $reservation->delete();
 
-        return redirect('/client/bookings')->with('success', 'Successfully deleted your reservation!');
+        if ($reservation->user_id === Sentinel::getUser()->id) {
+
+            $reservation->delete();
+
+            return redirect('/client/bookings')->with('success', 'Successfully deleted your reservation!');
+        } else {
+             return redirect('/client/dashboard')
+                            ->with('error', 'Vous n\'etes pas autaurisé a supprimer cette réservation.');
+        }
     }
 
     /**

@@ -45,13 +45,13 @@
                                         <div class="custom-file">
                                              <input type="file" class="custom-file-input " data-toggle="custom-file-input"
                                                             id="voiture_image" name="voiture_image" required>
-                                             <label class="custom-file-label" for="voiture_image">Choisir image</label>
+                                             <label class="custom-file-label" for="voiture_image">Choisir image (max size 2Mb)</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="block-content block-content-full text-right border-top">
                                     <button type="reset" class="btn btn-sm btn-light" data-dismiss="modal">Fermer</button>
-                                    <button type="submit" class="btn js-swal-success btn-sm btn-primary">Valider</button>
+                                    <button type="submit" class="btn btn-sm btn-primary ">Valider</button>
                                 </div>
                             </form>
 

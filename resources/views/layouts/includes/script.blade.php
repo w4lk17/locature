@@ -40,6 +40,7 @@
         <script src="{{ asset('assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/toastr/toastr.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/slick-carousel/slick.min.js') }}"></script>
 
 
         <!-- Page JS Code -->

@@ -9,7 +9,7 @@ class WelcomeController extends Controller
 {
     public function welcome(){
 
-        $voitures = Voiture::paginate(4);
+        $voitures = Voiture::paginate(6);
 
         return view('welcome', compact('voitures'));
     }
