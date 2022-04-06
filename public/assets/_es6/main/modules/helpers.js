@@ -805,7 +805,7 @@ export default class Helpers {
                             timer: 1000,
                             animate: {
                                 enter: 'animated fadeIn',
-                                exit: 'animated fadeOutDown'
+                                exit: 'animated fadeOutUp'
                             }
                         });
                 });

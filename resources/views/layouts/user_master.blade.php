@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>OneUI - Bootstrap 4 Admin Template &amp; UI Framework</title>
+        <title>Locature - Location de voiture</title>
 
-        <meta name="description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        <meta name="description" content="">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
 
@@ -26,6 +26,11 @@
         <!-- END Icons -->
 
         <!-- Stylesheets -->
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/toastr/toastr.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/bootstrap-toggle/css/bootstrap4-toggle.min.css') }}">
+        <!-- Page JS Plugins CSS -->
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/slick-carousel/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/slick-carousel/slick-theme.css') }}">
         <!-- Fonts and OneUI framework -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
         <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/oneui.min.css') }}">

@@ -19,8 +19,8 @@ class VisitorsMiddleware
         if (!Sentinel::check()) {
             return $next($request);
         } else {
-            return redirect('/');
+            return redirect('/login');
         }
-        
+
     }
 }

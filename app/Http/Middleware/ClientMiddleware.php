@@ -19,7 +19,7 @@ class ClientMiddleware
        if (Sentinel::check() && Sentinel::getUser()->roles()->first()->slug == 'client') {
             return $next($request);
         } else {
-            return redirect('/');
+            return redirect('/login');//->back()->with(['error' => 'mauvais identifiant ']); //->with('flash', 'Welcome Back! ' . $user->lastname);
         }
     }
 }

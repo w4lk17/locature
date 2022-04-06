@@ -3,10 +3,10 @@
 @section('content')
 <!-- Page Content -->
     <div class="bg-image" style="background-image: url('assets/media/photos/photo6@2x.jpg');">
-        <div class="hero-static bg-white-95">
+        <div class="hero-static bg-white-75">
             <div class="content">
                 <div class="row justify-content-center">
-                    <div class="col-md-4 col-xl-5 py-lg-6">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
                         <!-- Sign In Block -->
                         <div class="block block-themed block-fx-shadow mb-0">
                             <div class="block-header">
@@ -14,7 +14,7 @@
                                 <div class="block-options">
                                     <a class="btn-block-option font-size-sm" href="/forgot-password">Mot de passe oublié?</a>
                                     <a class="btn-block-option" href="/register" data-toggle="tooltip" data-placement="left" title="Nouveau compte">
-                                        <i class="fa fa-user-plus"></i>
+                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>
@@ -54,10 +54,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-md-6 col-xm-5">
+                                        <div class="form-group row ">
+                                            <div class="col-md-8">
                                                 <button type="submit" class="btn btn-block btn-primary">
-                                                    <i class="fa fa-fw fa-sign-in-alt mr-1"></i> Se connecter
+                                                    <i class="fa fa-fw fa-sign-in-alt mr-1" aria-hidden="true"></i> Se connecter
                                                 </button>
                                             </div>
                                         </div>
@@ -76,5 +76,5 @@
         </div>
     </div>
 <!-- END Page Content -->
-    
+
 @endsection

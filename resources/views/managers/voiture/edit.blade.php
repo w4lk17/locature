@@ -53,6 +53,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="custom-control custom-switch mb-1">
+                                <label>DISPONIBLE: </label>
+                                <input type="checkbox" class="custom-control-input" id="example-switch-custom1" name="disponible"
+                                            {{ $voiture->disponible == '0' ? 'checked' : '' }}>
+                                <label class="custom-control-label" for="example-switch-custom1">Oui</label>
+                            </div>
                             <div class="block-content block-content-full text-right border-top">
                                 <a class="btn btn-sm btn-light" href="javascript:history.back()"> Annuler</a>
                                 <button type="submit" class="btn btn-sm btn-primary">Enrégistrer</button>

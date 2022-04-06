@@ -3,7 +3,7 @@
 
 @section('content')
     <!-- Hero -->
-        <div class="bg-body-light">
+        <!--<div class="bg-body-light">
             <div class="content content-full">
                 <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                     <h1 class="flex-sm-fill h3">Modification</h1>
@@ -19,7 +19,7 @@
                     </nav>
                 </div>
             </div>
-        </div>
+        </div>-->
     <!-- END Hero -->
     <!-- Page Content -->
         <div class="content">
@@ -32,7 +32,7 @@
                     <form class="js-validation-signup" action="/admin/users/{{ $user->id }}" method="POST">
                         {{ method_field('PUT') }}
                         {{ csrf_field() }}
-                                
+
                         <div class="row">
                             <div class="col-md-5 offset-md-3">
                                 <div class="form-group">
@@ -76,7 +76,7 @@
                                     <div class="col-6 text-right">
                                         <button type="submit" class="btn js-swal-success btn-btn-block btn-success btnUpdate">Valider</button>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </form>

@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Locature - Car Rent</title>
+        <title>Locature - Location de voiture</title>
 
-        <meta name="description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta name="author" content="pixelcave">
+        <meta name="description" content="">
+        <meta name="author" content="walker">
         <meta name="robots" content="noindex, nofollow">
 
         <!-- Open Graph Meta -->
-        <meta property="og:title" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework">
+        <meta property="og:title" content="">
         <meta property="og:site_name" content="OneUI">
         <meta property="og:description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta property="og:type" content="website">
@@ -29,14 +29,17 @@
         <!-- Stylesheets -->
         <!-- Page JS Plugins CSS -->
         <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetalert2/sweetalert2.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/js/plugins/dropzone/dist/min/dropzone.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/css/select2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/toastr/toastr.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/bootstrap-toggle/css/bootstrap4-toggle.min.css') }}">
 
         <!-- Stylesheets -->
         <!-- Fonts and OneUI framework -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
         <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/oneui.min.css') }}">
-        <link rel="stylesheet"  href="{{ asset('assets/css/barsearch.css') }}">
-        
+        <link rel="stylesheet" type="text/css"  href="{{ asset('css/style.css') }}">
+
 
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
@@ -105,6 +108,6 @@
 
         @include('layouts.includes.script')
 
-        
+
     </body>
 </html>

@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'visitors' => \App\Http\Middleware\VisitorsMiddleware::class,
         'manager' => \App\Http\Middleware\ManagerMiddleware::class,
         'client' => \App\Http\Middleware\ClientMiddleware::class,
+        'lock' => \App\Http\Middleware\Lockscreen::class,
     ];
 }

@@ -35,17 +35,28 @@
         <script src="{{ asset('assets/js/plugins/datatables/buttons/buttons.colVis.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/es6-promise/es6-promise.auto.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/jquery-validation/additional-methods.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/toastr/toastr.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/bootstrap-toggle/js/bootstrap4-toggle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/slick-carousel/slick.min.js') }}"></script>
 
 
         <!-- Page JS Code -->
         <script src="{{ asset('assets/js/pages/be_tables_datatables.min.js') }}"></script>
-        <script src="{{ asset('assets/js/pages/be_pages_dashboard.min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/op_auth_signin.min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/op_auth_signup.min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/op_auth_reminder.min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/be_comp_dialogs.min.js') }}"></script>
+        <script src="{{ asset('assets/js/pages/be_comp_charts.min.js') }}"></script>
         <script src="{{ asset('assets/js/pages/be_forms_validation.min.js') }}"></script>
+        <script src="{{ asset('assets/js/pages/op_auth_lock.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script>jQuery(function(){ One.helpers('magnific-popup'); });</script>
+@if(Session::has('flash'))
+<script>
+  toastr.success("{{Session::get('flash')}}", 'Success');
+</script>
+@endif

@@ -2,25 +2,7 @@
 @extends('layouts.master')
 
 @section('content')
-<!-- Hero -->
-                <div class="bg-body-light">
-                    <div class="content content-full">
-                        <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                            <h1 class="flex-sm-fill h3"> ajouter utilisateur</h1>
-                            <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                                <ol class="breadcrumb breadcrumb-alt">
-                                    <li class="breadcrumb-item">
-                                        <a class="link-fx" href="/admin/users">utilisateurs</a>
-                                    </li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a class="link-fx" href="">créer</a>
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-<!-- END Hero -->
+
 <!-- Page Content -->
                 <div class="content">
                     <!-- Basic -->
@@ -40,11 +22,11 @@
                                             <input type="text" class="form-control form-control-alt" id="signup-username" name="last_name" placeholder="Nom">
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-email-input">Prenom</label>
+                                            <label for="example-text-input">Prenom</label>
                                             <input type="text" class="form-control form-control-alt" id="signup-username" name="first_name" placeholder="Prenom">
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-password-input">Email</label>
+                                            <label for="example-email-input">Email</label>
                                             <input type="email" class="form-control form-control-alt" id="signup-email" name="email" placeholder="Email">
                                         </div>
                                         <div class="form-group">
