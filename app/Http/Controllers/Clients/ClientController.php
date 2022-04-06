@@ -29,6 +29,11 @@ class ClientController extends Controller
         return view('clients.voitures', compact('voitures'));
     }
 
+    public function getHistory()
+    {
+        return view('clients.history');
+    }
+
 //     public function index()
 //     {
 //         $reservations = Reservation::with('voiture')

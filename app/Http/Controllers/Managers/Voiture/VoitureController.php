@@ -14,17 +14,6 @@ use DB;
 
 class VoitureController extends Controller
 {
-    public function getdash()
-    {
-        $VoitureCount = Voiture::count();
-        $ReservCount = Reservation::count();
-
-        $latestCars = Voiture::latest()->limit(3)->get();
-        $latestReservs = Reservation::latest()->limit(5)->get();
-
-        return view('managers.m_dashboard', compact('VoitureCount', 'ReservCount', 'latestReservs', 'latestCars'));
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -37,6 +26,18 @@ class VoitureController extends Controller
         $marqueCount = Voiture::select("marque", DB::raw("count(*) as count"))
                 ->groupBy("marque")
                 ->get();
+
+//                 if (isset($_GET['query'])) {
+//
+//                             $search_text = $_GET['query'];
+//                             $results = DB::table('voitures')->where('marque','LIKE', $search_text)->paginate(2);
+//
+//                             return view('managers.voiture.index',['results'=>$voitures]);
+//                             //dd($search_text);
+//
+//                         } else {
+//                             return view('managers.voiture.index', compact('voitures', 'marqueCount'));
+//                         }
 
         return view('managers.voiture.index', compact('voitures', 'marqueCount'));
     }
@@ -60,7 +61,7 @@ class VoitureController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'voiture_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'voiture_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'marque' => 'required',
             'modele' => 'required',
             'moteur' => 'required',
@@ -143,7 +144,7 @@ class VoitureController extends Controller
             'moteur' => 'required',
             'prix' => 'required',
             'matricule' => 'required',
-            'voiture_image' => 'sometimes|image'
+            'voiture_image' => 'sometimes|image|max:2048'
         ]);
 
         // save data to the database
@@ -182,10 +183,10 @@ class VoitureController extends Controller
             //Storage::delete($oldFilename);
             //Storage::disk('local')->delete($location);
         }
-
+        $voiture->disponible = $request->disponible;
         $voiture->save();
 
-        return redirect('/manager/voitures')->with('flash', 'donnee modifier avec success');
+        return redirect('/manager/voitures')->with('flash', 'donnee modifie avec success');
     }
 
     /**

@@ -67,7 +67,7 @@ class MigrationCartalystSentinel extends Migration
             $table->increments('id');
             $table->timestamp('date_depart');
             $table->timestamp('date_retour');
-            $table->boolean('etat')->default(0);
+            $table->integer('etat')->default(0);
             $table->integer('user_id')->unsigned();
             $table->integer('voiture_id')->unsigned();
             $table->softDeletes();

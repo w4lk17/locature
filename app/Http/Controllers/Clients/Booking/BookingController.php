@@ -62,7 +62,13 @@ class BookingController extends Controller
 
         $request->request->add(['user_id' => $user->id]);
 
-        Reservation::create($request->all());
+        $reserv = Reservation::create($request->all());
+
+    // update the car to unavailable after reservation
+        $voitureId = $reserv->voiture_id;
+
+        Voiture::where('id', $voitureId)
+            ->update(['disponible' => 1]);
 
         return redirect('/client/bookings')->with('success', 'Reservation efectuer avec succes!');
     }

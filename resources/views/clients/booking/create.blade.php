@@ -25,7 +25,7 @@
                         <input type="hidden" class="form-control bg-white"  name="voiture_id" value="{{ $voitureInfo->id }}">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="form-label">Date de location :</label>
+                                <label class="form-label">Date Départ :</label>
                                 <input type="text" class="form-control {{ $errors->has('date_depart') ? 'error' : '' }} js-flatpickr form-control bg-white"  name="date_depart"
                                     data-enable-time="true" data-time_24hr="true" placeholder="jj/mm/aaaa">
                                     <!-- Error -->
@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="form-label">Date de retour :</label>
+                                <label class="form-label">Date Retour :</label>
                                 <input type="text" class="form-control {{ $errors->has('date_retour') ? 'error' : '' }} js-flatpickr form-control bg-white"  name="date_retour"
                                     data-enable-time="true" data-time_24hr="true" placeholder="jj/mm/aaaa">
                                     <!-- Error -->

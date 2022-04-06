@@ -43,13 +43,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'],function(){
  // route manager
 Route::group(['prefix' => 'manager', 'middleware' => 'manager'],function(){
     Route::resource('voitures', 'Managers\Voiture\VoitureController');
-    Route::get('/dashboard', 'Managers\Voiture\VoitureController@getdash');
+    Route::get('/dashboard', 'Managers\ManagerController@getdash');
 
         //a revoir
     //Route::get('reservations/create/{id}', 'Clients\Booking\ReservationController@create');
     //Route::resource('reservations', 'Clients\Booking\ReservationController')->except('create');
-    Route::get('/reservations', 'Managers\Reservation\ReservationController@getReservations');
-    Route::get('/reservation/{id}', 'Managers\Reservation\ReservationController@show');
+    Route::get('/reservations/create', 'Managers\Reservation\ReservationController@create');
+    Route::get('/reservations', 'Managers\Reservation\ReservationController@index');
+    Route::post('/reservations', 'Managers\Reservation\ReservationController@store');
+    Route::get('/reservations/{id}', 'Managers\Reservation\ReservationController@show');
     Route::put('/confirmReserv/{id}', 'Managers\Reservation\ReservationController@confirmReserv');
     Route::put('/cancelReserv/{id}', 'Managers\Reservation\ReservationController@cancelReserv');
 
@@ -59,6 +61,7 @@ Route::group(['prefix' => 'manager', 'middleware' => 'manager'],function(){
 Route::group(['prefix' => 'client', 'middleware' => 'client'],function(){
     Route::get('/dashboard', 'Clients\ClientController@dashboard');
     Route::get('/voitures', 'Clients\ClientController@getvoitures');
+    Route::get('/history', 'Clients\ClientController@getHistory');
 
     //Route::get('/reservations', 'Clients\ClientController@index');
     //Route::get('/reservations/create/{id}', 'Clients\ClientController@create');

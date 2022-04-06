@@ -32,6 +32,7 @@
         <link rel="stylesheet" href="{{ asset('assets/js/plugins/select2/css/select2.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/js/plugins/toastr/toastr.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/bootstrap-toggle/css/bootstrap4-toggle.min.css') }}">
 
         <!-- Stylesheets -->
         <!-- Fonts and OneUI framework -->

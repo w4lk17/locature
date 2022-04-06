@@ -71,7 +71,7 @@
                                     <div class="form-row mb-2">
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Numéro carte d identité </label>
-                                            <input type="text" class="form-control {{ $errors->has('cni') ? 'error' : '' }}" value="{{ $user->cni}}" name="cni" id="cni" maxlength="50">
+                                            <input type="text" readonly class="form-control {{ $errors->has('cni') ? 'error' : '' }}" value="{{ $user->cni}}" name="cni" id="cni" maxlength="50">
 
                                             <!-- Error -->
                                             @if ($errors->has('cni'))

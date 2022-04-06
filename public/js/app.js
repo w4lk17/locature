@@ -8,6 +8,23 @@ jQuery('.confirmAlert').on('click', e => {
     })
 });
 
+// disponibilite toggle-button
+$(function () {
+    $('toggle-class').change(function(){
+        var status = $(this).prop('checked') === true ? 0 : 1;
+        var voiture_id = $(this).data('id');
+            $.ajax({
+                type: 'GET',
+                dataType:'json',
+                url:'/manager/voiture',
+                data:{'status':status, 'voiture_id':voiture_id},
+                success:function (data) {
+                    console.log('success')
+                }
+            });
+        });
+});
+
 //user delete
 $(document).on('click', '.deleteUser', function (event) {
     event.preventDefault();

@@ -39,6 +39,7 @@
         <script src="{{ asset('assets/js/plugins/jquery-validation/additional-methods.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/toastr/toastr.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/bootstrap-toggle/js/bootstrap4-toggle.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/slick-carousel/slick.min.js') }}"></script>
 

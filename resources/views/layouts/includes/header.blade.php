@@ -62,21 +62,21 @@
                                 </div>
                                 <div class="p-2">
                                     <h5 class="dropdown-header text-uppercase">Options Utilisateur</h5>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                         <span>Inbox</span>
                                         <span>
                                             <span class="badge badge-pill badge-primary">3</span>
                                             <i class="si si-envelope-open ml-1"></i>
                                         </span>
                                     </a>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="/account/profil">
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                         <span>Profile</span>
                                         <span>
                                             <i class="si si-user ml-1"></i>
                                         </span>
                                     </a>
                                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="/account/settings">
-                                        <span>Paramètres</span>
+                                        <span>Mon Compte</span>
                                         <i class="si si-settings"></i>
                                     </a>
                                     <div role="separator" class="dropdown-divider"></div>
@@ -86,8 +86,8 @@
                                         <i class="si si-lock ml-1"></i>
                                     </a>
                                     <form action="/logout" method="post" id="logout_form">
-                                        {{ csrf_field() }}
-                                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="#" onclick="document.getElementById('logout_form').submit()">
+                                        @csrf
+                                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)" onclick="document.getElementById('logout_form').submit()">
                                             <span>Déconnexion</span>
                                             <i class="si si-logout ml-1"></i>
                                         </a>

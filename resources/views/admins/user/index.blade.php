@@ -12,7 +12,7 @@
                                 </div>
                                 <div class="flex-sm-00-auto mt-3 mt-sm-0 ml-sm-3">
                                     <span class="d-inline-block invisible" data-toggle="appear" data-timeout="350">
-                                        <a class="btn btn-primary px-4 py-2" data-toggle="click-ripple" href="/admin/users/create">
+                                        <a class="btn btn-primary px-4 py-2" data-toggle="modal" data-target="#modal-block-fadeinU" data-backdrop="static" data-keyboard="false" href="#">
                                             <i class="fa fa-plus mr-1"></i> Creer manager
                                         </a>
                                     </span>

@@ -5,7 +5,7 @@
     <!-- Stats -->
         <div class="row">
             <div class="col-6 col-md-3 col-lg-6 col-xl-3">
-                <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
+                <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="/client/history">
                     <div class="block-content block-content-full bg-default">
                         <div class="font-size-sm font-w600 text-uppercase text-white">Historique</div>
                         <div class="font-size-h2 font-w400 text-white">###</div>

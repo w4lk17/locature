@@ -5,25 +5,19 @@
                 <div class="content">
                     <!-- Toggle Side Content -->
                     <!-- Class Toggle, functionality initialized in Helpers.coreToggleClass() -->
-                    <div class="d-xl-none push">
+                    <!-- <div class="d-xl-none push">
                         <div class="row gutters-tiny">
                             <div class="col-6">
                                 <button type="button" class="btn btn-light btn-block" data-toggle="class-toggle" data-target=".js-ecom-div-nav" data-class="d-none">
                                     <i class="fa fa-fw fa-bars text-muted mr-1"></i> Navigation
                                 </button>
                             </div>
-                            <div class="col-6">
-                                <button type="button" class="btn btn-light btn-block" data-toggle="class-toggle" data-target=".js-ecom-div-cart" data-class="d-none">
-                                    <i class="fa fa-fw fa-shopping-cart text-muted mr-1"></i> Cart (3)
-                                </button>
-                            </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- END Toggle Side Content -->
 
                     <div class="row">
-                        <div class="col-xl-4 order-xl-1">
-                            <!-- Categories -->
+                        <!-- <div class="col-xl-4 order-xl-1">
                             <div class="block js-ecom-div-nav d-none d-xl-block">
                                 <div class="block-header block-header-default">
                                     <h3 class="block-title">
@@ -33,8 +27,8 @@
                                 <div class="block-content">
                                     <ul class="nav nav-pills flex-column push">
                                         <li class="nav-item mb-1">
-                                            <a class="nav-link active d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                                                Icons <span class="badge badge-pill badge-secondary ml-1">7k</span>
+                                            <a class="nav-link active d-flex justify-content-between align-items-center" href="/manager/voitures">
+                                                liste des voitures <span class="badge badge-pill badge-secondary ml-1">7k</span>
                                             </a>
                                         </li>
                                         <li class="nav-item mb-1">
@@ -42,36 +36,11 @@
                                                 Apps <span class="badge badge-pill badge-secondary ml-1">2k</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item mb-1">
-                                            <a class="nav-link d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                                                Games <span class="badge badge-pill badge-secondary ml-1">3k</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item mb-1">
-                                            <a class="nav-link d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                                                Graphics <span class="badge badge-pill badge-secondary ml-1">18k</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item mb-1">
-                                            <a class="nav-link d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                                                Services <span class="badge badge-pill badge-secondary ml-1">2k</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item mb-1">
-                                            <a class="nav-link d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                                                UI Kits <span class="badge badge-pill badge-secondary ml-1">12k</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item mb-1">
-                                            <a class="nav-link d-flex justify-content-between align-items-center" href="javascript:void(0)">
-                                                Themes <span class="badge badge-pill badge-secondary ml-1">6k</span>
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
-                            <!-- END Categories -->
-                        </div>
+                        </div> -->
                         <div class="col-xl-8 order-xl-0">
                             <!-- Product -->
                             <div class="block">
@@ -97,6 +66,7 @@
                                                 </div>
                                             </div>
                                             <!-- END Images -->
+
                                         </div>
                                         <div class="col-md-6">
                                             <!-- Info -->
@@ -114,7 +84,7 @@
                                                 <div>
                                                     <p>Moteur : {{ $voiture->moteur}}</p>
                                                     <p>Immatricule : {{ $voiture->matricule}}</p>
-                                                    <p>Ajout le : {{ $voiture->created_at}}</p>
+                                                    <p>Ajouté le : {{ $voiture->created_at}}</p>
                                                     <p>Modifié le : {{ $voiture->updated_at}}</p>
                                                     <p class="font-size-h8 font-w600">Par  : {{ $voiture->user->last_name}} {{ $voiture->user->first_name}}</p>
                                                 </div>

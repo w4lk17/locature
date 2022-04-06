@@ -128,86 +128,117 @@
                     <ul class="nav-main">
                         @if (Sentinel::check() && Sentinel::getUser()->inRole('admin'))
                             <li class="nav-main-item ">
-                                <a class="nav-main-link active" href="/admin/users">
+                                <a class="nav-main-link {{ set_active('admin/users') }}" href="/admin/users">
                                     <i class="nav-main-link-icon si si-speedometer"></i>
                                     <span class="nav-main-link-name">Tableau de bord</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link " href="/admin/managers">
+                                <a class="nav-main-link {{ set_active('admin/managers') }}" href="/admin/managers">
                                     <i class="nav-main-link-icon si si-list"></i>
                                     <span class="nav-main-link-name">Listes des managers</span>
                                 </a>
                             </li>
                             <li class="nav-main-item ">
-                                <a class="nav-main-link " href="/admin/clients">
+                                <a class="nav-main-link {{ set_active('admin/clients') }}" href="/admin/clients">
                                     <i class="nav-main-link-icon si si-list"></i>
                                     <span class="nav-main-link-name">Listes des clients</span>
                                 </a>
                             </li>
                             <li class="nav-main-heading">Gestion compte</li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="/admin/users/create">
-                                    <span class="nav-main-link-name">Ajouter</span>
+                                <a class="nav-main-link {{ set_active('') }}" data-toggle="modal" data-target="#modal-block-fadeinU" data-backdrop="static" data-keyboard="false" href="#">
+                                    <i class="nav-main-link-icon si si-pencil"></i>
+                                    <span class="nav-main-link-name">Ajouter Utilisateur</span>
                                 </a>
+                                <!--<a class="nav-main-link" href="/admin/users/create">
+                                    <span class="nav-main-link-name">Ajouter</span>
+                                </a>-->
                             </li>
                         @elseif(Sentinel::check() && Sentinel::getUser()->inRole('manager'))
                             <li class="nav-main-item">
-                                <a class="nav-main-link active" href="/manager/dashboard">
+                                <a class="nav-main-link {{ set_active('manager/dashboard') }}" href="/manager/dashboard">
                                     <i class="nav-main-link-icon si si-speedometer"></i>
                                     <span class="nav-main-link-name">Tableau de bord</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link active" href="/manager/voitures">
+                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <i class="nav-main-link-icon si si-calendar"></i>
+                                    <span class="nav-main-link-name">Reservations</span>
+                                </a>
+                                <ul class="nav-main-submenu">
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link {{ set_active('manager/reservations/create') }}" href="/manager/reservations/create">
+                                            <span class="nav-main-link-name"> Nouvelle reservation</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link {{ set_active('manager/reservations') }}" href="/manager/reservations">
+                                            <span class="nav-main-link-name">Listes des reservations</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link {{ set_active('manager/voitures') }}" href="/manager/voitures">
                                     <i class="nav-main-link-icon si si-list"></i>
                                     <span class="nav-main-link-name">Voitures</span>
                                 </a>
                             </li>
+                                <!--<li class="nav-main-item">
+                                    <a class="nav-main-link active" href="/manager/reservations">
+                                        <i class="nav-main-link-icon si si-"></i>
+                                        <span class="nav-main-link-name">Reservations</span>
+                                    </a>
+                                </li>-->
                             <li class="nav-main-item">
-                                <a class="nav-main-link active" href="/manager/reservations">
-                                    <i class="nav-main-link-icon si si-speedometer"></i>
-                                    <span class="nav-main-link-name">Reservations</span>
-                                </a>
-                            </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link active" data-toggle="modal" data-target="#modal-block-fadein" data-backdrop="static" data-keyboard="false" href="#">
+                                <a class="nav-main-link {{ set_active('') }}" data-toggle="modal" data-target="#modal-block-fadein" data-backdrop="static" data-keyboard="false" href="#">
                                     <i class="nav-main-link-icon si si-pencil"></i>
                                     <span class="nav-main-link-name">Ajout Voitures</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link active" href="#">
+                                <a class="nav-main-link {{ set_active('') }}" href="#">
                                     <i class="nav-main-link-icon si si-energy"></i>
                                     <span class="nav-main-link-name">Statistiques</span>
                                 </a>
                             </li>
                         @else
                         <li class="nav-main-item">
-                            <a class="nav-main-link active" href="/client/dashboard">
+                            <a class="nav-main-link {{ set_active('client/dashboard') }}" href="/client/dashboard">
                                 <i class="nav-main-link-icon si si-speedometer"></i>
                                 <span class="nav-main-link-name">Tableau de bord</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link active" href="/client/voitures">
+                            <a class="nav-main-link {{ set_active('client/voitures') }}" href="/client/voitures">
                                 <i class="nav-main-link-icon si si-note"></i>
                                 <span class="nav-main-link-name">Reservations</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link active" href="/client/bookings">
+                            <a class="nav-main-link {{ set_active('client/bookings') }}" href="/client/bookings">
                                 <i class="nav-main-link-icon si si-layers"></i>
                                 <span class="nav-main-link-name">Mes reservations</span>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-main-item">
-                            <a class="nav-main-link active" href="/account/settings">
+                            <a class="nav-main-link {{ set_active('account/settings') }}" href="/account/settings">
                                 <i class="nav-main-link-icon si si-user"></i>
                                 <span class="nav-main-link-name">Mon compte</span>
                             </a>
                         </li>
-                        @endif
+                        <li class="nav-main-item">
+                            <form action="/logout" method="post" id="logout_form">
+                                @csrf
+                                <a class="nav-main-link {{ set_active('') }}" href="#" onclick="document.getElementById('logout_form').submit()">
+                                    <i class="nav-main-link-icon si si-logout"></i>
+                                    <span class="nav-main-link-name">Deconnexion</span>
+                                </a>
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <!-- END Side Navigation -->

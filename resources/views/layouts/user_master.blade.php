@@ -27,6 +27,7 @@
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="{{ asset('assets/js/plugins/toastr/toastr.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/bootstrap-toggle/css/bootstrap4-toggle.min.css') }}">
         <!-- Page JS Plugins CSS -->
         <link rel="stylesheet" href="{{ asset('assets/js/plugins/slick-carousel/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/js/plugins/slick-carousel/slick-theme.css') }}">
