@@ -25,7 +25,7 @@ class AccountController extends Controller
             'last_name' => 'required',
             'first_name' => 'required',
             'address' => 'required',
-            'cni' => 'required',
+            'num_cni' => 'required',
             'tel' => 'required|min:12',
             'email' => 'required|email'
         ];

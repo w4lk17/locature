@@ -2,17 +2,12 @@
 
 @section('content')
     <!-- Page Content -->
-        <div class="content">
-            <!-- Your Block -->
-                <div class="block block-mode-loading-oneui block-themed mb-0">
-                    <div class="block-header bg-primary-dark">
+        <div class="content content-full">
+                <div class="block block-rounded block-bordered mb-0">
+                    <div class="block-header ">
                         <h3 class="block-title">
                             Modification de la voiture
                         </h3>
-                        <div class="block-options">
-                            <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle">
-                            </button>
-                        </div>
                     </div>
                     <div class="block-content font-size-sm">
                         <form action="/manager/voitures/{{ $voiture->id }}" method="POST" enctype="multipart/form-data">
@@ -52,12 +47,6 @@
                                         <label class="custom-file-label" for="voiture_image">Choisir image</label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="custom-control custom-switch mb-1">
-                                <label>DISPONIBLE: </label>
-                                <input type="checkbox" class="custom-control-input" id="example-switch-custom1" name="disponible"
-                                            {{ $voiture->disponible == '0' ? 'checked' : '' }}>
-                                <label class="custom-control-label" for="example-switch-custom1">Oui</label>
                             </div>
                             <div class="block-content block-content-full text-right border-top">
                                 <a class="btn btn-sm btn-light" href="javascript:history.back()"> Annuler</a>

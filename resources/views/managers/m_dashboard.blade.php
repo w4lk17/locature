@@ -26,7 +26,7 @@
     <!-- END Hero -->
 
     <!-- Page Content -->
-                <div class="content ">
+                <div class="content content-full">
                     <!-- Stats -->
                     <div class="row">
                         <div class="col-6 col-md-3 col-lg-6 col-xl-3">
@@ -192,7 +192,7 @@
                                                         : 'badge badge-danger')}}">{{ $latestReserv->etat == 0 ?'En attente...' :($latestReserv->etat == 1 ?'Acceptée' :'Rejetée')}}</span>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="/manager/reservation/{{$latestReserv->id}}" data-toggle="tooltip" data-placement="left" title="Manage">
+                                                    <a href="/manager/reservations/{{$latestReserv->id}}" data-toggle="tooltip" data-placement="left" title="Manage">
                                                         <i class="fa fa-fw fa-eye"></i>
                                                     </a>
                                                 </td>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSoftdeleteToReservations extends Migration
+class RenameCniColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddSoftdeleteToReservations extends Migration
      */
     public function up()
     {
-        Schema::table('reservations', function (Blueprint $table) {
-           $table->softDeletes()->after('voiture_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('cni', 'num_cni');
         });
     }
 
@@ -25,8 +25,8 @@ class AddSoftdeleteToReservations extends Migration
      */
     public function down()
     {
-        Schema::table('reservations', function (Blueprint $table) {
-            //
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('num_cni', 'cni');
         });
     }
 }

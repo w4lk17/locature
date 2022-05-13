@@ -9,20 +9,17 @@ jQuery('.confirmAlert').on('click', e => {
 });
 
 // disponibilite toggle-button
-$(function () {
-    $('toggle-class').change(function(){
-        var status = $(this).prop('checked') === true ? 0 : 1;
-        var voiture_id = $(this).data('id');
+$(document).on('click', '.dispo', function (event){
+    event.preventDefault();
+        var id = $(this).data('id');
+
             $.ajax({
-                type: 'GET',
-                dataType:'json',
-                url:'/manager/voiture',
-                data:{'status':status, 'voiture_id':voiture_id},
-                success:function (data) {
-                    console.log('success')
+                type: 'PUT',
+                url:'/manager/dispo-true/' + id,
+                success:function () {
+                    window.location.redirect = "/admin/users";
                 }
             });
-        });
 });
 
 //user delete

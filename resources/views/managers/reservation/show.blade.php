@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="content">
-    <div class="block col-md-11">
+<div class="content content-full">
+    <div class="block  block-rounded block-bordered">
         <div class="block-header">
             <h2 class="block-title">reservation</h2>
             <div class="block-options">
@@ -15,14 +15,17 @@
             <div class="row">
                 <p class="font-w700 col-md-6">Nom :  <span class="font-w700 font-size-lg">{{ $reservation->user->last_name }} {{ $reservation->user->first_name }}</span></p>
                 <p class="font-w700 col-md-6">Email : <span class="font-w700 font-size-lg">{{ $reservation->user->email }}</span></p>
-            </div>
-            <div class="row">
+
                 <p class="font-w700 col-md-6">Adresse :  <span class="font-w700 font-size-lg">{{ $reservation->user->address }} </span></p>
                 <p class="font-w700 col-md-6">Téléphone : <span class="font-w700 font-size-lg">{{ $reservation->user->telephone }}</span></p>
             </div>
             <div class="row">
+                <p  class="font-w700 col-md-6">N° Carte d'identité : <span class="font-w700 font-size-lg">{{  $reservation->user->num_cni }}</span></p>
+                <p  class="font-w700 col-md-6">N° Permis : <span class="font-w700 font-size-lg">{{  $reservation->user->num_permis }}</span></p>
+
                 <p  class="font-w700 col-md-6">Voiture : <span class="font-w700 font-size-lg">{{ $reservation->voiture->marque }} {{ $reservation->voiture->modele }}</span></p>
                 <p  class="font-w700 col-md-6">Immatriculation : <span class="font-w700 font-size-lg">{{ $reservation->voiture->matricule }}</span></p>
+
             </div>
             <p  class="font-w700">Statut : <span class="{{ $reservation->etat == 0
                 ? 'badge badge-warning'

@@ -78,24 +78,26 @@ class VoitureController extends Controller
         $voiture->prix = $request->prix;
         $voiture->matricule = $request->matricule;
 
-       /* if($request->file('voiture_image')){
-            $image = $request->file('voiture_image');
-            $filename = $image->getClientOriginalName();
-            $location = public_path('uploads/' . $filename);
-            Image::make($image)->resize(300, 200)->save($location);
-
+//         if($request->file('voiture_image')){
+//             // Store the uploaded file in the "lambogini" directory on Cloudinary with the filename "prosper"
+//             $result   = $request->voiture_image->storeOnCloudinaryAs('locature', 'test');
+//
+//             $url      = $result->getSecurePath();   // Get the url of the uploaded file; https
+//             $filename = $result->getFileName();     // Get the file name of the uploaded file
+//
+//             $voiture->chemin        = $url;
+//             $voiture->voiture_image = $filename;
+//         }
+        if($request->hasFile('voiture_image')) {
+            $image      = $request->file('voiture_image');
+            $filename   = $image->getClientOriginalName();
+            $path       = $image->storeAs('/uploads', $filename);
+            $location   = storage_path() . $path;
+            $url        = Storage::url($filename);
+            //$voiture->chemin = $location;
+            $voiture->chemin        = env('APP_IP') . $url;
             $voiture->voiture_image = $filename;
-        } */
-       if($request->hasFile('voiture_image')) {
-           $image = $request->file('voiture_image');
-           $filename = $image->getClientOriginalName();
-           $path = $image->storeAs('/uploads', $filename);
-           $location = storage_path() . $path;
-           $url = Storage::url($filename);
-           //$voiture->chemin = $location;
-           $voiture->chemin = env('APP_IP') . $url;
-           $voiture->voiture_image = $filename;
-       }
+        }
 
         $voiture->save();
 
@@ -150,12 +152,12 @@ class VoitureController extends Controller
         // save data to the database
         $voiture = Voiture::findOrFail($id);
 
-        $user_id = Sentinel::getUser()->id;
-        $voiture->user_id = $user_id;
-        $voiture->marque = $request->marque;
-        $voiture->modele = $request->modele;
-        $voiture->moteur = $request->moteur;
-        $voiture->prix = $request->prix;
+        $user_id            = Sentinel::getUser()->id;
+        $voiture->user_id   = $user_id;
+        $voiture->marque    = $request->marque;
+        $voiture->modele    = $request->modele;
+        $voiture->moteur    = $request->moteur;
+        $voiture->prix      = $request->prix;
         $voiture->matricule = $request->matricule;
 
         //if($request->file('voiture_image')){
@@ -183,7 +185,11 @@ class VoitureController extends Controller
             //Storage::delete($oldFilename);
             //Storage::disk('local')->delete($location);
         }
-        $voiture->disponible = $request->disponible;
+//
+//         if($request->disponible != on )
+//             $voiture->disponible = 1
+
+
         $voiture->save();
 
         return redirect('/manager/voitures')->with('flash', 'donnee modifie avec success');
@@ -206,5 +212,27 @@ class VoitureController extends Controller
 
     //tri and Count
 
+    public function dispo(Request $request, $id)
+        {
+            $voiture = Voiture::findOrFail($id);
+
+             Voiture::where('id', $voiture->id)
+                    ->update(['disponible' => 1]);
+
+            return redirect()->back();
+                    //->with('flash', 'changement de statut confirmée avec succes! ');
+
+        }
+
+        public function nonDispo(Request $request, $id)
+        {
+            $voiture = Voiture::findOrFail($id);
+
+            Voiture::where('id', $voiture->id)
+                    ->update(['disponible' => 0]);
+
+            return redirect()->back();
+                    //->with('flash', changement de statut  avec succes! ');
+        }
 
 }

@@ -8,7 +8,7 @@
                 <div class="block  block-bordered">
                     <div class=" block-content block-content-full ribbon ribbon-modern ribbon-warning">
                         <div class="ribbon-box">
-                            <i class="fa fa-check mr-1"></i>{{ $voiture->disponible == 0
+                            <i class="fa fa-check mr-1"></i>{{ $voiture->disponible == 1
                                     ? 'Disponible'
                                     : 'Non Disponible'}}
                         </div>

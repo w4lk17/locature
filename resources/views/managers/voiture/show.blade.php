@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Page Content -->
-                <div class="content">
+                <div class="content content-full">
                     <!-- Toggle Side Content -->
                     <!-- Class Toggle, functionality initialized in Helpers.coreToggleClass() -->
                     <!-- <div class="d-xl-none push">
@@ -18,7 +18,7 @@
 
                     <div class="row">
                         <!-- <div class="col-xl-4 order-xl-1">
-                            <div class="block js-ecom-div-nav d-none d-xl-block">
+                            <div class="block block-rounded block-bordered js-ecom-div-nav d-none d-xl-block">
                                 <div class="block-header block-header-default">
                                     <h3 class="block-title">
                                         <i class="fa fa-fw fa-boxes text-muted mr-1"></i> Categories
@@ -82,10 +82,10 @@
 
                                             <p class=" my-3 border-top">
                                                 <div>
-                                                    <p>Moteur : {{ $voiture->moteur}}</p>
-                                                    <p>Immatricule : {{ $voiture->matricule}}</p>
-                                                    <p>Ajouté le : {{ $voiture->created_at}}</p>
-                                                    <p>Modifié le : {{ $voiture->updated_at}}</p>
+                                                    <p><strong>Moteur</strong> : {{ $voiture->moteur}}</p>
+                                                    <p><strong>Immatricule</strong> : {{ $voiture->matricule}}</p>
+                                                    <p><strong>Ajouté le</strong> : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $voiture->created_at)->format('j-m-Y H:i:s') }}</p>
+                                                    <p><strong>Modifié le</strong> : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $voiture->updated_at)->format('j-m-Y H:i:s') }}</p>
                                                     <p class="font-size-h8 font-w600">Par  : {{ $voiture->user->last_name}} {{ $voiture->user->first_name}}</p>
                                                 </div>
                                             </p>

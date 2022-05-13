@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="content content-boxed">
-    <div class="block">
+<div class="content content-full">
+    <div class="block block-rounded block-bordered">
         <div class="block-header">
             <h2 class="block-title">Liste des Reservations</h2>
             <div class="block-options">
@@ -37,10 +37,10 @@
                                 <a href="/manager/voitures/{{ $reservation->voiture_id }}">{{ $reservation->voiture->marque }} {{ $reservation->voiture->modele }}</a>
                             </td>
                             <td class="d-sm-table-cell">
-                                <span >{{ $reservation->date_depart }}</span>
+                                <span>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $reservation->date_depart)->format('j-m-Y H:i:s') }}</span>
                             </td>
                             <td class="d-sm-table-cell">
-                                <span >{{ $reservation->date_retour }}</span>
+                                <span >{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $reservation->date_retour)->format('j-m-Y H:i:s') }}</span>
                             </td>
                             <td class="d-sm-table-cell">
                                 <span class="{{ $reservation->etat == 0
@@ -54,18 +54,18 @@
                                     <form action="/manager/confirmReserv/{{ $reservation->id }}" method="POST" >
                                         {{ method_field('PUT') }}
                                         {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-sm btn-primary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="confirme">
+                                        <button type="submit" class="btn btn-sm btn-primary js-tooltip-enabled  ml-1" data-toggle="tooltip" title="" data-original-title="confirme">
                                             valider
                                         </button>
                                     </form>
                                     <form action="/manager/cancelReserv/{{ $reservation->id }}" method="POST" >
                                         {{ method_field('PUT') }}
                                         {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-sm btn-danger js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="reject">
+                                    <button type="submit" class="btn btn-sm btn-danger js-tooltip-enabled  ml-1" data-toggle="tooltip" title="" data-original-title="reject">
                                         refuser
                                     </button>
                                     </form>
-                                    <a href="/manager/reservations/{{ $reservation->id }}" class="btn btn-sm btn-primary js-tooltip-enabled" data-toggle="tooltip"
+                                    <a href="/manager/reservations/{{ $reservation->id }}" class="btn btn-sm btn-primary js-tooltip-enabled  ml-1" data-toggle="tooltip"
                                           title="" data-original-title="detail">
                                         <i class="fa fa-fw fa-eye"></i>
                                     </a>

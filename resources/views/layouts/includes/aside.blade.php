@@ -186,17 +186,29 @@
                                     <span class="nav-main-link-name">Voitures</span>
                                 </a>
                             </li>
-                                <!--<li class="nav-main-item">
-                                    <a class="nav-main-link active" href="/manager/reservations">
-                                        <i class="nav-main-link-icon si si-"></i>
-                                        <span class="nav-main-link-name">Reservations</span>
-                                    </a>
-                                </li>-->
                             <li class="nav-main-item">
                                 <a class="nav-main-link {{ set_active('') }}" data-toggle="modal" data-target="#modal-block-fadein" data-backdrop="static" data-keyboard="false" href="#">
                                     <i class="nav-main-link-icon si si-pencil"></i>
                                     <span class="nav-main-link-name">Ajout Voitures</span>
                                 </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <i class="nav-main-link-icon fa fa-file-invoice"></i>
+                                        <span class="nav-main-link-name">Factures</span>
+                                </a>
+                                <ul class="nav-main-submenu">
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link {{ set_active('manager/factures/create') }}" href="/manager/factures/create">
+                                            <span class="nav-main-link-name"> Nouvelle facture</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link {{ set_active('manager/factures') }}" href="/manager/factures">
+                                            <span class="nav-main-link-name">Listes des factures</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-main-item">
                                 <a class="nav-main-link {{ set_active('') }}" href="#">
@@ -205,40 +217,40 @@
                                 </a>
                             </li>
                         @else
-                        <li class="nav-main-item">
-                            <a class="nav-main-link {{ set_active('client/dashboard') }}" href="/client/dashboard">
-                                <i class="nav-main-link-icon si si-speedometer"></i>
-                                <span class="nav-main-link-name">Tableau de bord</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link {{ set_active('client/voitures') }}" href="/client/voitures">
-                                <i class="nav-main-link-icon si si-note"></i>
-                                <span class="nav-main-link-name">Reservations</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link {{ set_active('client/bookings') }}" href="/client/bookings">
-                                <i class="nav-main-link-icon si si-layers"></i>
-                                <span class="nav-main-link-name">Mes reservations</span>
-                            </a>
-                        </li>
-                        @endif
-                        <li class="nav-main-item">
-                            <a class="nav-main-link {{ set_active('account/settings') }}" href="/account/settings">
-                                <i class="nav-main-link-icon si si-user"></i>
-                                <span class="nav-main-link-name">Mon compte</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <form action="/logout" method="post" id="logout_form">
-                                @csrf
-                                <a class="nav-main-link {{ set_active('') }}" href="#" onclick="document.getElementById('logout_form').submit()">
-                                    <i class="nav-main-link-icon si si-logout"></i>
-                                    <span class="nav-main-link-name">Deconnexion</span>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link {{ set_active('client/dashboard') }}" href="/client/dashboard">
+                                    <i class="nav-main-link-icon si si-speedometer"></i>
+                                    <span class="nav-main-link-name">Tableau de bord</span>
                                 </a>
-                            </form>
-                        </li>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link {{ set_active('client/voitures') }}" href="/client/voitures">
+                                    <i class="nav-main-link-icon si si-note"></i>
+                                    <span class="nav-main-link-name">Reservations</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link {{ set_active('client/bookings') }}" href="/client/bookings">
+                                    <i class="nav-main-link-icon si si-layers"></i>
+                                    <span class="nav-main-link-name">Mes reservations</span>
+                                </a>
+                            </li>
+                        @endif
+                            <li class="nav-main-item">
+                                <a class="nav-main-link {{ set_active('account/settings') }}" href="/account/settings">
+                                    <i class="nav-main-link-icon si si-user"></i>
+                                    <span class="nav-main-link-name">Mon compte</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <form action="/logout" method="post" id="logout_form">
+                                    @csrf
+                                    <a class="nav-main-link {{ set_active('') }}" href="#" onclick="document.getElementById('logout_form').submit()">
+                                        <i class="nav-main-link-icon si si-logout"></i>
+                                        <span class="nav-main-link-name">Deconnexion</span>
+                                    </a>
+                                </form>
+                            </li>
                     </ul>
                 </div>
                 <!-- END Side Navigation -->

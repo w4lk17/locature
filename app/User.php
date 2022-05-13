@@ -23,7 +23,8 @@ class User extends EloquentUser
         'last_name',
         'first_name',
         'permissions',
-        'cni',
+        'num_cni',
+        'num_permis',
         'address',
         'telephone',
     ];

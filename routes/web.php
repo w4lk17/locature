@@ -50,11 +50,16 @@ Route::group(['prefix' => 'manager', 'middleware' => 'manager'],function(){
     //Route::resource('reservations', 'Clients\Booking\ReservationController')->except('create');
     Route::get('/reservations/create', 'Managers\Reservation\ReservationController@create');
     Route::get('/reservations', 'Managers\Reservation\ReservationController@index');
-    Route::post('/reservations', 'Managers\Reservation\ReservationController@store');
+    Route::post('/reservations', 'Managers\Reservation\ReservationController@store')->name('reservations.store');
     Route::get('/reservations/{id}', 'Managers\Reservation\ReservationController@show');
     Route::put('/confirmReserv/{id}', 'Managers\Reservation\ReservationController@confirmReserv');
     Route::put('/cancelReserv/{id}', 'Managers\Reservation\ReservationController@cancelReserv');
 
+    Route::put('/dispo/{id}', 'Managers\Voiture\VoitureController@dispo');
+    Route::put('/nonDispo/{id}', 'Managers\Voiture\VoitureController@nonDispo');
+
+    //facture
+    Route::resource('factures', 'FactureController');
 });
 
  //route client

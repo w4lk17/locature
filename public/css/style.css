@@ -55,3 +55,15 @@ label {
 /*    background-color: rgb(229, 229,229);*/
 /*    pointer-events: none;*/
 /*}*/
+
+/*drppdown dispon */
+.dropdown.action-label {
+    display: inline-block;
+}
+.action-label > a {
+    display: inline-block;
+    min-width: 103px;
+}
+.action-label .btn-sm {
+    padding: 4px;
+}
