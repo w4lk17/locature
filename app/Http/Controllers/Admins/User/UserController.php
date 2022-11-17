@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admins\User;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\User;
 use Sentinel;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class UserController extends Controller
 {
@@ -16,10 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
-        $UserCount = User::count();
+        $users = User::all();
 
-		return view('admins.user.index', compact('users', 'UserCount'));
+        return view('admins.user.index', compact('users'));
     }
 
     /**
@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //return view('admins.user.create');
+        //
     }
 
     /**
@@ -40,17 +40,37 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'email'       => 'required',
+            'role'        => 'required',
+            'last_name'   => 'required',
+            'first_name'  => 'required'
+        ];
 
-       $user = Sentinel::registerAndActivate(array_merge($request->all(), ['password' => 'password']));
+        $messages = [
+            'required'  => 'ce champ ne peut être vide.',
+        ];
 
-        $result = $request->role;
+        $this->validate($request, $rules, $messages);
 
-        $user = Sentinel::findById($user->id);
+        try {
 
-        $role = Sentinel::findRoleBySlug($result);
-        $role->users()->attach($user);
+            $user = Sentinel::registerAndActivate(array_merge($request->all(), ['password' => 'password']));
 
-        return redirect('/admin/users');
+            $result = $request->role;
+
+            $user = Sentinel::findById($user->id);
+
+            $role = Sentinel::findRoleBySlug($result);
+            $role->users()->attach($user);
+
+            Toastr::success('Utilisateur créer avec succès ! :)', 'Success');
+            return redirect('/admin/users');
+        } catch (\Exception $e) {
+            //throw $e;
+            Toastr::error('Echec enregistrement ! :)', 'Erreur');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -92,22 +112,41 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = Sentinel::findById($id);
+        $rules = [
+            'email'       => 'required',
+            'role'        => 'required',
+            'last_name'   => 'required',
+            'first_name'  => 'required'
+        ];
 
-        $roleU = $user->roles()->get();
+        $messages = [
+            'required'  => 'ce champ ne peut être vide.',
+        ];
 
-        $role = Sentinel::findRoleByName($roleU);
-        $user->roles()->detach($role);
+        $this->validate($request, $rules, $messages);
 
-        Sentinel::update($user, $request->all());
+        try {
+            $user = Sentinel::findById($id);
 
-        $role = $request->role;
+            $roleU = $user->roles()->get();
 
-        $role = Sentinel::findRoleByName($role);
+            $role = Sentinel::findRoleByName($roleU);
+            $user->roles()->detach($role);
 
-        $user->roles()->attach($role);
+            Sentinel::update($user, $request->all());
 
-        return redirect('/admin/users');
+            $role = $request->role;
+
+            $role = Sentinel::findRoleByName($role);
+            $user->roles()->attach($role);
+
+            Toastr::success('Modification éffectuée !', 'Success');
+            return redirect('/admin/users');
+        } catch (\Exception $e) {
+            //throw $e;
+            Toastr::error('Echec modification ! :)', 'Erreur');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -121,6 +160,7 @@ class UserController extends Controller
         $user = Sentinel::findById($id);
         $user->delete();
 
+        Toastr::success('Utilisateur supprimé avec succès ! :)', 'Success');
         return redirect('/admin/users');
     }
 }

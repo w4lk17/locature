@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Clients\Booking;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Voiture;
-use App\Reservation;
 use App\User;
 use Sentinel;
+use App\Voiture;
+use App\Reservation;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class BookingController extends Controller
 {
@@ -20,9 +21,9 @@ class BookingController extends Controller
     {
         $user =  Sentinel::getUser();
         $reservations = Reservation::with('voiture')
-                ->where('user_id', $user->id)
-                ->latest('created_at', 'asc')
-                ->get();
+            ->where('user_id', $user->id)
+            ->latest('created_at', 'asc')
+            ->get();
 
         return view('clients.booking.index', compact('reservations'));
     }
@@ -45,7 +46,7 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request )
+    public function store(Request $request)
     {
         $user =  Sentinel::getUser();
 
@@ -64,12 +65,13 @@ class BookingController extends Controller
 
         $reserv = Reservation::create($request->all());
 
-    // update the car to unavailable after reservation
+        // update the car to unavailable after reservation
         $voitureId = $reserv->voiture_id;
 
         Voiture::where('id', $voitureId)
-            ->update(['disponible' => 1]);
+            ->update(['disponible' => 0]);
 
+        Toastr::success('Reservation efectuée avec succès :)', 'Success');
         return redirect('/client/bookings')->with('success', 'Reservation efectuer avec succes!');
     }
 
@@ -82,8 +84,8 @@ class BookingController extends Controller
     public function show($id)
     {
         $reservation = Reservation::with('voiture')
-                ->get()
-                ->find($id);
+            ->get()
+            ->find($id);
 
         if ($reservation->user_id === Sentinel::getUser()->id) {
 
@@ -93,6 +95,7 @@ class BookingController extends Controller
 
             return view('clients.booking.show', compact('reservation', 'voiture_info'));
         } else {
+            Toastr::error('Action non autaurisée :)', 'Error');
             return redirect('/client/dashboard')
                 ->with('error', 'Vous netes pas autaurisé a effectuer cette action..');
         }
@@ -107,8 +110,8 @@ class BookingController extends Controller
     public function edit($id)
     {
         $reservation = Reservation::with('voiture')
-                ->get()
-                ->find($id);
+            ->get()
+            ->find($id);
 
         if ($reservation->user_id === Sentinel::getUser()->id) {
 
@@ -120,8 +123,9 @@ class BookingController extends Controller
             //dd($voitures);
             return view('clients.booking.edit', compact('reservation', 'voiture_info', 'voitures'));
         } else {
+            Toastr::error('Action non autaurisée :)', 'Error');
             return redirect('/client/dashboard')
-                            ->with('error', 'Vous netes pas autaurisé a effectuer cette action. .');
+                ->with('error', 'Vous netes pas autaurisé a effectuer cette action. .');
         }
     }
 
@@ -143,10 +147,12 @@ class BookingController extends Controller
             $reservation->date_retour = $request->date_retour;
             //dd($request->voitureId);
             $reservation->save();
+            Toastr::success('Modification reussie :)', 'Success');
             return redirect('/client/bookings')->with('success', 'Successfully updated your reservation!');
         } else {
+            Toastr::error('Action non autaurisée :)', 'Error');
             return redirect('/client/dashboard')
-                            ->with('error', 'Vous netes pas autaurisé a effectuer cette action.');
+                ->with('error', 'Vous netes pas autaurisé a effectuer cette action.');
         }
     }
 
@@ -163,11 +169,12 @@ class BookingController extends Controller
         if ($reservation->user_id === Sentinel::getUser()->id) {
 
             $reservation->delete();
-
+            Toastr::success('Suppression reussie :)', 'Success');
             return redirect('/client/bookings')->with('success', 'Successfully deleted your reservation!');
         } else {
-             return redirect('/client/dashboard')
-                            ->with('error', 'Vous n\'etes pas autaurisé a supprimer cette réservation.');
+            Toastr::error('Action non autaurisée :)', 'Error');
+            return redirect('/client/dashboard')
+                ->with('error', 'Vous n\'etes pas autaurisé a supprimer cette réservation.');
         }
     }
 
@@ -176,9 +183,9 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//      public function dashboard()
-//          {
-//              $voitures = Voiture::all();
-//              return view('clients.accueil', compact('voitures'));
-//          }
+    //      public function dashboard()
+    //          {
+    //              $voitures = Voiture::all();
+    //              return view('clients.accueil', compact('voitures'));
+    //          }
 }

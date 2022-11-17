@@ -14,7 +14,7 @@ class AddCheminToVoituresTable extends Migration
     public function up()
     {
         Schema::table('voitures', function (Blueprint $table) {
-            $table->string('chemin')->nullable()->after('moteur');
+            $table->string('chemin')->nullable()->after('carburant');
         });
     }
 

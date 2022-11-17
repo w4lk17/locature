@@ -41,7 +41,7 @@
                                                         <input type="email" class="form-control form-control-alt" id="signup-email" name="email" placeholder="Email">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="cni" placeholder="numero CNI">
+                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="num_cni" placeholder="numero CNI">
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-alt" id="signup-username" name="telephone" placeholder="telephone +228xxxxxxx">

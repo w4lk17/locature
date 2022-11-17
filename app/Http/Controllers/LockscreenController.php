@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Sentinel;
+use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class LockscreenController extends Controller
 {
     public function lockScreen()
     {
-        if (url()->previous() == route('lockscreen'))
-        {
+        if (url()->previous() == route('lockscreen')) {
             session(['locked' => 'true']);
-        }
-        else
-        {
+        } else {
             session(['locked' => 'true', 'uri' => url()->previous()]);
         }
 
@@ -41,15 +39,16 @@ class LockscreenController extends Controller
 
         $oldPassword = $request->password;
 
-            if($hasher->check($oldPassword, $user->password)){
-                $uri = $request->session()->get('uri');
+        if ($hasher->check($oldPassword, $user->password)) {
+            $uri = $request->session()->get('uri');
 
-                $request->session()->forget(['locked', 'uri']);
+            $request->session()->forget(['locked', 'uri']);
 
-                return redirect($uri)->with('flash', 'Welcome Back! ' . $user->lastname);
-            }
 
-            return redirect()->back()
-                ->with(['error' => 'mot de passe correspond pas.']);
+            Toastr::info("Bon retour $user->last_name :)", 'Info');
+            return redirect($uri);
+        }
+        Toastr::error('le mot de passe correspond pas :)', 'Erreur');
+        return redirect()->back();
     }
 }

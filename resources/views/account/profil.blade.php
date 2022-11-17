@@ -8,7 +8,7 @@
                             <div class="my-3">
                                 <img class="img-avatar img-avatar-thumb" src="{{ asset('assets/media/avatars/avatar13.jpg') }}" alt="">
                             </div>
-                            <h1 class="h2 text-white mb-0"> {{ Sentinel::getUser()->first_name}}</h1>
+                            <h1 class="h2 text-white mb-0"> {{ Sentinel::getUser()->last_name}} {{ Sentinel::getUser()->first_name}}</h1>
                             <span class="text-white-75">UI Designer</span>
                         </div>
                     </div>

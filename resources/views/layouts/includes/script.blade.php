@@ -24,6 +24,8 @@
         <script src="{{ asset('assets/js/oneui.app.min.js') }}"></script>
 
         <!-- Page JS Plugins -->
+        <script src="{{ asset('assets/js/plugins/morris/morris.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/raphael/raphael.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/chart.js/Chart.bundle.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
@@ -33,12 +35,12 @@
         <script src="{{ asset('assets/js/plugins/datatables/buttons/buttons.html5.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/datatables/buttons/buttons.flash.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/datatables/buttons/buttons.colVis.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/es6-promise/es6-promise.auto.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/jquery-validation/additional-methods.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-        <script src="{{ asset('assets/js/plugins/toastr/toastr.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/bootstrap-toggle/js/bootstrap4-toggle.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/slick-carousel/slick.min.js') }}"></script>
@@ -55,8 +57,4 @@
         <script src="{{ asset('assets/js/pages/op_auth_lock.min.js') }}"></script>
         <script src="{{ asset('assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-@if(Session::has('flash'))
-<script>
-  toastr.success("{{Session::get('flash')}}", 'Success');
-</script>
-@endif
+

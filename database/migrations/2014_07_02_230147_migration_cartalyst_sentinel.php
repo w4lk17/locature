@@ -131,7 +131,7 @@ class MigrationCartalystSentinel extends Migration
             $table->string('matricule');
             $table->string('modele');
             $table->string('marque');
-            $table->string('moteur');
+            $table->string('carburant');
             $table->string('voiture_image');
             $table->string('prix');
             $table->softDeletes();

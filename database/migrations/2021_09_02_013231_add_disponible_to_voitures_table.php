@@ -14,7 +14,7 @@ class AddDisponibleToVoituresTable extends Migration
     public function up()
     {
         Schema::table('voitures', function (Blueprint $table) {
-            $table->boolean('disponible')->default(0)->after('moteur');
+            $table->boolean('disponible')->default(0)->after('carburant');
         });
     }
 

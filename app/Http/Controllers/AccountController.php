@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-use Sentinel;
 use App\User;
+use Sentinel;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class AccountController extends Controller
 {
@@ -17,7 +18,8 @@ class AccountController extends Controller
         return view('account.settings', compact('user'));
     }
 
-    public function updateProfil(Request $request){
+    public function updateProfil(Request $request)
+    {
 
         $user = Sentinel::getUser();
 
@@ -25,8 +27,7 @@ class AccountController extends Controller
             'last_name' => 'required',
             'first_name' => 'required',
             'address' => 'required',
-            'cni' => 'required',
-            'tel' => 'required|min:12',
+            'telephone' => 'required|min:12',
             'email' => 'required|email'
         ];
 
@@ -37,16 +38,19 @@ class AccountController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        if(!Sentinel::update($user, $request->all())){
+        if (!Sentinel::update($user, $request->all())) {
+
+            Toastr::error('Echec modification ! :)', 'Erreur');
             return redirect()->back()
                 ->with(['errorI' => 'verifier si les informations sont correcte.']);
         }
-
+        Toastr::success('Informations modifié avec succès ! :)', 'Success');
         return redirect()->back()
             ->with(['successI' => 'Les informations ont ete modifie avec succès']);
     }
 
-    public function updatePassword(Request $request){
+    public function updatePassword(Request $request)
+    {
 
         $hasher = Sentinel::getHasher();
 
@@ -58,7 +62,7 @@ class AccountController extends Controller
         $messages = [
             'required'  => 'ce champ ne peut etres vide.',
             'min'    => 'le mot de passe doit contenir minimum 6 caractere .',
-            'same'  =>'le mot de passe ne correspond pas.'
+            'same'  => 'le mot de passe ne correspond pas.'
         ];
 
         $this->validate($request, $rules, $messages);
@@ -70,13 +74,21 @@ class AccountController extends Controller
         $user = Sentinel::getUser();
 
         if (!$hasher->check($oldPassword, $user->password) || $password != $passwordConf) {
+
+            Toastr::error('Ancien mot de passe incorrecte ! :)', 'Erreur');
             return redirect()->back()
-            ->with(['errorM' => 'Echec ancien mot de passe incorrecte.']);
+                ->with(['errorM' => ' Ancien mot de passe incorrecte.']);
         }
 
         Sentinel::update($user, array('password' => $password));
 
+        Toastr::success('Mot de passe modifier avec succès ! :)', 'Success');
         return redirect()->back()
             ->with(['successM' => 'Mot de passe modifier avec succès']);
+    }
+
+    public function profil()
+    {
+        return view('account.profil');
     }
 }

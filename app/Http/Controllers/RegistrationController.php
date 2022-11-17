@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Mail;
 use Sentinel;
 use Activation;
-use Mail;
+use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class RegistrationController extends Controller
 {
@@ -26,7 +27,8 @@ class RegistrationController extends Controller
 
         $this->sendEmail($user, $activation->code);
 
-        return redirect('/');
+        Toastr::info("Compte crée avec succès.. Un mail avec le lien d'activation vous a été envoyé :)", 'Info');
+        return view('authentication.login');
     }
 
     private function sendEmail($user, $code)
@@ -38,7 +40,7 @@ class RegistrationController extends Controller
         {
             $message->to($user->email);
 
-            $message->subject("Hello $user->first_name, Activez votre compte.");
+            $message->subject("Hello M. $user->first_name, Activez votre compte.");
         });
     }
 }

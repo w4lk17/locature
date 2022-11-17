@@ -69,25 +69,25 @@
                                         </div>
                                     </div>
                                     <div class="form-row mb-2">
-                                        <div class="col-md-4 mb-3">
+                                        {{-- <div class="col-md-4 mb-3">
                                             <label class="form-label">Numéro carte d identité </label>
-                                            <input type="text" readonly class="form-control {{ $errors->has('cni') ? 'error' : '' }}" value="{{ $user->cni}}" name="cni" id="cni" maxlength="50">
+                                            <input type="text"  class="form-control {{ $errors->has('num_cni') ? 'error' : '' }}" value="{{ $user->num_cni}}" name="num_cni" id="num_cni" maxlength="50">
 
                                             <!-- Error -->
-                                            @if ($errors->has('cni'))
+                                            @if ($errors->has('num_cni'))
                                             <div class="error">
-                                                {{ $errors->first('cni') }}
+                                                {{ $errors->first('num_cni') }}
                                             </div>
                                             @endif
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Téléphone</label>
-                                            <input type="text"  id="telephone" class="form-control {{ $errors->has('tel') ? 'error' : '' }}"  value="{{ $user->telephone}}" name="tel" maxlength="30">
+                                            <input type="text"  id="telephone" class="form-control {{ $errors->has('telephone') ? 'error' : '' }}"  value="{{ $user->telephone}}" name="telephone" maxlength="30">
 
                                             <!-- Error -->
-                                            @if ($errors->has('tel'))
+                                            @if ($errors->has('telephone'))
                                             <div class="error">
-                                                {{ $errors->first('tel') }}
+                                                {{ $errors->first('telephone') }}
                                             </div>
                                             @endif
                                         </div>
