@@ -1,56 +1,39 @@
 @extends('layouts.master')
 
 @section('content')
-    <!-- Hero -->
-        <!--<div class="bg-body-light">
-            <div class="content content-full">
-                <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                    <h1 class="flex-sm-fill h3 my-2">
-                        Détails Utilisateur
-                    </h1>
-                    <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                        <ol class="breadcrumb breadcrumb-alt">
-                            <li class="breadcrumb-item">
-                                <a class="link-fx" href="/admin/users">Utilisateurs</a>
-                            </li>
-                                <li class="breadcrumb-item" aria-current="page">
-                                <a class="link-fx" href="">détails</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
+<!-- Page Content -->
+<div class="content content-full">
+    <div class="col-md-9">
+        <div class="block block-rounded block-bordered">
+            <div class="block-content ">
+                <p class="font-w700 col-md-6">Nom : <span class="font-w700 font-size-lg">{{ $user->last_name }}</p>
+                <p class="font-w700 col-md-6">Prénom : <span class="font-w700 font-size-lg">{{ $user->first_name }}</p>
+                <p class="font-w700 col-md">Email : <span class="font-w700 font-size-lg"> {{ $user->email }}</p>
+                <p class="font-w700 col-md-6">Adresse : <span class="font-w700 font-size-lg"> {{ $user->address }}</p>
+                @foreach ($roles as $role)
+                <p class="font-w700 col-md-6">Role : <span class="font-w700 font-size-lg badge badge-info">{{
+                        $role->name }}</span></p>
+                @endforeach
+                <p class="font-w700 col-md">Date d'enrégistrement : <span class="font-w700 font-size-lg"> {{
+                        \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
+                        $user->created_at)->format('j /m /Y  H:i') }}
+                </p>
+                @if($user->last_login !== null)
+                <p class="font-w700 col-md">Dernière connexion : <span class="font-w700 font-size-lg">
+                        {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->last_login)->format('j/m /Y  H:i')
+                        }}
+                </p>
+                @endif
             </div>
-        </div>-->
-    <!-- END Hero -->
-    <!-- Page Content -->
-        <div class="content">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <div class="block">
-                        <div class="block-content">
-                            <p>Nom : {{ $user->last_name }}</p>
-                            <p>Prénom : {{ $user->first_name }}</p>
-                            <p>Email : {{ $user->email }}</p>
-                            <p>Adresse : {{ $user->address }}</p>
-                            @foreach ($roles as $role)
-                                <p>Role : <span class="badge badge-info">{{ $role->name }}</span></p>
-                            @endforeach
-                            <p>Date dinscription : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at)->format('j/m/Y') }}</p>
-                            @if($user->last_login !== null)
-                            <p>Dernière connexion : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->last_login)->format('j/m/Y') }}</p>
-                            @endif
-                        </div>
-                        <div class="block-header">
-                            <a href="javascript:history.back()" class="btn btn-sm btn-primary">Retour</a>
-                            <div class="block-options">
-                                <a href="/admin/users/{{ $user->id }}/edit" class="btn btn-sm btn-primary">Modifier</a>
-                                {{-- <a href="/users/{{ $user->id }}" class="btn btn-sm btn-danger deleteUser">Supprimer</a> --}}
-                                <button class="btn btn-sm btn-danger deleteUser" data-id="{{ $user->id }}">supprimer</button>
-                            </div>
-                        </div>
-                    </div>
+            <div class="block-header mb-2">
+                <a href="javascript:history.back()" class="btn btn-sm btn-secondary ">Retour</a>
+                <div class="block-options">
+                    <a href="/admin/users/{{ $user->id }}/edit" class="btn btn-sm btn-primary">Modifier</a>
+                    <button class="btn btn-sm btn-danger deleteUser" data-id="{{ $user->id }}">supprimer</button>
                 </div>
             </div>
         </div>
-    <!-- END Page Content -->
+    </div>
+</div>
+<!-- END Page Content -->
 @endsection

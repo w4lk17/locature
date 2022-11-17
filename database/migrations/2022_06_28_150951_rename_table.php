@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFacturesTable extends Migration
+class RenameTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,7 @@ class CreateFacturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('factures', function (Blueprint $table) {
-            $table->id();
-            $table->softDeletes();
-            $table->timestamps();
-        });
+        Schema::rename('invoicesAdd', 'invoices_adds');
     }
 
     /**
@@ -27,6 +23,6 @@ class CreateFacturesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('factures');
+        Schema::rename('invoices_adds', 'invoicesAdd');
     }
 }

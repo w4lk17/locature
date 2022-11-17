@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Managers\Reservation;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Reservation;
-use App\Voiture;
+use DB;
 use App\User;
 use Sentinel;
-use DB;
+use App\Voiture;
+use App\Reservation;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ReservationController extends Controller
 {
@@ -19,14 +20,14 @@ class ReservationController extends Controller
         return view('managers.reservation.index', compact('reservations'));
     }
 
-     public function show($id)
-     {
+    public function show($id)
+    {
         $reservation = Reservation::findOrFail($id);
 
         $users = User::all();
 
         return view('managers.reservation.show', compact('reservation', 'users'));
-     }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -36,18 +37,18 @@ class ReservationController extends Controller
     public function create()
     {
         //$voitures = Voiture::all();
-        $voitures = DB::table('voitures')->get();
+        $voitures = DB::table('voitures')->where('disponible', 1)->get();
 
         return view('managers.reservation.create', compact('voitures'));
     }
 
-   /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
-    public function store(Request $request )
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
         $treatBy =  Sentinel::getUser(); //get loggedin user
 
@@ -97,18 +98,24 @@ class ReservationController extends Controller
                 'treat_by'     => $treatBy->id,
             ];
 
-            Reservation::create($reservations);
+            $reserv = Reservation::create($reservations);
+
+            // update the car to unavailable after reservation
+            $voitureId = $reserv->voiture_id;
+
+            Voiture::where('id', $voitureId)
+                ->update(['disponible' => 0]);
 
             //DB::table('reservations')->insert($reservations);
-            return redirect('managers.reservation.index')
+            Toastr::success('Reservation enregistrée avec succès :)', 'Success');
+            return redirect()->back()
                 ->with('success', 'Reservation efectuer avec succes!');
-
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Exception $e) {
+            //throw $e;
+            Toastr::error('Echec Enregistrement :)', 'Erreur');
             return back()
                 ->with('error', 'Echec de la reservation !');
         }
-
     }
 
     public function confirmReserv(Request $request, $id)
@@ -117,11 +124,11 @@ class ReservationController extends Controller
         $user = Sentinel::getUser()->id;
 
         $reservation = Reservation::where('id', $reservation->id)
-                ->update(['etat' => 1, 'treat_by' => $user]);
+            ->update(['etat' => 1, 'treat_by' => $user]);
 
-        return redirect('/manager/reservations')//->with('success', 'Reservation confirmee avec succes!');
-                ->with('flash', 'Reservation confirmée avec succes! ');
-
+        Toastr::success('Reservation confirmée avec succes! :)', 'Success');
+        return redirect('/manager/reservations') //->with('success', 'Reservation confirmee avec succes!');
+            ->with('flash', 'Reservation confirmée avec succes! ');
     }
 
     public function cancelReserv(Request $request, $id)
@@ -129,11 +136,16 @@ class ReservationController extends Controller
         $reservation = Reservation::findOrFail($id);
         $user = Sentinel::getUser()->id;
 
+        //update the car disponibility
+        $voitureId = $reservation->voiture_id;
+        Voiture::where('id', $voitureId)
+            ->update(['disponible' => 1]);
+
         $reservation = Reservation::where('id', $reservation->id)
-                ->update(['etat' => 2, 'treat_by' => $user]);
+            ->update(['etat' => 2, 'treat_by' => $user]);
 
-        return redirect('/manager/reservations')//->with('success', 'Reservation confirmee avec succes!');
-                ->with('flash', 'Reservation annulée avec succes! ');
-
+        Toastr::success('Reservation refusée avec succes! :)', 'Success');
+        return redirect('/manager/reservations') //->with('success', 'Reservation confirmee avec succes!');
+            ->with('flash', 'Reservation annulée avec succes! ');
     }
 }

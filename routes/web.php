@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admins\AdminController;
+use App\Http\Controllers\Admins\Car\CarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'WelcomeController@welcome');
 
-Route::group(['middleware' => 'visitors'],function(){
+Route::group(['middleware' => 'visitors'], function () {
     Route::get('/register', 'RegistrationController@register');
     Route::post('/register', 'RegistrationController@postRegister');
 
@@ -33,21 +35,31 @@ Route::post('/logout', 'LoginController@logout');
 
 
 //route admin
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'],function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('users', 'Admins\User\UserController');
-    Route::get('/managers', 'ListeController@getmanager');
-    Route::get('/clients', 'ListeController@getclient');
+
+    Route::get('/dashboard',        [AdminController::class, 'getdash']);
+    Route::get('/managers',         [AdminController::class, 'getmanagers']);
+    Route::get('/clients',          [AdminController::class, 'getclients']);
+    Route::put('/activate/{id}',    [AdminController::class, 'Activate']);
+    Route::put('/desactivate/{id}', [AdminController::class, 'Desactivate']);
+
+    //voiture
+    Route::get('/cars',             [CarController::class, 'index']);
+    Route::post('/cars',            [CarController::class, 'store']);
+    Route::get('/cars/{id}',        [CarController::class, 'show']);
+    Route::get('/cars/{id}/edit',   [CarController::class, 'edit']);
+    Route::put('/cars/{id}',        [CarController::class, 'update']);
+    Route::delete('/cars/{id}',     [CarController::class, 'destroy']);
+    Route::put('/dispo/{id}',       [CarController::class, 'dispo']);
+    Route::put('/nonDispo/{id}',    [CarController::class, 'nonDispo']);
 });
 
 
- // route manager
-Route::group(['prefix' => 'manager', 'middleware' => 'manager'],function(){
-    Route::resource('voitures', 'Managers\Voiture\VoitureController');
-    Route::get('/dashboard', 'Managers\ManagerController@getdash');
+// route manager
+Route::group(['prefix' => 'manager', 'middleware' => 'manager'], function () {
 
-        //a revoir
-    //Route::get('reservations/create/{id}', 'Clients\Booking\ReservationController@create');
-    //Route::resource('reservations', 'Clients\Booking\ReservationController')->except('create');
+    Route::get('/dashboard', 'Managers\ManagerController@getdash');
     Route::get('/reservations/create', 'Managers\Reservation\ReservationController@create');
     Route::get('/reservations', 'Managers\Reservation\ReservationController@index');
     Route::post('/reservations', 'Managers\Reservation\ReservationController@store')->name('reservations.store');
@@ -55,27 +67,30 @@ Route::group(['prefix' => 'manager', 'middleware' => 'manager'],function(){
     Route::put('/confirmReserv/{id}', 'Managers\Reservation\ReservationController@confirmReserv');
     Route::put('/cancelReserv/{id}', 'Managers\Reservation\ReservationController@cancelReserv');
 
+    //Voiture
+    Route::resource('voitures', 'Managers\Voiture\VoitureController');
     Route::put('/dispo/{id}', 'Managers\Voiture\VoitureController@dispo');
     Route::put('/nonDispo/{id}', 'Managers\Voiture\VoitureController@nonDispo');
 
-    //facture
-    Route::resource('factures', 'FactureController');
+    //invoices
+    Route::resource('invoices', 'InvoiceController');
+    Route::post('invoice_add/delete', 'InvoiceController@InvoiceAddDelete')->name('invoice_add/delete');
+    Route::post('invoice/delete', 'InvoiceController@InvoiceDelete')->name('invoice/delete');
+    Route::post('create/invoices/update', 'InvoiceController@InvoiceUpdate')->name('create/invoices/update');
 });
 
- //route client
-Route::group(['prefix' => 'client', 'middleware' => 'client'],function(){
+//route client
+Route::group(['prefix' => 'client', 'middleware' => 'client'], function () {
     Route::get('/dashboard', 'Clients\ClientController@dashboard');
     Route::get('/voitures', 'Clients\ClientController@getvoitures');
     Route::get('/history', 'Clients\ClientController@getHistory');
-
-    //Route::get('/reservations', 'Clients\ClientController@index');
-    //Route::get('/reservations/create/{id}', 'Clients\ClientController@create');
 
     Route::get('bookings/create/{id}', 'Clients\Booking\BookingController@create');
     Route::resource('bookings', 'Clients\Booking\BookingController')->except('create');
 });
 
 Route::get('/account/settings', 'AccountController@settings');
+Route::get('/account/profil', 'AccountController@profil');
 Route::post('/account/settings', 'AccountController@updateProfil');
 Route::post('/account/settings/pwd', 'AccountController@updatePassword');
 Route::get('/account/lock', 'LockscreenController@lockScreen')->name('lockscreen');
@@ -83,8 +98,6 @@ Route::post('/account/lock', 'LockscreenController@postLockscreen');
 
 Route::get('/activate/{email}/{activationCode}', 'ActivationController@activate');
 
-//Route::get('admin/dashboard', 'Admins\AdminController@dashboard')->middleware('admin');
-//Route::get('/manager/dashboard', 'Managers\ManagerController@dashboard')->middleware('manager');
-
 Route::get('/userChartData', 'ChartDataController@getMonthlyUserData');
 Route::get('/reservChartData', 'ChartDataController@getMonthlyReservData');
+Route::get('/search', 'SearchController@search')->name('search');

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Managers\Voiture;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Voiture;
-use App\Reservation;
+use Image;
+use Storage;
 use App\User;
 use Sentinel;
-use Storage;
-use Image;
-use DB;
+use App\Voiture;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class VoitureController extends Controller
 {
@@ -24,20 +24,8 @@ class VoitureController extends Controller
         $voitures = Voiture::paginate(4);
 
         $marqueCount = Voiture::select("marque", DB::raw("count(*) as count"))
-                ->groupBy("marque")
-                ->get();
-
-//                 if (isset($_GET['query'])) {
-//
-//                             $search_text = $_GET['query'];
-//                             $results = DB::table('voitures')->where('marque','LIKE', $search_text)->paginate(2);
-//
-//                             return view('managers.voiture.index',['results'=>$voitures]);
-//                             //dd($search_text);
-//
-//                         } else {
-//                             return view('managers.voiture.index', compact('voitures', 'marqueCount'));
-//                         }
+            ->groupBy("marque")
+            ->get();
 
         return view('managers.voiture.index', compact('voitures', 'marqueCount'));
     }
@@ -47,10 +35,10 @@ class VoitureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function create()
-     {
-      //
-     }
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -60,48 +48,64 @@ class VoitureController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $rules = [
             'voiture_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'marque' => 'required',
-            'modele' => 'required',
-            'moteur' => 'required',
-            'prix' => 'required',
-            'matricule' => 'required'
-        ]);
+            'marque'        => 'required',
+            'modele'        => 'required',
+            'carburant'        => 'required',
+            'prix'          => 'required',
+            'matricule'     => 'required|unique:voitures'
+        ];
 
-        $voiture = new Voiture;
+        $messages = [
+            'required'  => 'ce champ ne peut etre vide.',
+            'matricule' => 'cet immatriculation existe déja'
+        ];
 
-        $voiture->user_id = Sentinel::getUser()->id;
-        $voiture->marque = $request->marque;
-        $voiture->modele = $request->modele;
-        $voiture->moteur = $request->moteur;
-        $voiture->prix = $request->prix;
-        $voiture->matricule = $request->matricule;
+        $this->validate($request, $rules, $messages);
 
-//         if($request->file('voiture_image')){
-//             // Store the uploaded file in the "lambogini" directory on Cloudinary with the filename "prosper"
-//             $result   = $request->voiture_image->storeOnCloudinaryAs('locature', 'test');
-//
-//             $url      = $result->getSecurePath();   // Get the url of the uploaded file; https
-//             $filename = $result->getFileName();     // Get the file name of the uploaded file
-//
-//             $voiture->chemin        = $url;
-//             $voiture->voiture_image = $filename;
-//         }
-        if($request->hasFile('voiture_image')) {
-            $image      = $request->file('voiture_image');
-            $filename   = $image->getClientOriginalName();
-            $path       = $image->storeAs('/uploads', $filename);
-            $location   = storage_path() . $path;
-            $url        = Storage::url($filename);
-            //$voiture->chemin = $location;
-            $voiture->chemin        = env('APP_IP') . $url;
-            $voiture->voiture_image = $filename;
+        try {
+
+            $voiture = new Voiture;
+
+            $voiture->user_id   = Sentinel::getUser()->id;
+            $voiture->marque    = $request->marque;
+            $voiture->modele    = $request->modele;
+            $voiture->carburant    = $request->carburant;
+            $voiture->prix      = $request->prix;
+            $voiture->matricule = $request->matricule;
+
+            //         if($request->file('voiture_image')){
+            //             // Store the uploaded file in the "lambogini" directory on Cloudinary with the filename "prosper"
+            //             $result   = $request->voiture_image->storeOnCloudinaryAs('locature', 'test');
+            //
+            //             $url      = $result->getSecurePath();   // Get the url of the uploaded file; https
+            //             $filename = $result->getFileName();     // Get the file name of the uploaded file
+            //
+            //             $voiture->chemin        = $url;
+            //             $voiture->voiture_image = $filename;
+            //         }
+            if ($request->hasFile('voiture_image')) {
+                $image      = $request->file('voiture_image');
+                $filename   = $image->getClientOriginalName();
+                $path       = $image->storeAs('/uploads', $filename);
+                $location   = storage_path() . $path;
+                $url        = Storage::url($filename);
+                //$voiture->chemin = $location;
+                $voiture->chemin        = env('APP_IP') . $url;
+                $voiture->voiture_image = $filename;
+            }
+
+            $voiture->save();
+
+            Toastr::success('Enrégistrement éfectué avec succès :)', 'Success');
+            return redirect('/manager/voitures');
+        } catch (\Exception $e) {
+            //throw $e;
+            Toastr::error("Echec de l'enregistrement ! :)", 'Erreur');
+            return back()
+                ->with('error', "Echec de l'enregistrement!");
         }
-
-        $voiture->save();
-
-        return redirect('/manager/voitures');
     }
 
     /**
@@ -143,7 +147,7 @@ class VoitureController extends Controller
         $request->validate([
             'marque' => 'required',
             'modele' => 'required',
-            'moteur' => 'required',
+            'carburant' => 'required',
             'prix' => 'required',
             'matricule' => 'required',
             'voiture_image' => 'sometimes|image|max:2048'
@@ -156,7 +160,7 @@ class VoitureController extends Controller
         $voiture->user_id   = $user_id;
         $voiture->marque    = $request->marque;
         $voiture->modele    = $request->modele;
-        $voiture->moteur    = $request->moteur;
+        $voiture->carburant    = $request->carburant;
         $voiture->prix      = $request->prix;
         $voiture->matricule = $request->matricule;
 
@@ -170,7 +174,7 @@ class VoitureController extends Controller
         //    // update the database
         //    $voiture->voiture_image = $filename;
         //}
-        if($request->hasFile('voiture_image')) {
+        if ($request->hasFile('voiture_image')) {
             $image = $request->file('voiture_image');
             $filename = $image->getClientOriginalName();
             $path = $image->storeAs('/uploads', $filename);
@@ -185,13 +189,9 @@ class VoitureController extends Controller
             //Storage::delete($oldFilename);
             //Storage::disk('local')->delete($location);
         }
-//
-//         if($request->disponible != on )
-//             $voiture->disponible = 1
-
 
         $voiture->save();
-
+        Toastr::success('Modification efectuée avec succès :)', 'Success');
         return redirect('/manager/voitures')->with('flash', 'donnee modifie avec success');
     }
 
@@ -207,32 +207,30 @@ class VoitureController extends Controller
 
         $voiture->delete();
 
+        Toastr::success('Suppression reussie :)', 'Success');
         return redirect('/manager/voitures');
     }
 
-    //tri and Count
-
     public function dispo(Request $request, $id)
-        {
-            $voiture = Voiture::findOrFail($id);
+    {
+        $voiture = Voiture::findOrFail($id);
 
-             Voiture::where('id', $voiture->id)
-                    ->update(['disponible' => 1]);
+        Voiture::where('id', $voiture->id)
+            ->update(['disponible' => 1]);
 
-            return redirect()->back();
-                    //->with('flash', 'changement de statut confirmée avec succes! ');
+        return redirect()->back();
+        //->with('flash', 'Statut change avec succes! ');
 
-        }
+    }
 
-        public function nonDispo(Request $request, $id)
-        {
-            $voiture = Voiture::findOrFail($id);
+    public function nonDispo(Request $request, $id)
+    {
+        $voiture = Voiture::findOrFail($id);
 
-            Voiture::where('id', $voiture->id)
-                    ->update(['disponible' => 0]);
+        Voiture::where('id', $voiture->id)
+            ->update(['disponible' => 0]);
 
-            return redirect()->back();
-                    //->with('flash', changement de statut  avec succes! ');
-        }
-
+        return redirect()->back();
+        //->with('flash', Statut  avec succes! ');
+    }
 }

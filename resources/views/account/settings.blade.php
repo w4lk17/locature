@@ -69,9 +69,9 @@
                                         </div>
                                     </div>
                                     <div class="form-row mb-2">
-                                        <div class="col-md-4 mb-3">
+                                        {{-- <div class="col-md-4 mb-3">
                                             <label class="form-label">Numéro carte d identité </label>
-                                            <input type="text" readonly class="form-control {{ $errors->has('num_cni') ? 'error' : '' }}" value="{{ $user->num_cni}}" name="num_cni" id="num_cni" maxlength="50">
+                                            <input type="text"  class="form-control {{ $errors->has('num_cni') ? 'error' : '' }}" value="{{ $user->num_cni}}" name="num_cni" id="num_cni" maxlength="50">
 
                                             <!-- Error -->
                                             @if ($errors->has('num_cni'))
@@ -79,7 +79,7 @@
                                                 {{ $errors->first('num_cni') }}
                                             </div>
                                             @endif
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Téléphone</label>
                                             <input type="text"  id="telephone" class="form-control {{ $errors->has('telephone') ? 'error' : '' }}"  value="{{ $user->telephone}}" name="telephone" maxlength="30">

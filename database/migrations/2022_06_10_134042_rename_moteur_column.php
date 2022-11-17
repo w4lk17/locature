@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCheminToVoituresTable extends Migration
+class RenamecarburantColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddCheminToVoituresTable extends Migration
     public function up()
     {
         Schema::table('voitures', function (Blueprint $table) {
-            $table->string('chemin')->nullable()->after('carburant');
+            $table->renameColumn('moteur', 'carburant');
         });
     }
 
@@ -26,8 +26,7 @@ class AddCheminToVoituresTable extends Migration
     public function down()
     {
         Schema::table('voitures', function (Blueprint $table) {
-
-            $table->dropColumn('chemin');
+            $table->renameColumn('carburant', 'moteur');
         });
     }
 }

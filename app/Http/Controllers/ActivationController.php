@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
-Use Activation;
 use Sentinel;
+use Activation;
+use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ActivationController extends Controller
 {
@@ -15,10 +16,10 @@ class ActivationController extends Controller
 
         if (Activation::complete($user, $activationCode)) {
 
+            Toastr::success('Activation du Compte reussie ! :)', 'Success');
             return redirect('/login');
-
         } else {
-            # code...
+            Toastr::error('Echec Activation du Compte ! :)', 'Erreur');
         }
     }
 }

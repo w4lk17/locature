@@ -2,10 +2,12 @@
 
 namespace App;
 
+use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends EloquentUser
 {
@@ -40,7 +42,8 @@ class User extends EloquentUser
         'password', 'remember_token',
     ];
 
-    public function voiture(){
+    public function voiture()
+    {
         return $this->hasMany("App\Voiture");
     }
 
@@ -57,4 +60,16 @@ class User extends EloquentUser
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Check if the current user is activated
+     * @return bool
+     */
+    public function isActivated()
+    {
+        if (Activation::completed($this)) {
+            return true;
+        }
+        return false;
+    }
 }
