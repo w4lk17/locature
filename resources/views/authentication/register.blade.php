@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Page Content -->
-            <div class="bg-image" style="background-image: url('assets/media/photos/photo6@2x.jpg');">
+            <div class="bg-primary-lighter">
                 <div class="hero-static bg-white-75">
                     <div class="content">
                         <div class="row justify-content-center">

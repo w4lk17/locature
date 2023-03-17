@@ -56,6 +56,7 @@ class AccountController extends Controller
 
         $rules = [
             'old_password' => 'required|min:6',
+            'password' => 'required|min:6',
             'confPassword' => 'required|min:6|same:password'
         ];
 

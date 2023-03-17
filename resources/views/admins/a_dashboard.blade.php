@@ -55,8 +55,7 @@
             </a>
         </div>
         <div class="col-6 col-md-3 col-lg-6 col-xl-3">
-            <a class="block block-rounded block-link-pop border-left border-primary border-4x"
-                href="javascript:void(0)">
+            <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="/admin/reservations">
                 <div class="block-content block-content-full bg-flat">
                     <div class="font-size-sm font-w600 text-uppercase text-white">Reservations</div>
                     <div class="font-size-h2 font-w400 text-white">{{ $ReservCount }}</div>
@@ -141,7 +140,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="/admin/clients">View all clients</a>
+                    <a href="/admin/clients">Voir tous les clients</a>
                 </div>
             </div>
         </div>
@@ -187,11 +186,11 @@
                                     <td class="text-right">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip"
-                                                title="" data-original-title="View Client">
-                                                <a href=""><i class="fa fa-fw fa-eye"></i></a>
+                                                title="" data-original-title="">
+                                                <a href="/admin/clients"><i class="fa fa-fw fa-eye"></i></a>
                                             </button>
                                             <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip"
-                                                title="" data-original-title="Edit Client">
+                                                title="" data-original-title="">
                                                 <a href=""><i class="fa fa-fw fa-pencil-alt"></i></a>
                                             </button>
                                         </div>
@@ -203,7 +202,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="#">View all bookings</a>
+                    <a href="#">Voir tous les reservations</a>
                 </div>
             </div>
         </div>

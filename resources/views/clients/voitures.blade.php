@@ -2,11 +2,13 @@
 @section('content')
 <div class="content content-full">
     @foreach ($voitures as $voiture)
-    <div class="block block col-9">
+    <div class="block ">
         <div class=" block block-content">
             <div class="container">
                 <div class="block  block-bordered">
-                    <div class=" block-content block-content-full ribbon ribbon-modern ribbon-warning">
+                    <div class=" block-content block-content-full ribbon ribbon-modern {{ $voiture->disponible == 1
+                            ? 'ribbon-warning'
+                            : 'ribbon-danger'}}">
                         <div class="ribbon-box">
                             <i class="fa fa-check mr-1"></i>{{ $voiture->disponible == 1
                             ? 'Disponible'
@@ -19,23 +21,47 @@
                                         src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" />
                                 </div>
                                 <div class="col-md-8">
-                                    <h4 class="h3 mb-1">
-                                        <a class="text-primary-dark" href="#">{{ $voiture->marque }}</a>
-                                        <a class="text-primary-dark h4" href="#">{{ $voiture->modele }}</a>
-                                    </h4>
-                                    <div class="font-size-sm">
-                                        <p>carburant:
-                                            <span class="text-uppercase h5">{{ $voiture->carburant }}</span>
-                                        </p>
-                                        <p>Immatriculation:
-                                            <span class="text-uppercase h5">{{ $voiture->matricule }}</span>
-                                        </p>
-                                        <p>Prix:
-                                            <span class="text-uppercase h5">{{ $voiture->prix }} CFA/24h</span>
-                                        </p>
+                                    <div>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10%;"></th>
+                                                    <th style="width: 10%;"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="font-w600">Marque:</td>
+                                                    <td class="font-w700 font-size-lg">
+                                                        {{ $voiture->marque }} {{ $voiture->modele }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="font-w600">Carburant:</td>
+                                                    <td class="font-w700 font-size-lg">
+                                                        {{ $voiture->carburant }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="font-w600">Transmission:</td>
+                                                    <td class="font-w700 font-size-lg">
+                                                        {{ $voiture->transmission }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="font-w600">Prix:</td>
+                                                    <td class="font-w700 font-size-lg">
+                                                        {{ $voiture->prix }} FCFA<sup><strong>/jour</strong></sup>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
                                     </div>
-                                    <a class="btn btn-primary"
-                                        href="/client/bookings/create/{{ $voiture->id }}">Détails...</a>
+
+                                    <a class="btn btn-primary mt-3"
+                                        href="/client/bookings/create/{{ $voiture->id }}">Détails...
+                                    </a>
                                 </div>
                             </div>
                         </div>

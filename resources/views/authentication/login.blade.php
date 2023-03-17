@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Page Content -->
-<div class="bg-image" style="background-image: url('assets/media/photos/photo6@2x.jpg');">
+<div class="bg-primary-lighter">
     <div class="hero-static bg-white-75">
         <div class="content">
             <div class="row justify-content-center">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="block-content">
-                            <div class="p-sm-3 px-lg-4 py-lg-5">
+                            <div class="p-sm-3 px-lg-4 py-lg">
                                 <h1 class="mb-2">Locature</h1>
                                 <p>Bienvenue, veuillez vous connecter.</p>
 
@@ -55,13 +55,12 @@
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="login-remember"
                                                     name="remember_me">
-                                                <label class="custom-control-label font-w400"
-                                                    for="login-remember">Souviens-toi de moi</label>
-                                                     <a class="text-right" href="/acceuil">Aller a l'accueil</a>
+                                                <label class="custom-control-label font-w400" for="login-remember">Se
+                                                    souvenir de moi</label>
+                                                <div class="text-right">
+                                                    <a href="/">Accueil</a>
+                                                </div>
                                             </div>
-                                            
-                                               
-                                            
                                         </div>
                                     </div>
                                     <div class="form-group row ">
@@ -82,7 +81,7 @@
             </div>
         </div>
         <div class="content content-full font-size-sm text-muted text-center">
-            <strong>Locature 1.0</strong> &copy; <span data-toggle="year-copy"></span>
+            <strong>Locature 1.0.0</strong> &copy;{{-- <span data-toggle="year-copy"></span> --}}
         </div>
     </div>
 </div>

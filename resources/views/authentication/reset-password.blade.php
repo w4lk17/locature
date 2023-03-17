@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Page Content -->
-                <div class="bg-image" style="background-image: ({{ URL::asset('assets/media/photos/photo6@2x.jpg) }});">
+                <div class="bg-primary-lighter">
                     <div class="hero-static bg-white-95">
                         <div class="content">
                             <div class="row justify-content-center">

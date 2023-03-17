@@ -21,7 +21,7 @@
                 <span class="m-2 d-inline-block invisible" data-toggle="appear" data-class="animated fadeInUp"
                     data-timeout="600">
                     <a class="btn btn-success px-4 py-2" data-toggle="click-ripple" href="#">
-                        <i class="fa fa-fw fa-shopping-cart mr-1"></i> Purchase
+                        <i class="fa fa-fw fa-shopping-cart mr-1"></i> Nous Contacter
                     </a>
                 </span>
                 <span class="m-2 d-inline-block invisible" data-toggle="appear" data-class="animated fadeInUp"

@@ -1,7 +1,19 @@
 <?php
 
 use App\Http\Controllers\Admins\AdminController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LockscreenController;
+use App\Http\Controllers\ActivationController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\Clients\ClientController;
+use App\Http\Controllers\Clients\Booking\BookingController;
 use App\Http\Controllers\Admins\Car\CarController;
+use App\Http\Controllers\Admins\Reservation\ReservationAdController;
+use App\Http\Controllers\Managers\Voiture\VoitureController;
+use App\Http\Controllers\Managers\Reservation\ReservationController;
+use App\Http\Controllers\Managers\ManagerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,21 +29,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'WelcomeController@welcome');
 
+//visitor
 Route::group(['middleware' => 'visitors'], function () {
-    Route::get('/register', 'RegistrationController@register');
-    Route::post('/register', 'RegistrationController@postRegister');
 
-    Route::get('/login', 'LoginController@login');
-    Route::post('/login', 'LoginController@postLogin');
+    Route::get('/login',                      [LoginController::class, 'login']);
+    Route::post('/login',                     [LoginController::class, 'postLogin']);
 
-    Route::get('/forgot-password', 'ForgotPasswordController@forgotPassword');
-    Route::post('/forgot-password', 'ForgotPasswordController@PostForgotPassword');
+    Route::get('/register',                   [RegistrationController::class, 'register']);
+    Route::post('/register',                  [RegistrationController::class, 'postRegister']);
 
-    Route::get('/reset/{email}/{resetCode}', 'ForgotPasswordController@resetPassword');
-    Route::post('/reset/{email}/{resetCode}', 'ForgotPasswordController@postResetPassword');
+    Route::get('/forgot-password',            [ForgotPasswordController::class, 'forgotPassword']);
+    Route::post('/forgot-password',           [ForgotPasswordController::class, 'PostForgotPassword']);
+    Route::get('/reset/{email}/{resetCode}',  [ForgotPasswordController::class, 'resetPassword']);
+    Route::post('/reset/{email}/{resetCode}', [ForgotPasswordController::class, 'postResetPassword']);
 });
 
-Route::post('/logout', 'LoginController@logout');
+Route::post('/logout', [LoginController::class, 'logout']);
 
 
 //route admin
@@ -53,24 +66,31 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::delete('/cars/{id}',     [CarController::class, 'destroy']);
     Route::put('/dispo/{id}',       [CarController::class, 'dispo']);
     Route::put('/nonDispo/{id}',    [CarController::class, 'nonDispo']);
+
+    //reservation
+    Route::get('/reservations/create',  [ReservationAdController::class, 'create']);
+    Route::get('/reservations',         [ReservationAdController::class, 'index']);
+    Route::post('/reservations',        [ReservationAdController::class, 'store']); //->name('reservations.store');
+    Route::get('/reservations/{id}',    [ReservationAdController::class, 'show']);
 });
 
 
 // route manager
 Route::group(['prefix' => 'manager', 'middleware' => 'manager'], function () {
 
-    Route::get('/dashboard', 'Managers\ManagerController@getdash');
-    Route::get('/reservations/create', 'Managers\Reservation\ReservationController@create');
-    Route::get('/reservations', 'Managers\Reservation\ReservationController@index');
-    Route::post('/reservations', 'Managers\Reservation\ReservationController@store')->name('reservations.store');
-    Route::get('/reservations/{id}', 'Managers\Reservation\ReservationController@show');
-    Route::put('/confirmReserv/{id}', 'Managers\Reservation\ReservationController@confirmReserv');
-    Route::put('/cancelReserv/{id}', 'Managers\Reservation\ReservationController@cancelReserv');
+    Route::get('/dashboard',            [ManagerController::class, 'getdash']);
+
+    Route::get('/reservations/create',  [ReservationController::class, 'create']);
+    Route::get('/reservations',         [ReservationController::class, 'index']);
+    Route::post('/reservations',        [ReservationController::class, 'store']); //->name('reservations.store');
+    Route::get('/reservations/{id}',    [ReservationController::class, 'show']);
+    Route::put('/confirmReserv/{id}',   [ReservationController::class, 'confirmReserv']);
+    Route::put('/cancelReserv/{id}',    [ReservationController::class, 'cancelReserv']);
 
     //Voiture
     Route::resource('voitures', 'Managers\Voiture\VoitureController');
-    Route::put('/dispo/{id}', 'Managers\Voiture\VoitureController@dispo');
-    Route::put('/nonDispo/{id}', 'Managers\Voiture\VoitureController@nonDispo');
+    Route::put('/dispo/{id}',           [VoitureController::class, 'dispo']);
+    Route::put('/nonDispo/{id}',        [VoitureController::class, 'nonDispo']);
 
     //invoices
     Route::resource('invoices', 'InvoiceController');
@@ -81,22 +101,25 @@ Route::group(['prefix' => 'manager', 'middleware' => 'manager'], function () {
 
 //route client
 Route::group(['prefix' => 'client', 'middleware' => 'client'], function () {
-    Route::get('/dashboard', 'Clients\ClientController@dashboard');
-    Route::get('/voitures', 'Clients\ClientController@getvoitures');
-    Route::get('/history', 'Clients\ClientController@getHistory');
 
-    Route::get('bookings/create/{id}', 'Clients\Booking\BookingController@create');
     Route::resource('bookings', 'Clients\Booking\BookingController')->except('create');
+    Route::get('bookings/create/{id}', [BookingController::class, 'create']);
+
+    Route::get('/dashboard',           [ClientController::class, 'dashboard']);
+    Route::get('/voitures',            [ClientController::class, 'getvoitures']);
+    Route::get('/history',             [ClientController::class, 'getHistory']);
 });
 
-Route::get('/account/settings', 'AccountController@settings');
-Route::get('/account/profil', 'AccountController@profil');
-Route::post('/account/settings', 'AccountController@updateProfil');
-Route::post('/account/settings/pwd', 'AccountController@updatePassword');
-Route::get('/account/lock', 'LockscreenController@lockScreen')->name('lockscreen');
-Route::post('/account/lock', 'LockscreenController@postLockscreen');
 
-Route::get('/activate/{email}/{activationCode}', 'ActivationController@activate');
+Route::get('/account/settings',      [AccountController::class, 'settings']);
+Route::get('/account/profil',        [AccountController::class, 'profil']);
+Route::post('/account/settings',     [AccountController::class, 'updateProfil']);
+Route::post('/account/settings/pwd', [AccountController::class, 'updatePassword']);
+
+Route::get('/account/lock', 'LockscreenController@lockScreen')->name('lockscreen');
+Route::post('/account/lock', [LockscreenController::class, 'postLockscreen']);
+
+Route::get('/activate/{email}/{activationCode}', [ActivationController::class, 'activate']);
 
 Route::get('/userChartData', 'ChartDataController@getMonthlyUserData');
 Route::get('/reservChartData', 'ChartDataController@getMonthlyReservData');

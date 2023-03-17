@@ -39,14 +39,14 @@ class LoginController extends Controller
                     Toastr::info('Soyez le bienvenu dans Locature :)', 'Info');
                     return redirect('/client/dashboard');
                 }
-                return redirect('/');
+                return redirect('/login');
             } else {
                 Toastr::error('Information(s) de connexion incorrecte(s) :)', 'Erreur');
                 return redirect()->back();
             }
         } catch (ThrottlingException $e) {
             $delay = $e->getDelay();
-            Toastr::warning("Trop de tentative :) n\  vous êtes banni pour $delay secondes.", 'Avertissement');
+            Toastr::warning("Trop de tentative :) n\ vous êtes banni pour $delay secondes.", 'Avertissement');
             return redirect()->back()->with(['error' => " vous êtes banni pour $delay secondes. "]);
         } catch (NotActivatedException $e) {
             Toastr::info("Votre compte n'est pas activé ): n\ Verifier votre boite mail pour activer le compte", 'Info');

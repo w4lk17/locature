@@ -26,7 +26,7 @@
                     @endif
                 </div>
 
-                <form class="row g-3" action="/manager/reservations" method="POST">
+                <form class="row g-3" action="/admin/reservations" method="POST">
                     @csrf
 
                     <div class="col-md-6 mb-3">

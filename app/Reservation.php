@@ -10,21 +10,24 @@ class Reservation extends Model
 
     use SoftDeletes;
 
-     protected $fillable = [
-            'user_id',
-            'voiture_id',
-            'etat',
-            'date_depart',
-            'date_retour'
-     ];
+    protected $fillable = [
+        'user_id',
+        'voiture_id',
+        'etat',
+        'date_depart',
+        'date_retour'
+    ];
 
-     protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at'];
 
-     public function voiture() {
-            return $this->belongsTo('App\Voiture');
-     }
+    public function voiture()
+    {
+        return $this->belongsTo('App\Voiture');
+    }
 
-     public function user() {
-            return $this->belongsTo('App\User');
-     }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
+
