@@ -1,59 +1,77 @@
 @extends('layouts.master')
 @section('content')
-<div class="content content-boxed">
-    <div class="block ">
+<div class="content content-full">
+    <div class="block block-rounded block-bordered">
         <div class="block-header">
-            <h2 class="block-title">Mes Reservations</h2>
+            <h3 class="block-title">Mes Reservations</h3>
             <div class="block-options">
-                <div class="block-options-item">
-                    <code></code>
-                </div>
+                <code></code>
             </div>
         </div>
         <div class="block-content block-content-full">
+            <div class="table-responsive col-md-12">
+                <table class="table table-vcenter js-dataTable-full-pagination">
+                    <thead>
+                        <tr>
+                            {{-- <th class="text-center" style="width: 50px;">#</th> --}}
+                            <th>Voiture</th>
+                            <th class="d-sm-table-cell" style="width: 20%;">date depart</th>
+                            <th class="d-sm-table-cell" style="width: 20%;">date retour</th>
+                            <th style="width: 20%;">status</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($reservations as $reservation)
+                        <tr>
+                            {{-- <th class="text-center" scope="row">{{ $reservation->id }}</th> --}}
 
-            <table class="table table-responsive mt-3">
-                <thead>
-                    <tr>
-                        <th class="d-sm-table-cell text-center">#</th>
-                        <th class="d-sm-table-cell text-center">Voiture</th>
-                        <th class="d-sm-table-cell text-center">Depart</th>
-                        <th class="d-sm-table-cell text-center">Retour</th>
-                        <th class="d-sm-table-cell text-center">Etat</th>
-                        <th class="d-sm-table-cell text-center">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($reservations as $reservation)
-                    <tr>
-                        <td>{{ $reservation->id }}</td>
-                        <td class="font-w700">{{ $reservation->voiture->marque }} {{ $reservation->voiture->modele }}
-                        </td>
-                        <td>{{ $reservation->date_depart }}</td>
-                        <td>{{ $reservation->date_retour }}</td>
-                        <td><span class="font-w600 text-warning">{{ $reservation->etat == 0 ?'En attente...'
-                                :($reservation->etat == 1 ?'Acceptée' :'Refusée')}}</span></td>
-                        <td><a href="/client/bookings/{{ $reservation->id }}" class="btn btn-sm btn-primary">voir</a>
-                            <a href="/client/bookings/{{ $reservation->id }}/edit" class="{{ $reservation->etat == 0
-                                        ? 'btn btn-sm btn-success'
-                                        : 'btn btn-sm btn-success disabled'}}">
-                                Modifier
-                            </a>
-                            <button class="btn btn-sm btn-danger deleteBooking" data-id="{{ $reservation->id }}">
-                                supprimer
-                            </button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            @if(!empty(Session::get('success')))
-            <div class="alert alert-success"> {{ Session::get('success') }}</div>
-            @endif
-            @if(!empty(Session::get('error')))
-            <div class="alert alert-danger"> {{ Session::get('error') }}</div>
-            @endif
-
+                            <td class="font-w700 font-size-sm">
+                                {{ $reservation->voiture->marque }} {{ $reservation->voiture->modele }}
+                            </td>
+                            <td class="d-sm-table-cell">
+                                <span>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
+                                    $reservation->date_depart)->format('j-m-Y H:i:s') }}</span>
+                            </td>
+                            <td class="d-sm-table-cell">
+                                <span>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
+                                    $reservation->date_retour)->format('j-m-Y H:i:s') }}</span>
+                            </td>
+                            <td>
+                                <span class="{{ $reservation->etat == 0
+                                    ? 'badge badge-warning'
+                                    :  ($reservation->etat == 1
+                                    ? 'badge badge-info'
+                                    : 'badge badge-danger')}}">{{ $reservation->etat == 0 ?'En attente...'
+                                    :($reservation->etat == 1 ?'Acceptée' :'Rejetée')}}</span>
+                            </td>
+                            <td class="text-center">
+                                <a href="/client/bookings/{{ $reservation->id }}" class="btn btn-sm btn-primary"> 
+                                    voir
+                                </a>
+                                <a href="/client/bookings/{{ $reservation->id }}/edit" class="{{ $reservation->etat == 0
+                                    ? 'btn btn-sm btn-success'
+                                    : 'btn btn-sm btn-success disabled'}}"> Modifier
+                                </a>
+                                <button class="btn btn-sm btn-danger deleteBooking" data-id="{{ $reservation->id }}">
+                                    supprimer
+                                </button>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4">Data not Found</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+                @if(!empty(Session::get('success')))
+                <div class="alert alert-success"> {{ Session::get('success') }}</div>
+                @endif
+                @if(!empty(Session::get('error')))
+                <div class="alert alert-danger"> {{ Session::get('error') }}</div>
+                @endif
+            </div>
         </div>
     </div>
 </div>

@@ -3,11 +3,9 @@
 namespace App;
 
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends EloquentUser
 {

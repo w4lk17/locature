@@ -21,7 +21,7 @@ class VoitureController extends Controller
      */
     public function index()
     {
-        $voitures = Voiture::paginate(4);
+        $voitures = Voiture::all();
 
         $marqueCount = Voiture::select("marque", DB::raw("count(*) as count"))
             ->groupBy("marque")

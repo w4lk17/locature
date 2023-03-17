@@ -39,6 +39,9 @@
             </a>
         </div>
     </div>
+    <div class="row">
+        <img class="col-12" src="/assets/media/photos/locature_logo@3x.png" alt="logo" width="auto" height="auto">
+    </div>
     <!-- END Stats -->
 </div>
 <!-- END Page Content -->

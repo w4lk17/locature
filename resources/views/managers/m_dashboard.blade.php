@@ -44,7 +44,7 @@
     </div>
     <!-- END Stats -->
     <!-- Dashboard Charts -->
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-xl-6">
             <div class="block block-mode-loading-oneui">
                 <div class="block-header">
@@ -86,7 +86,7 @@
             </div>
             <!-- END Bars Chart -->
         </div>
-    </div>
+    </div> --}}
     <!-- END Dashboard Charts -->
 
     <!-- Customers and Latest Orders -->

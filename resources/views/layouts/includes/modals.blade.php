@@ -106,7 +106,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="carburant">carburant:</label>
+                                <label for="carburant">CARBURANT:</label>
                                 <input type="text" class="form-control" id="carburant" name="carburant" required>
                                 @if($errors->has('carburant')) <span class="error"> {{ $errors->first("carburant")
                                     }}</span>@endif

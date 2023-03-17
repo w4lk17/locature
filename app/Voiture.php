@@ -19,6 +19,7 @@ class Voiture extends Model
         'modele',
         'marque',
         'carburant',
+        'transmission',
         'chemin',
         'prix',
         'voiture_image',

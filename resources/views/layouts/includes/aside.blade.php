@@ -184,7 +184,7 @@
                 </ul>
             </li>
             <li class="nav-main-item ">
-                <a class="nav-main-link {{ set_active('') }}" href="">
+                <a class="nav-main-link {{ set_active('') }}" href="/admin/reservations">
                     <i class="nav-main-link-icon si si-list"></i>
                     <span class="nav-main-link-name">Listes des reservations</span>
                 </a>
@@ -195,7 +195,6 @@
                     <span class="nav-main-link-name">Listes des managers</span>
                 </a>
             </li>
-            <li class="nav-main-heading">Gestion compte</li>
             {{-- <li class="nav-main-item">
                 <a class="nav-main-link {{ set_active('') }}" data-toggle="modal" data-target="#modal-block-fadeinU"
                     data-backdrop="static" data-keyboard="false" href="#">

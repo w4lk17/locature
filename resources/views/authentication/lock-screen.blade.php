@@ -47,7 +47,6 @@
                                             placeholder="Mot de passe..">
 
                                     </div>
-
                                     <div class="form-group row justify-content-center">
                                         <div class="col-md-7">
                                             <button type="submit" class="btn btn-block btn-light">

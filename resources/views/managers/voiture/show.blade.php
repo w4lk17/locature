@@ -41,13 +41,19 @@
                                     <div class="font-size-h4 text-muted">{{ $voiture->modele}}</div>
                                 </div>
                                 <div class="font-size-h3 font-w700">
-                                    {{ $voiture->prix}} <sup><em>FCFA</em></sup>
+                                    {{ $voiture->prix}}F CFA<sup><em>/JOUR</em></sup>
                                 </div>
                             </div>
 
                             <p class=" my-3 border-top">
                             <div>
-                                <p><strong class="font-size-h5 font-w700">Carburant</strong> : {{ $voiture->carburant}}
+                                <p>
+                                    <strong class="font-size-h5 font-w700">Carburant</strong> :
+                                    {{ $voiture->carburant}}
+                                </p>
+                                <p>
+                                    <strong class="font-size-h5 font-w700">Transmission</strong> :
+                                    {{ $voiture->transmission}}
                                 </p>
                                 <p>
                                     <strong class="font-size-h5 font-w700">Immatricule</strong> :
