@@ -17,7 +17,7 @@ class ClientController extends Controller
 
         $BookingCount = Reservation::where('user_id', $user->id)->count();
 
-        $DispoCarsCount = Voiture::where('disponible', 0)->count();
+        $DispoCarsCount = Voiture::where('disponible', 1)->count();
 
         return view('clients.dashboard', compact('BookingCount', 'DispoCarsCount'));
     }
