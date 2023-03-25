@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admins;
 
+use DB;
 use App\User;
 use Sentinel;
-use App\Http\Controllers\Controller;
-use App\Reservation;
 use App\Voiture;
+use App\Reservation;
+use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 
@@ -26,7 +27,18 @@ class AdminController extends Controller
         $clients  = $client->users()->latest()->limit(5)->get();
         $reservs  = Reservation::latest()->limit(5)->get();
 
-        return view('admins.a_dashboard', compact('reservs', 'clients', 'UserCount', 'CarsCount', 'ReservCount', 'ClientsCount'));
+        $userData = User::select(DB::raw("COUNT(*) as count"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(\DB::raw("Month(created_at)"))
+            ->pluck('count');
+
+        $reservData = Reservation::select(DB::raw("COUNT(*) as count"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(\DB::raw("Month(created_at)"))
+            ->pluck('count');
+
+
+        return view('admins.a_dashboard', compact('userData', 'reservs', 'clients', 'UserCount', 'CarsCount', 'ReservCount', 'ClientsCount'));
     }
 
 

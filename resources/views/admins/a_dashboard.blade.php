@@ -55,7 +55,8 @@
             </a>
         </div>
         <div class="col-6 col-md-3 col-lg-6 col-xl-3">
-            <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="/admin/reservations">
+            <a class="block block-rounded block-link-pop border-left border-primary border-4x"
+                href="/admin/reservations">
                 <div class="block-content block-content-full bg-flat">
                     <div class="font-size-sm font-w600 text-uppercase text-white">Reservations</div>
                     <div class="font-size-h2 font-w400 text-white">{{ $ReservCount }}</div>
@@ -209,4 +210,86 @@
     </div>
 </div>
 <!-- END Page Content -->
+@section('script')
+{{-- <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script> --}}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script type="text/javascript">
+    var userData = <?php echo json_encode($userData)?>;
+                var year = new Date().getFullYear();
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: `New User Growth, ${year}`
+                    },
+                    subtitle: {
+                        text: 'Source: positronx.io'
+                    },
+                    accessibility: {
+                        announceNewData: {
+                            enabled: true
+                        }
+                    },
+                    xAxis: {
+                        categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                            'September', 'October', 'November', 'December'
+                        ]
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Nombre d\'operation par Manager'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+                    plotOptions: {
+                        series: {
+                            allowPointSelect: true,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y}'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> of total<br />'
+                    },
+                    series: [{
+                       name: 'New Users',
+                        data: userData
+                        // name: 'Jane',
+                        // data: [1, 0, 4,1, 0, 15,1, 0, 4,1, 0, 4]
+                        // }, {
+                        // name: 'John',
+                        // data: [5, 7, 3]
+                       
+                    }],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                }
+                            }
+                        }]
+                    }
+                });
+</script>
+@endsection
 @endsection

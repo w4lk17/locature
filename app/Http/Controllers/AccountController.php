@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Sentinel;
 
 use Illuminate\Http\Request;
@@ -90,6 +89,9 @@ class AccountController extends Controller
 
     public function profil()
     {
-        return view('account.profil');
+        $user = Sentinel::getUser();
+
+        $roles = $user->roles;
+        return view('account.profil', compact('user','roles'));
     }
 }
