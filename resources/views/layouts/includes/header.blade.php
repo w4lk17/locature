@@ -70,7 +70,7 @@
                     </div>
                     <div class="p-2">
                         <h5 class="dropdown-header text-uppercase">Options Utilisateur</h5>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                        <a class="dropdown-item d-flex align-items-center justify-content-between disabled"
                             href="javascript:void(0)">
                             <span>Inbox</span>
                             <span>
@@ -114,8 +114,9 @@
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="si si-bell"></i>
-                     <!-- Nombre de Notifications  -->
-                    <span class="badge badge-primary badge-pill">{{-- 3 --}}</span> 
+                    <!-- Nombre de Notifications  -->
+                    <span
+                        class="badge badge-primary badge-pill">{{Sentinel::getUser()->unreadNotifications->count()}}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0 border-0 font-size-sm"
                     aria-labelledby="page-header-notifications-dropdown">
@@ -123,20 +124,27 @@
                         <h5 class="dropdown-header text-uppercase text-white">Notifications</h5>
                     </div>
                     <ul class="nav-items mb-0">
+                        @forelse ( Sentinel::getUser()->unreadNotifications as $notifications)
                         <li>
-                            {{-- <a class="text-dark media py-2" href="javascript:void(0)">
+                            <a class="text-dark media py-2" href="javascript:void(0)">
                                 <div class="mr-2 ml-3">
                                     <i class="fa fa-fw fa-plus-circle text-info"></i>
                                 </div>
                                 <div class="media-body pr-2">
-                                    <div class="font-w600">1 new sale, keep it up</div>
-                                    <small class="text-muted">22 min ago</small>
+                                    <div class="font-w600">Nouvelle reservation,N*{{ $notifications->data['reservation']
+                                        }} </br> de {{ $notifications->data['name'] }}</div>
+                                    <small class="text-muted">{{ $notifications->created_at->diffForHumans() }}</small>
                                 </div>
-                            </a> --}}
+                            </a>
                         </li>
+                        @empty
+                        <div class="media-body pr-2">
+                            <div class="font-w600">Pas de nouvelles notifications</div>
+                        </div>
+                        @endforelse
                     </ul>
                     <div class="p-2 border-top">
-                        <a class="btn btn-sm btn-light btn-block text-center" href="javascript:void(0)">
+                        <a class="btn btn-sm btn-light btn-block text-center" href="/activities">
                             <i class="fa fa-fw fa-arrow-down mr-1"></i> Charger plus..
                         </a>
                     </div>

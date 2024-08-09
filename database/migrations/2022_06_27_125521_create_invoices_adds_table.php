@@ -23,6 +23,7 @@ class CreateInvoicesAddsTable extends Migration
             $table->string('amount')->nullable();
             $table->timestamps();
 
+            $table->engine = 'InnoDB';
         });
     }
 

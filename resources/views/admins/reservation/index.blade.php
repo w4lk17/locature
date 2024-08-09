@@ -13,15 +13,15 @@
         </div>
         <div class="block-content block-content-full">
             <div class="table-responsive col-md-12">
-                <table class="table table-sm table-vcenter js-dataTable-full-pagination">
+                <table class="table table-vcenter js-dataTable-full-pagination">
                     <thead>
                         <tr>
                             {{-- <th class="text-center" style="width: 50px;">#</th> --}}
                             <th>Nom</th>
                             <th>Voiture</th>
-                            <th class="d-sm-table-cell" style="width: 15%;">date depart</th>
-                            <th class="d-sm-table-cell" style="width: 15%;">date retour</th>
-                            <th  style="width: 15%;">status</th>
+                            <th style="width: 15%;">date depart</th>
+                            <th style="width: 15%;">date retour</th>
+                            <th style="width: 15%;">status</th>
                             <th class="text-center" style="width: 100px;">Action</th>
                         </tr>
                     </thead>
@@ -29,24 +29,24 @@
                         @forelse($reservations as $reservation)
                         <tr>
                             {{-- <th class="text-center" scope="row">{{ $reservation->id }}</th> --}}
-                            <td class="font-w600 font-size-sm">
-                                {{ $reservation->user->last_name }} {{ $reservation->user->first_name }}
+                            <td class="font-w700 font-size-sm">
+                                <a href="/admin/users/{{ $reservation->user_id }}">
+                                    {{ $reservation->user->last_name }} {{ $reservation->user->first_name }}
+                                </a>
                             </td>
-                            <td class="font-w600 font-size-sm">
-                                <a href="/admin/cars/{{ $reservation->voiture_id }}">{{
-                                    $reservation->voiture->marque
-                                    }} {{ $reservation->voiture->modele }}</a>
+                            <td class="font-w700 font-size-sm">
+                                {{-- <a href="/admin/cars/{{ $reservation->voiture_id }}"> --}}
+                                    {{ $reservation->voiture->marque }} {{ $reservation->voiture->modele }}
+                                {{-- </a> --}}
                             </td>
-                            <td class="d-sm-table-cell">
-                                <span>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                    $reservation->date_depart)->format('j-m-Y H:i:s') }}</span>
+                            <td class="font-w700 font-size-sm">
+                                {{ $reservation->date_depart->format('j-m-Y H:i:s') }}
                             </td>
-                            <td class="d-sm-table-cell">
-                                <span>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                    $reservation->date_retour)->format('j-m-Y H:i:s') }}</span>
+                            <td class="font-w700 font-size-sm">
+                                {{ $reservation->date_retour->format('j-m-Y H:i:s') }}
                             </td>
-                            <td >
-                                <span class="{{ $reservation->etat == 0
+                            <td>
+                                <span class=" font-w700 font-size-sm{{ $reservation->etat == 0
                                     ? 'badge badge-warning'
                                     :  ($reservation->etat == 1
                                     ? 'badge badge-info'

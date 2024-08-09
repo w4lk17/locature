@@ -51,7 +51,7 @@
                                                 <tr>
                                                     <td class="font-w600">Prix:</td>
                                                     <td class="font-w700 font-size-lg">
-                                                        {{ $voiture->prix }} FCFA<sup><strong>/jour</strong></sup>
+                                                        {{ $voiture->prix }} F.CFA<sup><strong>/jour</strong></sup>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -73,7 +73,7 @@
     @endforeach
     <!-- Pagination -->
     <nav class="d-flex justify-content-center">
-        {!! $voitures->links() !!}
+        {{ $voitures->links() }}
     </nav>
     <!-- END Pagination -->
 </div>

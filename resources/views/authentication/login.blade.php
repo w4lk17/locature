@@ -58,7 +58,7 @@
                                                 <label class="custom-control-label font-w400" for="login-remember">Se
                                                     souvenir de moi</label>
                                                 <div class="text-right">
-                                                    <a href="/">Accueil</a>
+                                                    <a href="/accueil">Accueil</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
             </div>
         </div>
         <div class="content content-full font-size-sm text-muted text-center">
-            <strong>Locature 1.0.0</strong> &copy;{{-- <span data-toggle="year-copy"></span> --}}
+            <strong>Locature 1.0.1</strong> &copy;{{-- <span data-toggle="year-copy"></span> --}}
         </div>
     </div>
 </div>

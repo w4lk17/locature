@@ -24,20 +24,29 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6 m-b-20">
-                                <img src="{{ asset('assets/media/photos/photo1.jpg') }}" class="inv-logo" alt="logo">
+                                <img src="{{ asset('assets/media/photos/locature_logo@3x.png') }}" class="inv-logo"
+                                    alt="logo">
                                 <ul class="list-unstyled">
-                                    <li>LOCATURE</li>
-                                    <li>3864 Quiet Valley Lane,</li>
-                                    <li>Sherman Oaks, CA, 91403</li>
-                                    <li>GST No:</li>
+                                    <li>
+                                        <h5 class="mb-2"><strong>LOCATURE</strong></h5>
+                                    </li>
+                                    <li>Quartier Avédji,</li>
+                                    <li>Lomé, TOGO</li>
+                                    <li>+228 99 99 99 99</li>
+                                    {{-- <li>GST No:</li> --}}
                                 </ul>
                             </div>
                             <div class="col-sm-6 m-b-20">
                                 <div class="invoice-details">
                                     <h3 class="text-uppercase">Facture #{{$invoicesJoin[0]->invoice_number }}</h3>
-                                    <ul class="list-unstyled">
-                                        <li>Create Date: <span>{{ $invoicesJoin[0]->invoice_date }}</span></li>
-                                        <li>Expiry date: <span>{{ $invoicesJoin[0]->expiry_date }}</span></li>
+                                    <ul class="list-unstyled ">
+                                        <li>Date Facture : <span>{{ $invoicesJoin[0]->invoice_date }}</span></li>
+                                        <li>Date Echéance : <span>{{ $invoicesJoin[0]->expiry_date }}</span></li>
+                                        <li>
+                                            <h5 class="mt-2">Caissier : <span>
+                                                    {{ $invoicesJoin[0]->cashier }}</span>
+                                            </h5>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -45,7 +54,7 @@
                         <div class="row">
                             <div class="col-sm-6 col-lg-7 col-xl-8 m-b-20">
                                 {{-- <h5>Invoice to:</h5> --}}
-                                <span class="text-muted">Invoice to:</span>
+                                <span class="text-muted">Facture de:</span> Mr./Mme
                                 <ul class="list-unstyled">
                                     <li>
                                         <h5 class="mb-2"><strong>{{$invoicesJoin[0]->client }}</strong></h5>
@@ -53,7 +62,6 @@
                                     {{-- <li><span>Global Technologies</span></li> --}}
                                     <li>{{$invoicesJoin[0]->client_address }}</li>
                                     <li>{{$invoicesJoin[0]->billing_address }}</li>
-                                    <li>United States</li>
                                     <li>888-777-6655</li>
                                     <li><a href="#">{{$invoicesJoin[0]->email }}</a></li>
                                 </ul>
@@ -80,8 +88,8 @@
                                         <th>#</th>
                                         <th>ITEM</th>
                                         <th class="d-none d-sm-table-cell">DESCRIPTION</th>
-                                        <th>UNIT COST</th>
-                                        <th>QUANTITY</th>
+                                        <th>PRIX<sup><strong>/jour</strong></sup></th>
+                                        <th>NBRE de jour</th>
                                         <th class="text-right">TOTAL</th>
                                     </tr>
                                 </thead>
@@ -91,9 +99,9 @@
                                         <td>{{ ++$key }}</td>
                                         <td>{{ $item->item }}</td>
                                         <td class="d-none d-sm-table-cell">{{ $item->description }}</td>
-                                        <td>${{ $item->unit_cost }}</td>
+                                        <td>{{ $item->unit_cost }} &#x20A3;</td>
                                         <td>{{ $item->qty }}</td>
-                                        <td class="text-right">${{ $item->amount }}</td>
+                                        <td class="text-right">{{ $item->amount }} &#x20A3;</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -110,16 +118,21 @@
                                                 <tbody>
                                                     <tr>
                                                         <th>Subtotal:</th>
-                                                        <td class="text-right">{{$invoicesJoin[0]->total }}</td>
+                                                        <td class="text-right">{{ number_format($invoicesJoin[0]->total, thousands_separator: " ") }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax: <span class="text-regular">(25%)</span></th>
+                                                        <th>Tax:<span class="text-regular">
+                                                            ({{ $invoicesJoin[0]->tax }}%)</span></th>
                                                         <td class="text-right">{{$invoicesJoin[0]->tax_1 }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Remise:<span class="text-regular"></th>
+                                                        <td class="text-right">{{$invoicesJoin[0]->discount }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Total:</th>
                                                         <td class="text-right text-primary">
-                                                            <h5>{{$invoicesJoin[0]->total }}</h5>
+                                                            <h5>{{ number_format($invoicesJoin[0]->grand_total, thousands_separator: " ") }} &#x20A3;</h5>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -129,12 +142,12 @@
                                 </div>
                             </div>
                             <div class="invoice-info">
-                                <strong>Other information</strong>
+                                <strong>Autres Information</strong>
                                 <p class="text-muted">{{$invoicesJoin[0]->other_information }}</p>
                             </div>
                             <p class="font-size-sm text-muted text-center py-3 my-3 border-top">
-                                Thank you very much for doing business with us. We look forward to working with you
-                                again!
+                                Merci beaucoup de faire affaire avec nous. Nous avons hâte de travailler à nouveau avec
+                                vous!
                             </p>
                         </div>
                     </div>

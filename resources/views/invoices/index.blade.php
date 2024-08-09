@@ -28,9 +28,10 @@
                             <th>N° facture</th>
                             <th>Client</th>
                             <th class="d-none d-sm-table-cell">date facture</th>
-                            <th class="d-none d-sm-table-cell">date echeance</th>
+                            {{-- <th class="d-none d-sm-table-cell">date echeance</th> --}}
                             <th>montant</th>
-                            <th class="d-none d-sm-table-cell">statut</th>
+                            <th>payee</th>
+                            <th class="d-none d-sm-table-cell">etat</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
@@ -39,22 +40,30 @@
                         <tr>
                             <td hidden class="ids">{{ $item->id }}</td>
                             <td hidden class="invoice_number">{{ $item->invoice_number }}</td>
-                            <td class="font-w600 font-size-sm">
+                            <td class="font-w700">
                                 <a href="{{ url('manager/invoices/'.$item->invoice_number) }}">
                                     {{ $item->invoice_number }}</a>
                             </td>
-                            <td class="font-w600 font-size-sm">{{ $item->client }}</td>
-                            <td class="d-none d-sm-table-cell font-size-sm">
+                            <td class="font-w700">{{ $item->client }}</td>
+                            <td class="d-none d-sm-table-cell font-w700">
                                 {{ $item->invoice_date }}
                                 {{-- {{\Carbon\Carbon::parse($item->invoice_date)->isoFormat('D MMM YYYY')}} --}}
                             </td>
-                            <td class="d-none d-sm-table-cell font-size-sm">
+                            {{-- <td class="d-none d-sm-table-cell font-w700">
                                 {{ $item->expiry_date }}
-                                {{-- {{\Carbon\Carbon::parse($item->expiry_date)->isoFormat('D MMM YYYY')}} --}}
+                            </td> --}}
+                            <td class="font-w700">
+                                {{ number_format($item->grand_total, thousands_separator: " ") }} &#x20A3;
                             </td>
-                            <td><strong>{{ $item->total }}CFA</strong></td>
-                            <td class="d-none d-sm-table-cell">
-                                <span class="badge badge-info">Payé</span>
+                            <td class="font-w700">
+                                {{ number_format($item->perçu, thousands_separator: " ") }} &#x20A3;
+                            </td>
+                            <td class="font-w600 d-none d-sm-table-cell">
+                                <span class="font-w600 font-size-md{{ $item->etat == 'Payée'
+                                    ? 'badge badge-danger'
+                                    :  ($item->etat == 'Facturée'
+                                    ? 'badge badge-info'
+                                    : 'badge badge-warning')}}">{{ $item->etat }}</span>
                             </td>
                             <td class="text-center">
                                 <div>

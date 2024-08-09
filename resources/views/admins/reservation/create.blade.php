@@ -108,7 +108,7 @@
                         @if($errors->has('date_retour')) <span class="error"> {{ $errors->first("date_retour") }}
                         </span> @endif
                     </div>
-                    <div class="col-12 mb-3">
+                    <div class="col-12 my-3">
                         <button type="submit" class="btn btn-success">Valider</button>
                         <button type="reset" class="btn btn-primary">Annuler</button>
                     </div>

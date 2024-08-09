@@ -30,15 +30,15 @@
                 <p class="font-w700 col-md-6">Transmission :
                     <span class="font-w700 font-size-lg"> {{ $reservation->voiture->transmission }}</span>
                 </p>
-                <p class="font-w700 col-md-6">Immatriculation :
-                    <span class="font-w700 font-size-lg"> {{ $reservation->voiture->matricule }} </span>
-                </p>
-            </div>
-            <div class="row">
                 <p class="font-w700 col-md-6">Prix :
                     <span class="font-w700 font-size-lg">
                         {{ $reservation->voiture->prix }} FCFA<sup><strong>/jour</strong></sup>
                     </span>
+                </p>
+            </div>
+            <div class="row">
+                <p class="font-w700 col-md-6">Immatriculation :
+                    <span class="font-w700 font-size-lg"> {{ $reservation->voiture->matricule }} </span>
                 </p>
             </div>
 

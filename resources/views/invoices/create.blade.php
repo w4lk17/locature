@@ -11,7 +11,7 @@
                         <div class="form-group">
                             <label>Client <span class="text-danger">*</span></label>
                             <select class="js-select2 form-control {{ $errors->has('client') ? 'error' : '' }}"
-                                id="client" name="client" data-placeholder="-Sélectionner client-">
+                                id="client" name="client" data-placeholder="Sélectionner client" required>
                                 <option></option>
                                 @foreach($users as $user)
                                 <option value="{{ $user->last_name }} {{ $user->first_name }}">
@@ -33,7 +33,6 @@
                             </select>
                         </div>
                     </div> --}}
-
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
                             <label>Email</label>
@@ -42,20 +41,20 @@
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                            <label>Taxe<span class="text-danger">*</span></label>
+                            <label>Taxe <span class="text-danger">*</span></label>
                             <select class="select form-control {{ $errors->has('tax') ? 'error' : '' }}" id="tax"
-                                name="tax">
-                                <option> --Select Tax-- </option>
-                                <option value="18%">TVA</option>
-                                <option value="0">Sans Taxe</option>
+                                name="tax" required>
+                                <option value="">Sélectionner Taxe</option>
+                                <option value="18">TVA</option>
+                                <option value="0">Sans TVA</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                            <label> Addresse Client<span class="text-danger">*</span></label>
+                            <label> Addresse Client <span class="text-danger">*</span></label>
                             <textarea class="form-control {{ $errors->has('client_address') ? 'error' : '' }} " rows="1"
-                                id="client_address" name="client_address"></textarea>
+                                id="client_address" name="client_address" required></textarea>
                             @if($errors->has('client_address')) <span class="error"> {{ $errors->first("client_address")
                                 }} </span>
                             @endif
@@ -76,7 +75,7 @@
                                     class="js-datepicker form-control {{ $errors->has('invoice_date') ? 'error' : '' }}"
                                     id="invoice_date" name="invoice_date" data-week-start="1" data-autoclose="true"
                                     data-today-highlight="true" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy"
-                                    type="text">
+                                    type="text" required>
                                 @if($errors->has('invoice_date')) <span class="error"> {{ $errors->first("invoice_date")
                                     }} </span>
                                 @endif
@@ -91,7 +90,7 @@
                                     class="js-datepicker form-control {{ $errors->has('expiry_date') ? 'error' : '' }}"
                                     id="expiry_date" name="expiry_date" data-week-start="1" data-autoclose="true"
                                     data-today-highlight="true" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy"
-                                    type="text">
+                                    type="text" required>
                                 @if($errors->has('expiry_date')) <span class="error"> {{ $errors->first("expiry_date")
                                     }} </span>
                                 @endif
@@ -108,9 +107,9 @@
                                         <th style="width: 20px">#</th>
                                         <th class="col-sm-2">Item</th>
                                         <th class="col-md-6">Description</th>
-                                        <th style="width:100px;">Unit Cost</th>
-                                        <th style="width:80px;">Qty</th>
-                                        <th>Amount</th>
+                                        <th style="width:100px;">Prix /jour</th>
+                                        <th style="width:80px;">Nbre de jour</th>
+                                        <th>Montant</th>
                                         <th> </th>
                                     </tr>
                                 </thead>
@@ -148,7 +147,7 @@
                                         <td></td>
                                         <td class="text-right">Total</td>
                                         <td>
-                                            <input class="form-control text-right total" type="text" id="sum_total"
+                                            <input class="form-control text-right" type="text" id="sum_total"
                                                 name="total" value="0" readonly>
                                         </td>
                                     </tr>
@@ -161,7 +160,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="5" class="text-right">
-                                            Discount %
+                                            Remise
                                         </td>
                                         <td>
                                             <input class="form-control text-right discount" type="text" id="discount"
@@ -174,11 +173,37 @@
                                         </td>
                                         <td style="font-size: 16px;width: 230px">
                                             <input class="form-control text-right" type="text" id="grand_total"
-                                                name="grand_total" value="$ 0.00" readonly>
+                                                name="grand_total" value="0.00" readonly>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="row ">
+                            <div class="col-lg-2 ml-auto">
+                                <div class="form-group">
+                                    <label>Montant Payée <span class="text-danger">*</span></label>
+                                    <input class="form-control text-right" type="text" id="perçu" name="perçu"
+                                        placeholder="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 mr-auto">
+                                <div class="form-group">
+                                    <label>Etat <span class="text-danger">*</span></label>
+                                    <select class="select form-control" id="etat" name="etat">
+                                        <option value="Facturée">Facturée</option>
+                                        <option value="Payée">Payée</option>
+                                        <option value="Partiellement payée">Partiellement payée</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Reste à Payée <span class="text-danger"></span></label>
+                                    <input class="form-control text-right" type="text" id="rap" name="rap" value="0"
+                                        placeholder="0" readonly>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -192,11 +217,117 @@
                     </div>
                 </div>
                 <div class="submit-section">
-                    <button class="btn btn-primary m-r-10">Enrégistrer & Envoyer</button>
+                    <button class="btn btn-primary m-r-10 disabled">Enrégistrer & Envoyer</button>
                     <button type="submit" class="btn btn-primary ">Enrégistrer</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+@section('script')
+<script>
+    var rowIdx = 1;
+    $("#addBtn").on("click", function () {
+     // Adding a row inside the tbody.
+        $("#tableEstimate tbody").append(`
+        <tr id="R${++rowIdx}">
+            <td class="row-index text-center">
+                <p> ${rowIdx}</p>
+            </td>
+            <td><input class="form-control" type="text" style="min-width:150px" id="item" name="item[]"></td>
+            <td><input class="form-control" type="text" style="min-width:150px" id="description" name="description[]"></td>
+            <td><input class="form-control unit_price" style="width:100px" type="text" id="unit_cost" name="unit_cost[]"></td>
+            <td><input class="form-control qty" style="width:80px" type="text" id="qty" name="qty[]"></td>
+            <td><input class="form-control total" style="width:120px" type="text" id="amount" name="amount[]" value="0"
+                    readonly></td>
+            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+        `);
+    });
+
+    $("#tableEstimate tbody").on("click", ".remove", function () {
+    // Getting all the rows next to the row
+    // containing the clicked button
+        var child = $(this).closest("tr").nextAll();
+
+    // Iterating across all the rows
+    // obtained to change the index
+        child.each(function () {
+        // Getting <tr> id.
+            var id = $(this).attr("id");
+
+        // Getting the <p> inside the .row-index class.
+            var idx = $(this).children(".row-index").children("p");
+
+        // Gets the row number from <tr> id.
+            var dig = parseInt(id.substring(1));
+
+        // Modifying row index.
+            idx.html(`${dig - 1}`);
+
+        // Modifying row id.
+            $(this).attr("id", `R${dig - 1}`);
+        });
+
+    // Removing the current row.
+        $(this).closest("tr").remove();
+
+    // Decreasing total number of rows by 1.
+        rowIdx--;
+    });
+
+    $("#tableEstimate tbody").on("input", ".unit_price", function () {
+        var unit_price = parseFloat($(this).val());
+        var qty = parseFloat($(this).closest("tr").find(".qty").val());
+        var total = $(this).closest("tr").find(".total");
+        total.val(unit_price * qty);
+
+        calc_total();
+    });
+
+    $("#tableEstimate tbody").on("input", ".qty", function () {
+        var qty = parseFloat($(this).val());
+        var unit_price = parseFloat($(this).closest("tr").find(".unit_price").val());
+        var total = $(this).closest("tr").find(".total");
+        total.val(qty * unit_price );
+        
+        calc_total();
+    });
+
+    function calc_total() {
+        var sum = 0;
+        $(".total").each(function () {
+            sum += parseFloat($(this).val());
+        });
+        $(".subtotal").text(sum);
+        
+        var amounts = sum;
+        var tax = 100;
+        $(document).on("change keyup blur", "#qty, .discount", function () {
+            // var qty = $("#qty").val();
+            var unit_price = $(".unit_price").val();
+            var tva = $("#tax").val();
+            var discount = $(".discount").val();
+
+            var tax_ = amounts * tva / tax;
+            var grd_t = amounts + tax_ - discount;
+            
+            $("#sum_total").val(amounts);
+            $("#tax_1").val(tax_);
+            $("#grand_total").val(grd_t);
+        });
+    }
+</script>
+<script>
+    $(document).on("change keyup blur", "#grand_total, #perçu", function () {
+        var perçu = $("#perçu").val();
+        var gr = $("#grand_total").val();
+
+        var rap = gr - perçu;
+
+        $("#rap").val(rap);
+    });
+</script>
+@endsection
 @endsection

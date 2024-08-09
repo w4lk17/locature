@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="content content-full font-size-sm text-white text-center">
-            <strong>LOCATURE 1.0</strong> &copy; <span data-toggle="year-copy"></span>
+            <strong>LOCATURE 1.0.1</strong> &copy; <span data-toggle="year-copy"></span>
         </div>
     </div>
 </div>

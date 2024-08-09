@@ -18,13 +18,13 @@
                         {{ csrf_field() }}
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="marque">MARQUE:</label>
+                                <label for="marque">MARQUE :</label>
                                 <input type="text" class="form-control" id="marque" name="marque" required>
                                 @if($errors->has('marque')) <span class="error"> {{ $errors->first("marque")
                                     }}</span>@endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="modele">MODELE:</label>
+                                <label for="modele">MODELE :</label>
                                 <input type="text" class="form-control" id="modele" name="modele" required>
                                 @if($errors->has('modele')) <span class="error"> {{ $errors->first("modele")
                                     }}</span>@endif
@@ -32,26 +32,34 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="carburant">carburant:</label>
+                                <label for="carburant">CARBURANT :</label>
                                 <input type="text" class="form-control" id="carburant" name="carburant" required>
                                 @if($errors->has('carburant')) <span class="error"> {{ $errors->first("carburant")
                                     }}</span>@endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="prix">PRIX:</label>
+                                <label for="transmission">TRANSMISSION :</label>
+                                <input type="text" class="form-control" id="transmission" name="transmission" required>
+                                @if($errors->has('transmission')) <span class="error"> {{ $errors->first("transmission")
+                                    }}</span>@endif
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="matricule">IMMATRICULATION :</label>
+                                <input type="text" class="form-control" id="matricule" name="matricule" required>
+                                @if($errors->has('matricule')) <span class="error"> {{ $errors->first("matricule")
+                                    }}</span>@endif
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="prix">PRIX :</label>
                                 <input type="text" class="form-control" id="prix" name="prix" required>
                                 @if($errors->has('prix')) <span class="error"> {{ $errors->first("prix") }}</span>@endif
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="matricule">IMMATRICULATION:</label>
-                                <input type="text" class="form-control" id="matricule" name="matricule" required>
-                                @if($errors->has('matricule')) <span class="error"> {{ $errors->first("matricule")
-                                    }}</span>@endif
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>IMAGE:</label>
+                                <label>IMAGE :</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input " data-toggle="custom-file-input"
                                         id="voiture_image" name="voiture_image" required>
@@ -60,6 +68,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="block-content block-content-full text-right border-top">
                             <button type="reset" class="btn btn-sm btn-light" data-dismiss="modal">Fermer</button>
                             <button type="submit" class="btn btn-sm btn-primary ">Valider</button>
@@ -112,9 +121,10 @@
                                     }}</span>@endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="prix">PRIX:</label>
-                                <input type="text" class="form-control" id="prix" name="prix" required>
-                                @if($errors->has('prix')) <span class="error"> {{ $errors->first("prix") }}</span>@endif
+                                <label for="transmission">TRANSMISSION :</label>
+                                <input type="text" class="form-control" id="transmission" name="transmission" required>
+                                @if($errors->has('transmission')) <span class="error"> {{ $errors->first("transmission")
+                                    }}</span>@endif
                             </div>
                         </div>
                         <div class="form-row">
@@ -124,6 +134,13 @@
                                 @if($errors->has('matricule')) <span class="error"> {{ $errors->first("matricule")
                                     }}</span>@endif
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="prix">PRIX:</label>
+                                <input type="text" class="form-control" id="prix" name="prix" required>
+                                @if($errors->has('prix')) <span class="error"> {{ $errors->first("prix") }}</span>@endif
+                            </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>IMAGE:</label>
                                 <div class="custom-file">

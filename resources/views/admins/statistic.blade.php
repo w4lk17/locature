@@ -3,37 +3,41 @@
 @section('content')
 <!-- Charts -->
 
-<div class="content ">
+<div class="content content-full">
     <div class="block block-rounded block-mode-loading-oneui">
         <div class="block-header">
-            <h3 class="block-title">Nombre d'Operation par manager</h3>
+            <h3 class="block-title">Graphique de revenue</h3>
         </div>
         <div class="block block-content ">
-            <figure class="highcharts-figure">
-                <h1>Nombre de resèrvation traitée par Manager</h1>
-                <div id="container"></div>
-            </figure>
+            <div class="col-md-9">
+                <figure>
+                    <h1>Graphique de revenue par Mois</h1>
+                    <div id="container"></div>
+                </figure>
+            </div>
         </div>
     </div>
-</div> @section('script')
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</div>
+
+@section('script')
+<script src="{{ asset('assets/js/plugins/highcharts/highcharts.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/highcharts/modules/data.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/highcharts/modules/exporting.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/highcharts/modules/export-data.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/highcharts/modules/accessibility.js') }}"></script>
 <script type="text/javascript">
-    var userData = <?php echo json_encode($userData)?>;
+    var data = <?php echo json_encode($data)?>;
                 var year = new Date().getFullYear();
                 Highcharts.chart('container', {
                     chart: {
                         type: 'column'
                     },
                     title: {
-                        text: `New User Growth, ${year}`
+                        text: `revenue par mois, ${year}`
                     },
-                    subtitle: {
-                        text: 'Source: positronx.io'
-                    },
+                    // subtitle: {
+                    //     text: 'Source: positronx.io'
+                    // },
                     accessibility: {
                         announceNewData: {
                             enabled: true
@@ -46,7 +50,7 @@
                     },
                     yAxis: {
                         title: {
-                            text: 'Nombre d\'operation par Manager'
+                            text: 'Revenue'
                         }
                     },
                     legend: {
@@ -54,28 +58,12 @@
                         align: 'right',
                         verticalAlign: 'middle'
                     },
-                    plotOptions: {
-                        series: {
-                            allowPointSelect: true,
-                            borderWidth: 0,
-                            dataLabels: {
-                                enabled: true,
-                                format: '{point.y}'
-                            }
-                        }
-                    },
-                    tooltip: {
-                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> of total<br />'
+                    credits:{
+                        enabled:false
                     },
                     series: [{
-                       name: 'New Users',
-                        data: userData
-                        // name: 'Jane',
-                        // data: [1, 0, 4,1, 0, 15,1, 0, 4,1, 0, 4]
-                        // }, {
-                        // name: 'John',
-                        // data: [5, 7, 3]
+                       name: 'Revenue',
+                        data: data
                        
                     }],
                     responsive: {
@@ -94,6 +82,54 @@
                     }
                 });
 </script>
+<style type="text/css">
+    .highcharts-figure,
+    .highcharts-data-table table {
+        min-width: 310px;
+        max-width: 900px;
+        margin: 1em;
+    }
+
+    #container {
+        height: 400px;
+    }
+
+    .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #ebebeb;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+    }
+
+    .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+    }
+
+    .highcharts-data-table td,
+    .highcharts-data-table th,
+    .highcharts-data-table caption {
+        padding: 0.5em;
+    }
+
+    .highcharts-data-table thead tr,
+    .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+    }
+
+    .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+    }
+</style>
 @endsection
 <!-- END Charts -->
 @endsection

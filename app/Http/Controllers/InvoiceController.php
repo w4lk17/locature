@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\User;
+use Sentinel;
 use Exception;
 use App\Invoice;
 use App\InvoicesAdd;
@@ -37,7 +39,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        $users = DB::table('users')->get();
+        $users = User::all();
 
         return view('invoices.create', compact('users'));
     }
@@ -57,6 +59,7 @@ class InvoiceController extends Controller
             'client_address'    => 'required|string|max:255',
             'invoice_date'      => 'required|string|max:255',
             'expiry_date'       => 'required|string|max:255',
+            'perçu'             => 'required|string|max:255',
         ];
 
         $messages = [
@@ -67,12 +70,16 @@ class InvoiceController extends Controller
 
         try {
             /** Generate invoice number */
-            $invoice_number  = IDGenerator(new Invoice, 'invoice_number', 5, 'INV');
+            $invoice_number  = IDGenerator(new Invoice, 'invoice_number', 'INV', 5);
+
+            $user = Sentinel::getUser();
+            $cashier = $user->first_name . " " . $user->last_name;
 
             $invoices = new Invoice;
 
             $invoices->invoice_number    = $invoice_number;
             $invoices->client            = $request->client;
+            $invoices->cashier           = $cashier;
             $invoices->email             = $request->email;
             $invoices->tax               = $request->tax;
             $invoices->client_address    = $request->client_address;
@@ -83,6 +90,9 @@ class InvoiceController extends Controller
             $invoices->tax_1             = $request->tax_1;
             $invoices->discount          = $request->discount;
             $invoices->grand_total       = $request->grand_total;
+            $invoices->perçu             = $request->perçu;
+            $invoices->etat              = $request->etat;
+            $invoices->rap              = $request->rap;
             $invoices->other_information = $request->other_information;
             //return dd($invoice_number);
             $invoices->save();
@@ -215,10 +225,13 @@ class InvoiceController extends Controller
     {
 
         try {
+            $user = Sentinel::getUser();
+            $cashier = $user->first_name . " " . $user->last_name;
 
             $update = [
                 'id'                => $request->id,
                 'client'            => $request->client,
+                'cashier'           => $cashier,
                 'email'             => $request->email,
                 'tax'               => $request->tax,
                 'client_address'    => $request->client_address,
@@ -229,6 +242,9 @@ class InvoiceController extends Controller
                 'tax_1'             => $request->tax_1,
                 'discount'          => $request->discount,
                 'grand_total'       => $request->grand_total,
+                'perçu'             => $request->perçu,
+                'etat'              => $request->etat,
+                'rap'               => $request->rap,
                 'other_information' => $request->other_information,
             ];
 
@@ -249,11 +265,11 @@ class InvoiceController extends Controller
                 InvoicesAdd::create($invoicesAdd);
             }
 
-            Toastr::success('Updated Invoice successfully :)', 'Success');
+            Toastr::success('Modification réussie !', 'Success');
             return redirect()->back();
         } catch (\Exception $e) {
-            DB::rollback();
-            Toastr::error('Update Estimates fail :)', 'Error');
+
+            Toastr::error('Echec Modification !', 'Error');
             return redirect()->back();
         }
     }

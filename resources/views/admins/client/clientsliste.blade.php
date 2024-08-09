@@ -20,9 +20,11 @@
                         <tr>
                             {{-- <th class="text-center" style="width: 80px;">ID</th> --}}
                             <th>Nom</th>
-                            <th class="d-sm-table-cell">Email</th>
-                            <th class="d-sm-table-cell">Role</th>
-                            <th class="d-sm-table-cell">Enrégistré</th>
+                            <th>Email</th>
+                            <th>telephone</th>
+                            <th>adresse</th>
+                            <th>Role</th>
+                            <th>Enrégistré</th>
                             <th class="d-md-table-cell text-center" style="width: 100px;">Actions</th>
                         </tr>
                     </thead>
@@ -30,20 +32,26 @@
                         @foreach ($clients as $client)
                         <tr>
                             {{-- <td class="text-center font-size-sm">{{ $client->id }}</td> --}}
-                            <td class="font-w600 font-size-sm">
+                            <td class="font-w700 font-size-sm">
                                 <a href="/admin/users/{{ $client->id }}">
                                     {{ $client->last_name }} {{ $client->first_name }}</a>
                             </td>
-                            <td class="d-sm-table-cell font-w600 font-size-sm">
+                            <td class="font-w700 font-size-sm">
                                 {{ $client->email }}
                             </td>
+                            <td class="font-w700 font-size-sm">
+                                {{ $client->address }}
+                            </td>
+                            <td class="font-w700 font-size-sm">
+                                {{ $client->telephone }}
+                            </td>
                             @foreach ($client->roles as $role)
-                            <td class="d-sm-table-cell">
-                                <span class="badge badge-success font-w700">{{ $role->name }}</span>
+                            <td>
+                                <span class="badge badge-success font-w700 font-size-sm">{{ $role->name }}</span>
                             </td>
                             @endforeach
-                            <td>
-                                <em class="text-muted font-w600 font-size-sm">{{ $client->created_at->format('j/m/Y H:i') }}</em>
+                            <td class="font-w700 font-size-sm">
+                                {{ $client->created_at->format('j/m/Y H:i') }}
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">

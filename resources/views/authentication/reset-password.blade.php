@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="content content-full font-size-sm text-muted text-center">
-                            <strong>Locature 1.0</strong> &copy; <span data-toggle="year-copy"></span>
+                            <strong>Locature 1.0.1</strong> &copy; <span data-toggle="year-copy"></span>
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ class Reservation extends Model
         'date_retour'
     ];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'date_depart', 'date_retour'];
 
     public function voiture()
     {
@@ -30,4 +30,3 @@ class Reservation extends Model
         return $this->belongsTo('App\User');
     }
 }
-

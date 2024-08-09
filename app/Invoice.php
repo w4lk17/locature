@@ -13,6 +13,7 @@ class Invoice extends Model
     protected $fillable = [
         'invoice_number',
         'client',
+        'cashier',
         'email',
         'tax',
         'client_address',
@@ -23,6 +24,9 @@ class Invoice extends Model
         'tax_1',
         'discount',
         'grand_total',
+        'perçu',
+        'etat',
+        'rap',
         'other_information'
     ];
 

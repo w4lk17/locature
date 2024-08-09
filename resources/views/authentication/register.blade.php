@@ -10,10 +10,10 @@
                             <div class="col-md-8 col-lg-6 col-xl-4">
                                 <!-- Sign Up Block -->
                                 <div class="block block-themed block-fx-shadow mb-0">
-                                    <div class="block-header bg-success">
+                                    <div class="block-header bg-primary">
                                         <h3 class="block-title">CRÉER UN COMPTE</h3>
                                         <div class="block-options">
-                                            <a class="btn-block-option font-size-sm" href="javascript:void(0)" data-toggle="modal" data-target="#one-signup-terms">View Terms</a>
+                                            <a class="btn-block-option font-size-sm" href="javascript:void(0)" data-toggle="modal" data-target="#one-signup-terms">Voir Termes</a>
                                             <a class="btn-block-option" href="/login" data-toggle="tooltip" data-placement="left" title="Se connecter">
                                                 <i class="fa fa-sign-in-alt"></i>
                                             </a>
@@ -35,16 +35,16 @@
                                                         <input type="text" class="form-control form-control-alt" id="signup-username" name="last_name" placeholder="Nom">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="first_name" placeholder="Prenom">
+                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="first_name" placeholder="Prénom">
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="email" class="form-control form-control-alt" id="signup-email" name="email" placeholder="Email">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="num_cni" placeholder="numero CNI">
+                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="num_cni" placeholder="numéro CNI">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="telephone" placeholder="telephone +228xxxxxxx">
+                                                        <input type="text" class="form-control form-control-alt" id="signup-username" name="telephone" placeholder="téléphone">
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control form-control-alt" id="signup-username" name="address" placeholder="adresse">
@@ -53,7 +53,7 @@
                                                         <input type="password" class="form-control form-control-alt" id="signup-password" name="password" placeholder="Mot de passe">
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="password" class="form-control form-control-alt" id="signup-password-confirm" name="password_confirm" placeholder="Confirmer le mot de passe">
+                                                        <input type="password" class="form-control form-control-alt" id="signup-password-confirm" name="password_confirm" placeholder="Confirmer mot de passe">
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="custom-control custom-checkbox">
@@ -64,7 +64,7 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-6">
-                                                        <button type="submit" class="btn btn-block btn-success">
+                                                        <button type="submit" class="btn btn-block btn-primary">
                                                             <i class="fa fa-fw fa-plus mr-1"></i> S'inscrire
                                                         </button>
                                                     </div>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="content content-full font-size-sm text-muted text-center">
-                        <strong>Locature 1.0</strong> &copy; <span data-toggle="year-copy"></span>
+                        <strong>Locature 1.0.1</strong> &copy; <span data-toggle="year-copy"></span>
                     </div>
                 </div>
             </div>

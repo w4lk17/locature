@@ -29,7 +29,7 @@ class User extends EloquentUser
         'telephone',
     ];
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at','last_login'];
 
     /**
      * The attributes that should be hidden for arrays.

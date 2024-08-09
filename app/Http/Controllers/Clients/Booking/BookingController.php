@@ -9,6 +9,8 @@ use App\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Events\ReservationCreatedEvent;
+use App\Notifications\NewReservationNotification;
 
 class BookingController extends Controller
 {
@@ -48,7 +50,6 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $user =  Sentinel::getUser();
 
         $rules = [
             'date_depart' => 'required',
@@ -59,20 +60,26 @@ class BookingController extends Controller
             'required'  => 'ce champ ne peut etre vide.'
         ];
 
+        $user =  Sentinel::getUser();
+
         $this->validate($request, $rules, $messages);
 
         $request->request->add(['user_id' => $user->id]);
 
         $reserv = Reservation::create($request->all());
 
+        //event pour envoyer notification
+
+        event(new ReservationCreatedEvent($reserv, $user));
+
         // update the car to unavailable after reservation
         $voitureId = $reserv->voiture_id;
-
         Voiture::where('id', $voitureId)
             ->update(['disponible' => 0]);
 
+
         Toastr::success('Reservation efectuée avec succès :)', 'Success');
-        return redirect('/client/bookings')->with('success', 'Reservation efectuer avec succes!');
+        return redirect('/client/bookings');
     }
 
     /**

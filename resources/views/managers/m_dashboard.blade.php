@@ -7,10 +7,10 @@
     <div class="row">
         <div class="col-6 col-md-3 col-lg-6 col-xl-3">
             <a class="block block-rounded block-link-pop border-left border-primary border-4x"
-                href="javascript:void(0)">
+                href="/manager/reservations">
                 <div class="block-content block-content-full bg-default">
-                    <div class="font-size-sm font-w600 text-uppercase text-white">Visiteurs</div>
-                    <div class="font-size-h2 font-w400 text-white">120,580</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white">Total Reservations</div>
+                    <div class="font-size-h2 font-w400 text-white">{{ $ReservCount }}</div>
                 </div>
             </a>
         </div>
@@ -18,17 +18,17 @@
             <a class="block block-rounded block-themed block-link-pop border-left border-primary border-4x"
                 href="/manager/voitures">
                 <div class="block-content block-content-full bg-danger">
-                    <div class="font-size-sm font-w600 text-uppercase text-white ">Voitures</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white ">Total Voitures</div>
                     <div class="font-size-h2 font-w400 text-white">{{ $VoitureCount }}</div>
                 </div>
             </a>
         </div>
         <div class="col-6 col-md-3 col-lg-6 col-xl-3">
             <a class="block block-rounded block-link-pop border-left border-primary border-4x"
-                href="/manager/reservations">
+                href="javascript:void(0)">
                 <div class="block-content block-content-full bg-success">
-                    <div class="font-size-sm font-w600 text-uppercase text-white">Reservations</div>
-                    <div class="font-size-h2 font-w400 text-white">{{ $ReservCount }}</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white">Total Factures</div>
+                    <div class="font-size-h2 font-w400 text-white">{{ $InvoCount }}</div>
                 </div>
             </a>
         </div>
@@ -36,8 +36,10 @@
             <a class="block block-rounded block-link-pop border-left border-primary border-4x"
                 href="javascript:void(0)">
                 <div class="block-content block-content-full bg-flat">
-                    <div class="font-size-sm font-w600 text-uppercase text-white">Statistiques</div>
-                    <div class="font-size-h2 font-w400 text-white">$21</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white">Total Montant Reservation</div>
+                    <div class="font-size-h2 font-w400 text-white">
+                        {{ number_format($totalAmount, 2, ',', '') }} &#x20A3;
+                    </div>
                 </div>
             </a>
         </div>
@@ -149,11 +151,11 @@
                         <table class="table table-striped table-hover table-borderless table-vcenter font-size-sm mb-0">
                             <thead class="thead-dark">
                                 <tr class="text-uppercase">
-                                    <th class="d-sm-table-cell font-w700">#</th>
-                                    <th class="d-sm-table-cell font-w700">Date Depart</th>
-                                    <th class="d-sm-table-cell font-w700">Date Retour</th>
-                                    <th class="d-sm-table-cell font-w700">Voiture</th>
-                                    <th class="d-sm-table-cell font-w700">Statut</th>
+                                    <th class="font-w700">#</th>
+                                    <th class="font-w700">Date Depart</th>
+                                    <th class="font-w700">Date Retour</th>
+                                    <th class="font-w700">Voiture</th>
+                                    <th class="font-w700">Statut</th>
                                     <th class="font-w700 text-center"></th>
                                 </tr>
                             </thead>
@@ -163,21 +165,17 @@
                                     <td>
                                         <span class="font-w600">{{ $latestReserv->id}}</span>
                                     </td>
-                                    <td class="d-sm-table-cell">
-                                        <span class="font-size-sm text-muted">
-                                            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                            $latestReserv->date_depart)->format('j-m-Y') }}</span>
+                                    <td class="font-w600">
+                                        {{ $latestReserv->date_depart->format('j-m-Y') }}
                                     </td>
-                                    <td class="d-sm-table-cell">
-                                        <span class="font-size-sm text-muted">
-                                            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                            $latestReserv->date_retour)->format('j-m-Y') }}</span>
+                                    <td class="font-w600">
+                                        {{ $latestReserv->date_retour->format('j-m-Y') }}
                                     </td>
-                                    <td class="d-sm-table-cell">
-                                        {{ $latestReserv->voiture->marque }}
+                                    <td class="font-w600">
+                                        {{ $latestReserv->voiture->marque }} {{ $latestReserv->voiture->modele }}
                                     </td>
-                                    <td class="d-sm-table-cell">
-                                        <span class="{{ $latestReserv->etat == 0 ? 'badge badge-warning'
+                                    <td class="font-w600 ">
+                                        <span class="font-size-md {{ $latestReserv->etat == 0 ? 'badge badge-warning'
                                                         :  ($latestReserv->etat == 1
                                                         ? 'badge badge-info'
                                                         : 'badge badge-danger')}}">
@@ -198,7 +196,7 @@
                     </div>
                 </div>
                 <div class="block text-center">
-                    <a href="/manager/reservations" class="uppercase btn btn-primary">Voir toutes les reservations</a>
+                    <a href="/manager/reservations" class="uppercase">Voir toutes les reservations</a>
                 </div>
             </div>
         </div>

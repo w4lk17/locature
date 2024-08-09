@@ -6,6 +6,9 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="block block-bordered block-rounded">
+                <div class="block-header">
+                    <h2 class="block-title">Détail de la Voiture</h2>
+                </div>
                 <div class="block-content block-content-full">
                     <div class="row items-push">
                         <div class="col-md-7">
@@ -37,46 +40,51 @@
                             <!-- Info -->
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <div class="font-size-h3 font-w600 text-success">{{ $voiture->marque}}</div>
-                                    <div class="font-size-h4 text-muted">{{ $voiture->modele}}</div>
+                                    <div class="font-size-h3 font-w700 text-success">{{ $voiture->marque}}</div>
+                                    <div class="font-size-h4 font-w700 text-muted">{{ $voiture->modele}}</div>
                                 </div>
                                 <div class="font-size-h3 font-w700">
-                                    {{ $voiture->prix}} <sup><em>FCFA</em></sup>
+                                    {{ $voiture->prix}}F CFA<sup><em>/JOUR</em></sup>
                                 </div>
                             </div>
 
                             <p class=" my-3 border-top">
                             <div>
-                                <p><strong class="font-size-h5 font-w700">Carburant</strong> : {{ $voiture->carburant}}
+                                <p class="font-w600 ">Carburant :
+                                    <span class="font-w700 font-size-lg">{{ $voiture->carburant}}</span>
                                 </p>
-                                <p>
-                                    <strong class="font-size-h5 font-w700">Immatricule</strong> :
-                                    {{ $voiture->matricule}}
+                                <p class="font-w600 ">Transmission :
+                                    <span class="font-w700 font-size-lg">{{ $voiture->transmission}}</span>
                                 </p>
-                                <p>
-                                    <strong class="font-size-h5 font-w700">Ajouté le</strong> :
-                                    {{ $voiture->created_at->format('j-m-Y H:i:s') }}
+                                <p class="font-w600 ">Immatricule :
+                                    <span class="font-w700 font-size-lg">{{ $voiture->matricule}}</span>
                                 </p>
-                                <p>
-                                    <strong class="font-size-h5 font-w700">Modifié le</strong> :
-                                    {{ $voiture->updated_at->format('j-m-Y H:i:s') }}
+                                <p class="font-w600 ">Ajoutée le :
+                                    <span class="font-w700 font-size-lg">
+                                        {{ $voiture->created_at->format('j-m-Y H:i:s') }}
+                                    </span>
                                 </p>
-                                <p>
-                                    <strong class="font-w600">Par </strong>:
-                                    <a class="font-size-h8 font-w600" href="javascript:void(0)">
-                                        {{ $voiture->user->last_name }} {{ $voiture->user->first_name }}
-                                    </a>
+                                <p class="font-w600 ">Modifié le :
+                                    <span class="font-w700 font-size-lg">
+                                        {{ $voiture->updated_at->format('j-m-Y H:i:s') }}</span>
+                                </p>
+                                <p class="font-w600 ">Ajoutée Par :
+                                    <span class="font-w700 font-size-lg">
+                                        <a class="font-size-h8 font-w700" href="javascript:void(0)">
+                                            {{ $voiture->user->last_name }} {{ $voiture->user->first_name }}
+                                        </a>
+                                    </span>
                                 </p>
                             </div>
                             </p>
                             <form class="d-flex justify-content-between border-top " action="#" method="post">
                                 <div class="py-3">
-                                    <a class="btn btn-sm btn-primary" href="/admin/cars/{{ $voiture->id }}/edit">
+                                    <a class="btn btn-primary" href="/admin/cars/{{ $voiture->id }}/edit">
                                         <i class="fa fa-pen  mr-1"></i> Modifier
                                     </a>
                                 </div>
                                 <div class="py-3">
-                                    <button class="btn btn-sm btn-danger deleteVoiture" data-id="{{ $voiture->id }}">
+                                    <button class="btn btn-danger deleteVoiture" data-id="{{ $voiture->id }}">
                                         <i class="fa fa-trash mr-1"></i>Supprimer
                                     </button>
                                 </div>

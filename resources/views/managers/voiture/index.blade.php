@@ -19,34 +19,34 @@
                         <tr>
                             <th class="text-center">ID</th>
                             <th>Nom</th>
-                            <th class="d-none d-sm-table-cell">carburant</th>
-                            <th class="d-none d-sm-table-cell">Prix</th>
-                            <th class="text-center">Date Ajout </th>
-                            <th class="d-none d-sm-table-cell">Statut</th>
+                            <th>carburant</th>
+                            {{-- <th>transmission</th> --}}
+                            <th>Prix</th>
+                            <th>Date Ajout </th>
+                            <th class=" text-center">Statut</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($voitures as $voiture)
                         <tr>
-                            <td class="text-center font-size-sm">{{ $voiture->id }}</td>
-                            <td class="font-w600 font-size-sm">
+                            <td class="text-center ">{{ $voiture->id }}</td>
+                            <td class="font-w700 ">
                                 <a href="/manager/voitures/{{ $voiture->id }}">
                                     {{ $voiture->marque }} {{ $voiture->modele }}
                                 </a>
                             </td>
-                            <td class="d-none d-sm-table-cell font-size-sm">
+                            <td class=" font-w600">
                                 {{ $voiture->carburant }}
                             </td>
-                            <td class="d-none d-sm-table-cell font-size-sm">
-                                {{ $voiture->prix }} <em class="text-muted">CFA</em>
+                            {{-- <td class=" font-w600"> {{ $voiture->transmission }}</td> --}}
+                            <td class="  font-w600">
+                                {{ $voiture->prix }} <em class="text-muted">&#x20A3;</em>
                             </td>
-                            <td>
-                                <em class="text-muted font-size-sm">
-                                    {{ $voiture->created_at->format('j/m/Y H:i') }}
-                                </em>
+                            <td class=" font-w600">
+                                {{ $voiture->created_at->format('j/m/Y H:i') }}
                             </td>
-                            <td class="d-none d-sm-table-cell text-center">
+                            <td class=" text-center">
                                 <div class="dropdown action-label">
                                     <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#"
                                         data-toggle="dropdown" aria-expanded="false">

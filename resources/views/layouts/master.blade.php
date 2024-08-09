@@ -49,6 +49,7 @@
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
     <!-- END Stylesheets -->
     {{-- message toastr --}}
+    <link rel="stylesheet" href="{{ URL::to('assets/js/plugins/highcharts/css/highcharts.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
     <script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>

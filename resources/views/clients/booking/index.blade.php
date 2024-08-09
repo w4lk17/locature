@@ -15,8 +15,8 @@
                         <tr>
                             {{-- <th class="text-center" style="width: 50px;">#</th> --}}
                             <th>Voiture</th>
-                            <th class="d-sm-table-cell" style="width: 20%;">date depart</th>
-                            <th class="d-sm-table-cell" style="width: 20%;">date retour</th>
+                            <th class="" style="width: 20%;">date depart</th>
+                            <th class="" style="width: 20%;">date retour</th>
                             <th style="width: 20%;">status</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -29,20 +29,19 @@
                             <td class="font-w700 font-size-sm">
                                 {{ $reservation->voiture->marque }} {{ $reservation->voiture->modele }}
                             </td>
-                            <td class="d-sm-table-cell">
-                                <span>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                    $reservation->date_depart)->format('j-m-Y H:i:s') }}</span>
+                            <td class="font-w700 font-size-sm">
+                                <span>{{ $reservation->date_depart->format('j-m-Y') }}</span>
                             </td>
-                            <td class="d-sm-table-cell">
-                                <span>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',
-                                    $reservation->date_retour)->format('j-m-Y H:i:s') }}</span>
+                            <td class="font-w700 font-size-sm">
+                                <span>{{ $reservation->date_retour->format('j-m-Y') }}</span>
                             </td>
                             <td>
-                                <span class="{{ $reservation->etat == 0
+                                <span class="font-w700 font-size-sm{{ $reservation->etat == 0
                                     ? 'badge badge-warning'
                                     :  ($reservation->etat == 1
                                     ? 'badge badge-info'
-                                    : 'badge badge-danger')}}">{{ $reservation->etat == 0 ?'En attente...'
+                                    : 'badge badge-danger')}}">
+                                    {{ $reservation->etat == 0 ?'En attente...'
                                     :($reservation->etat == 1 ?'Acceptée' :'Rejetée')}}</span>
                             </td>
                             <td class="text-center">
@@ -65,12 +64,6 @@
                         @endforelse
                     </tbody>
                 </table>
-                @if(!empty(Session::get('success')))
-                <div class="alert alert-success"> {{ Session::get('success') }}</div>
-                @endif
-                @if(!empty(Session::get('error')))
-                <div class="alert alert-danger"> {{ Session::get('error') }}</div>
-                @endif
             </div>
         </div>
     </div>
