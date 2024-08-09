@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="content content-boxed">
+<div class="content content-full">
     <div class="block col-9">
         <div class="block-header">
             <h2 class="block-title">Détail de la reservation</h2>
@@ -22,15 +22,16 @@
             <div class="row">
                 <p class="font-w700 col-md-6">Voiture : <span class="font-w700 font-size-lg">{{
                         $reservation->voiture->marque }} {{ $reservation->voiture->modele }}</span></p>
-                <p class="font-w700 col-md-6">Immatriculation : <span class="font-w700 font-size-lg">{{
-                        $reservation->voiture->matricule }}</span></p>
+                <p class="font-w700 col-md-6">Carburant :
+                    <span class="font-w700 font-size-lg"> {{ $reservation->voiture->carburant }}</span>
+                </p>
             </div>
             <div class="row">
                 <p class="font-w700 col-md-6">Transmission :
                     <span class="font-w700 font-size-lg"> {{ $reservation->voiture->transmission }}</span>
                 </p>
-                <p class="font-w700 col-md-6">Carburant :
-                    <span class="font-w700 font-size-lg"> {{ $reservation->voiture->carburant }}</span>
+                <p class="font-w700 col-md-6">Immatriculation :
+                    <span class="font-w700 font-size-lg"> {{ $reservation->voiture->matricule }} </span>
                 </p>
             </div>
             <div class="row">
@@ -39,9 +40,6 @@
                         {{ $reservation->voiture->prix }} FCFA<sup><strong>/jour</strong></sup>
                     </span>
                 </p>
-                {{-- <p class="font-w700 col-md-6">Carburant :
-                    <span class="font-w700 font-size-lg"> {{ $reservation->voiture->carburant }}</span>
-                </p> --}}
             </div>
 
             <p class="font-w700">Date de depart : <span class="font-w700 font-size-lg">{{

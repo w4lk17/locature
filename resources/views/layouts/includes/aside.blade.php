@@ -184,7 +184,7 @@
                 </ul>
             </li>
             <li class="nav-main-item ">
-                <a class="nav-main-link {{ set_active('') }}" href="/admin/reservations">
+                <a class="nav-main-link {{ set_active('admin/reservations') }}" href="/admin/reservations">
                     <i class="nav-main-link-icon si si-list"></i>
                     <span class="nav-main-link-name">Listes des reservations</span>
                 </a>
@@ -193,6 +193,18 @@
                 <a class="nav-main-link {{ set_active('admin/managers') }}" href="/admin/managers">
                     <i class="nav-main-link-icon si si-list"></i>
                     <span class="nav-main-link-name">Listes des managers</span>
+                </a>
+            </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link {{ set_active('admin/clients') }}" href="/admin/clients">
+                    <i class="nav-main-link-icon si si-list"></i>
+                    <span class="nav-main-link-name">Listes des clients</span>
+                </a>
+            </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link {{ set_active('admin/statistic') }}" href="/admin/statistic">
+                    <i class="nav-main-link-icon fa fa-chart-bar"></i>
+                    <span class="nav-main-link-name">Statistique</span>
                 </a>
             </li>
             {{-- <li class="nav-main-item">
@@ -261,12 +273,6 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-main-item">
-                <a class="nav-main-link {{ set_active('') }}" href="#">
-                    <i class="nav-main-link-icon si si-energy"></i>
-                    <span class="nav-main-link-name">Statistiques</span>
-                </a>
             </li>
             @else
             <li class="nav-main-item">

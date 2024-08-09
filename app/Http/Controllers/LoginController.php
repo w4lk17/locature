@@ -57,7 +57,7 @@ class LoginController extends Controller
     public function logout()
     {
         $user =  Sentinel::getUser();
-        Sentinel::logout();
+        Sentinel::logout(null, true);
 
         Toastr::info("Aurevoir :)", 'Info');
         return redirect('/login');

@@ -102,7 +102,6 @@ class ReservationController extends Controller
 
             // update the car to unavailable after reservation
             $voitureId = $reserv->voiture_id;
-
             Voiture::where('id', $voitureId)
                 ->update(['disponible' => 0]);
 
@@ -118,10 +117,15 @@ class ReservationController extends Controller
         }
     }
 
-    public function confirmReserv(Request $request, $id)
+    public function confirmReserv($id)
     {
         $reservation = Reservation::findOrFail($id);
         $user = Sentinel::getUser()->id;
+
+        //update the car disponibility
+        $voitureId = $reservation->voiture_id;
+        Voiture::where('id', $voitureId)
+            ->update(['disponible' => 0]);
 
         $reservation = Reservation::where('id', $reservation->id)
             ->update(['etat' => 1, 'treat_by' => $user]);
@@ -131,7 +135,7 @@ class ReservationController extends Controller
             ->with('flash', 'Reservation confirmée avec succes! ');
     }
 
-    public function cancelReserv(Request $request, $id)
+    public function cancelReserv($id)
     {
         $reservation = Reservation::findOrFail($id);
         $user = Sentinel::getUser()->id;

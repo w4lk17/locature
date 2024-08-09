@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<!-- Page Content -->
 <div class="content content-full">
     <div class="col-md-9">
         <div class="block block-rounded block-bordered">
@@ -67,5 +66,4 @@
         </div>
     </div>
 </div>
-<!-- END Page Content -->
 @endsection

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admins\AdminController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\HighchartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LockscreenController;
 use App\Http\Controllers\ActivationController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admins\Reservation\ReservationAdController;
 use App\Http\Controllers\Managers\Voiture\VoitureController;
 use App\Http\Controllers\Managers\Reservation\ReservationController;
 use App\Http\Controllers\Managers\ManagerController;
+use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,6 +74,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/reservations',         [ReservationAdController::class, 'index']);
     Route::post('/reservations',        [ReservationAdController::class, 'store']); //->name('reservations.store');
     Route::get('/reservations/{id}',    [ReservationAdController::class, 'show']);
+
+    Route::get('/chart',       [HighchartController::class, 'handleChart']);
+    Route::get('/statistic',   [HighchartController::class, 'handleStat']);
 });
 
 
