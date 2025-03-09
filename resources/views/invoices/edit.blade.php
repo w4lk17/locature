@@ -17,12 +17,10 @@
                             <select class="select form-control" id="client" name="client">
                                 <option value="{{$invoicesJoin[0]->client }}">{{$invoicesJoin[0]->client }}
                                 </option>
-                                <option value="Barry Cuda">Barry Cuda</option>
-                                <option value="Tressa Wexler">Tressa Wexler</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3">
+                    {{-- <div class="col-sm-6 col-md-3">
                         <div class="form-group">
                             <label>Project <span class="text-danger">*</span></label>
                             <select class="select form-control" id="project" name="project">
@@ -32,7 +30,7 @@
                                 <option value="Project Management">Project Management</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
@@ -45,30 +43,28 @@
                         <div class="form-group">
                             <label>Tax</label>
                             <select class="select form-control" id="tax" name="tax">
-                                <option value="{{$invoicesJoin[0]->tax }}">{{$invoicesJoin[0]->tax }}</option>
-                                <option value="VAT">VAT</option>
-                                <option value="GST">GST</option>
-                                <option value="No Tax">No Tax</option>
+                                <option value="18" {{$invoicesJoin[0]->tax == 18 ? 'selected' : '' }}>TVA</option>
+                                <option value="0" {{$invoicesJoin[0]->tax == 0 ? 'selected' : '' }}>Sans TVA</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                            <label>Client Address</label>
+                            <label>Addresse Client </label>
                             <textarea class="form-control" rows="1" id="client_address"
                                 name="client_address">{{$invoicesJoin[0]->client_address }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                            <label>Billing Address</label>
+                            <label>Addresse Facture</label>
                             <textarea class="form-control" rows="1" id="billing_address"
                                 name="billing_address">{{$invoicesJoin[0]->billing_address }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                            <label>Estimate Date <span class="text-danger">*</span></label>
+                            <label>Date Facture<span class="text-danger">*</span></label>
                             <div class="cal-icon">
                                 <input class="form-control js-datepicker" type="text" id="estimate_date"
                                     name="invoice_date" data-today-highlight="true" data-week-start="1"
@@ -79,7 +75,7 @@
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group">
-                            <label>Expiry Date <span class="text-danger">*</span></label>
+                            <label>Date Echeance <span class="text-danger">*</span></label>
                             <div class="cal-icon">
                                 <input class="form-control js-datepicker" type="text" id="expiry_date"
                                     name="expiry_date" data-today-highlight="true" data-week-start="1"
@@ -89,6 +85,17 @@
                             </div>
                         </div>
                     </div>
+                    {{-- <div class="col-sm-6 col-md-3">
+                        <div class="form-group">
+                            <label>Project <span class="text-danger">*</span></label>
+                            <select class="select form-control" id="project" name="project">
+                                <option value="{{$invoicesJoin[0]->project }}">{{$invoicesJoin[0]->project }}
+                                </option>
+                                <option value="Office Management">Office Management</option>
+                                <option value="Project Management">Project Management</option>
+                            </select>
+                        </div>
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
@@ -99,8 +106,8 @@
                                         <th style="width: 20px">#</th>
                                         <th class="col-sm-2">Item</th>
                                         <th class="col-md-6">Description</th>
-                                        <th style="width:100px;">Unit Cost</th>
-                                        <th style="width:80px;">Qty</th>
+                                        <th style="width:100px;">Prix /Jour</th>
+                                        <th style="width:80px;">Nmbre de Jour</th>
                                         <th>Total</th>
                                         <th></th>
                                     </tr>
@@ -175,7 +182,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: right">
-                                            Discount %
+                                            Remise
                                         </td>
                                         <td style="text-align: right; width: 230px">
                                             <input class="form-control text-right discount" type="text" id="discount"
@@ -194,6 +201,36 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="row ">
+                            <div class="col-lg-2 ml-auto">
+                                <div class="form-group">
+                                    <label>Montant Payee <span class="text-danger">*</span></label>
+                                    <input class="form-control text-right" type="text" id="perçu" name="perçu"
+                                        value="{{$invoicesJoin[0]->perçu }}" placeholder="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 mr-auto">
+                                <div class="form-group">
+                                    <label>Etat <span class="text-danger">*</span></label>
+                                    <select class="select form-control" id="etat" name="etat">
+                                        <option value="Facturée" {{ $invoicesJoin[0]->etat == 'Facturée' ? 'selected' :
+                                            '' }}>Facturée</option>
+                                        <option value="Payée" {{ $invoicesJoin[0]->etat == 'Payée' ? 'selected' : ''
+                                            }}>Payée</option>
+                                        <option value="Partiellement payée" 
+                                        {{ $invoicesJoin[0]->etat == 'Partiellement payée' ? 'selected' : '' }}>Partiellement payée</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Rèste à Payée <span class="text-danger"></span></label>
+                                    <input class="form-control text-right" type="text" id="rap" name="rap"
+                                        value="{{ $invoicesJoin[0]->rap }}" placeholder="0" readonly>
+                                </div>
+                            </div>
+
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -206,7 +243,7 @@
                     </div>
                 </div>
                 <div class="submit-section">
-                    <button class="btn btn-primary submit-btn m-r-10">Enrégistrer & Envoyer</button>
+                    <button class="btn btn-primary submit-btn m-r-10 disabled">Enrégistrer & Envoyer</button>
                     <button type="submit" class="btn btn-primary submit-btn">Enrégistrer</button>
                 </div>
             </form>
@@ -248,6 +285,116 @@
     $(document).on('click','.delete_invoice',function() {
         var _this = $(this).parents('tr');
         $('.e_id').val(_this.find('.ids').text());
+    });
+</script>
+<script>
+    var rowIdx = 1;
+    $("#addBtn").on("click", function () {
+    // Adding a row inside the tbody.
+        $("#tableEstimate tbody").append(`
+        <tr id="R${++rowIdx}">
+            <td class="row-index text-center">
+                <p> ${rowIdx}</p>
+            </td>
+            <td><input class="form-control" type="text" style="min-width:150px" id="item" name="item[]"></td>
+            <td><input class="form-control" type="text" style="min-width:150px" id="description" name="description[]"></td>
+            <td><input class="form-control unit_price" style="width:100px" type="text" id="unit_cost" name="unit_cost[]"></td>
+            <td><input class="form-control qty" style="width:80px" type="text" id="qty" name="qty[]"></td>
+            <td><input class="form-control total" style="width:120px" type="text" id="amount" name="amount[]" value="0"
+                    readonly></td>
+            <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+        `);
+    });
+
+    $("#tableEstimate tbody").on("click", ".remove", function () {
+    // Getting all the rows next to the row
+    // containing the clicked button
+        var child = $(this).closest("tr").nextAll();
+
+        // Iterating across all the rows
+        // obtained to change the index
+        child.each(function () {
+        // Getting <tr> id.
+            var id = $(this).attr("id");
+
+            // Getting the <p> inside the .row-index class.
+            var idx = $(this).children(".row-index").children("p");
+
+            // Gets the row number from <tr> id.
+            var dig = parseInt(id.substring(1));
+
+            // Modifying row index.
+            idx.html(`${dig - 1}`);
+
+            // Modifying row id.
+            $(this).attr("id", `R${dig - 1}`);
+        });
+
+        // Removing the current row.
+        $(this).closest("tr").remove();
+
+            // Decreasing total number of rows by 1.
+            rowIdx--;
+    });
+
+    $("#tableEstimate tbody").on("input", ".unit_price", function () {
+        var unit_price = parseFloat($(this).val());
+        var qty = parseFloat($(this).closest("tr").find(".qty").val());
+        var total = $(this).closest("tr").find(".total");
+        total.val(unit_price * qty);
+
+        calc_total();
+    });
+
+    $("#tableEstimate tbody").on("input", ".qty", function () {
+        var qty = parseFloat($(this).val());
+        var unit_price = parseFloat($(this).closest("tr").find(".unit_price").val());
+        var total = $(this).closest("tr").find(".total");
+        total.val(qty * unit_price );
+
+        calc_total();
+    });
+
+    function calc_total() {
+        var sum = 0;
+        $(".total").each(function () {
+            sum += parseFloat($(this).val());
+            console.log('sum_:', sum);
+        });
+
+        $(".subtotal").text(sum);
+
+        var amounts = sum;
+        var tax = 100;
+        $(document).on("change keyup blur", "#qty, .discount", function () {
+            // var qty = $("#qty").val();
+            var unit_price = $(".unit_price").val();
+            var tva = $("#tax").val();
+            var discount = $(".discount").val();
+            
+            
+
+            var tax_ = amounts * tva / tax;
+            var grd_t = amounts + tax_ - discount;
+           
+            
+            $("#sum_total").val(amounts);
+            $("#tax_1").val(tax_);
+            $("#grand_total").val(grd_t);
+            
+        });
+    }
+</script>
+<script>
+    $(document).on("change keyup blur", "#grand_total, #perçu", function () {
+        var perçu = $("#perçu").val();
+        var gr = $("#grand_total").val();
+
+        var rap = gr - perçu;
+
+        $("#rap").val(rap);
     });
 </script>
 @endsection

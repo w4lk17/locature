@@ -1,32 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<!-- Hero -->
-{{-- <div class="bg-image overflow-hidden"
-    style="background-image: url({{ URL::asset('assets/media/photos/photo3@2x.jpg') }});">
-    <div class="bg-primary-dark-op">
-        <div class="content content-narrow content-full">
-            <div
-                class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center mt-5 mb-2 text-center text-sm-left">
-                <div class="flex-sm-fill">
-                    <h1 class="font-w600 text-white mb-0 invisible" data-toggle="appear">Tableau de bord</h1>
-                    <h2 class="h4 font-w400 text-white-75 mb-0 invisible" data-toggle="appear" data-timeout="250">
-                        Welcome {{ Sentinel::getUser()->last_name}}</h2>
-                </div>
-                <div class="flex-sm-00-auto mt-3 mt-sm-0 ml-sm-3">
-                    <span class="d-inline-block invisible" data-toggle="appear" data-timeout="350">
-                        <a class="btn btn-primary px-4 py-2" data-toggle="modal" data-target="#modal-block-fadeinU"
-                            data-backdrop="static" data-keyboard="false" href="#">
-                            <i class="fa fa-plus mr-1"></i> Creer manager
-                        </a>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-<!-- END Hero -->
-<!-- Page Content -->
 <div class="content content-full">
     <!-- Stats -->
     <div class="row">
@@ -66,25 +40,10 @@
     </div>
     {{-- chart bars --}}
     <div class="row">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6 text-center">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Total Revenue</h3>
-                            <div id="bar-charts"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Sales Overview</h3>
-                            <div id="line-charts"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-9">
+            <figure>
+                <div id="container"></div>
+            </figure>
         </div>
     </div>
     {{-- end chart bars --}}
@@ -148,7 +107,7 @@
         <div class="col-md-6">
             <div class="card card-table">
                 <div class="card-header">
-                    <h3 class="card-title mb-0">Nos 5 dernieres Reservations</h3>
+                    <h3 class="card-title mb-0">Nos récentes Reservations</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -187,13 +146,15 @@
                                     <td class="text-right">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip"
-                                                title="" data-original-title="">
-                                                <a href="/admin/clients"><i class="fa fa-fw fa-eye"></i></a>
+                                                title="" data-original-title="Détail">
+                                                <a href="/admin/reservations/{{ $reserv->id }}">
+                                                    <i class="fa fa-fw fa-eye"></i>
+                                                </a>
                                             </button>
-                                            <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip"
+                                            {{-- <button type="button" class="btn btn-sm btn-light" data-toggle="tooltip"
                                                 title="" data-original-title="">
                                                 <a href=""><i class="fa fa-fw fa-pencil-alt"></i></a>
-                                            </button>
+                                            </button> --}}
                                         </div>
                                     </td>
                                 </tr>
@@ -203,7 +164,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="#">Voir tous les reservations</a>
+                    <a href="/admin/reservations">Voir tous les reservations</a>
                 </div>
             </div>
         </div>
@@ -211,69 +172,76 @@
 </div>
 <!-- END Page Content -->
 @section('script')
-{{-- <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script> --}}
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="{{ asset('assets/js/plugins/highcharts/highcharts.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/highcharts/modules/data.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/highcharts/modules/exporting.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/highcharts/modules/export-data.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/highcharts/modules/accessibility.js') }}"></script>
 <script type="text/javascript">
-    var userData = <?php echo json_encode($userData)?>;
+    var chartData = <?php echo json_encode($chartData)?>;
                 var year = new Date().getFullYear();
                 Highcharts.chart('container', {
                     chart: {
-                        type: 'column'
+                        type: 'line',
+                        styledMode: true
                     },
                     title: {
-                        text: `New User Growth, ${year}`
+                        text: `Progression, ${year}`
                     },
-                    subtitle: {
-                        text: 'Source: positronx.io'
-                    },
+                    // subtitle: {
+                    //     text: 'Source: positronx.io'
+                    // },
                     accessibility: {
                         announceNewData: {
                             enabled: true
                         }
                     },
                     xAxis: {
-                        categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-                            'September', 'October', 'November', 'December'
+                        categories: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août',
+                            'Septembre', 'Octobre', 'Novembre', 'Décembre'
                         ]
                     },
-                    yAxis: {
+                    yAxis: [{ // Primary axis
+                        className: 'highcharts-color-0',
                         title: {
-                            text: 'Nombre d\'operation par Manager'
+                            text: 'Utilisateur'
                         }
-                    },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'right',
-                        verticalAlign: 'middle'
-                    },
+                    }, { // Secondary axis
+                        className: 'highcharts-color-1',
+                        opposite: true,
+                        title: {
+                            text: 'Reservation'
+                        }
+                    }],
+                    // legend: {
+                    //     layout: 'vertical',
+                    //     align: 'right',
+                    //     verticalAlign: 'middle'
+                    // },
                     plotOptions: {
-                        series: {
-                            allowPointSelect: true,
-                            borderWidth: 0,
-                            dataLabels: {
-                                enabled: true,
-                                format: '{point.y}'
-                            }
-                        }
+                        column: {
+                            borderRadius: 5
+                        },
+                        // series: {
+                        //     allowPointSelect: true,
+                        //     borderWidth: 0,
+                        //     dataLabels: {
+                        //         enabled: false,
+                        //         format: '{point.y}'
+                        //     }
+                        // }
                     },
-                    tooltip: {
-                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> of total<br />'
+                    credits:{
+                        enabled:false
                     },
                     series: [{
-                       name: 'New Users',
-                        data: userData
-                        // name: 'Jane',
-                        // data: [1, 0, 4,1, 0, 15,1, 0, 4,1, 0, 4]
-                        // }, {
-                        // name: 'John',
-                        // data: [5, 7, 3]
-                       
+                        name: 'Utilisateur',
+                        data: chartData.dataU,
+
+                    }, {
+                        name: 'Reservation',
+                        data: chartData.dataR,
+                        yAxis: 1
                     }],
                     responsive: {
                         rules: [{

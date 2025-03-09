@@ -19,10 +19,11 @@
                         <tr>
                             {{-- <th class="text-center">ID</th> --}}
                             <th>Nom</th>
-                            <th class="d-sm-table-cell">carburant</th>
-                            <th class="d-sm-table-cell">Prix</th>
-                            <th class="d-sm-table-cell">Date Ajout </th>
-                            <th class="d-sm-table-cell">Statut</th>
+                            <th >carburant</th>
+                            {{-- <th >transmission</th> --}}
+                            <th >Prix</th>
+                            <th >Date Ajout </th>
+                            <th >Statut</th>
                             <th class="d-md-table-cell"></th>
                         </tr>
                     </thead>
@@ -30,28 +31,29 @@
                         @forelse ($voitures as $voiture)
                         <tr>
                             {{-- <td class="text-center font-size-sm">{{ $voiture->id }}</td> --}}
-                            <td class="font-w600 font-size-sm">
+                            <td class="font-w700 ">
                                 <a href="/admin/cars/{{ $voiture->id }}">
                                     {{ $voiture->marque }} {{ $voiture->modele }}
                                 </a>
                             </td>
-                            <td class="d-sm-table-cell font-w600 font-size-sm">
+                            <td class="font-w700 font-size-sm">
                                 {{ $voiture->carburant }}
                             </td>
-                            <td class="d-sm-table-cell font-w600 font-size-sm">
-                                {{ $voiture->prix }} <em class="text-muted">CFA</em>
+                            {{-- <td class="font-w700 font-size-sm">
+                                {{ $voiture->carburant }}
+                            </td> --}}
+                            <td class="font-w700 font-size-sm">
+                                {{ $voiture->prix }} <em class="text-muted">&#x20A3;</em>
                             </td>
-                            <td class="d-sm-table-cell font-w600 font-size-sm">
-                                <em class="text-muted">
+                            <td class="font-w700 font-size-sm">
                                     {{ $voiture->created_at->format('j/m/Y H:i') }}
-                                </em>
                             </td>
                             <td class="d-sm-table-cell text-center">
                                 <div class="dropdown action-label">
                                     <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#"
                                         data-toggle="dropdown" aria-expanded="false">
                                         <span
-                                            class="{{ $voiture->disponible== 1 ? 'badge badge-warning' : 'badge badge-danger'}}">
+                                            class="font-w700 {{ $voiture->disponible== 1 ? 'badge badge-warning' : 'badge badge-danger'}}">
                                             {{ $voiture->disponible == '1' ? 'Disponible' : 'Non disponible' }}
                                         </span>
                                     </a>

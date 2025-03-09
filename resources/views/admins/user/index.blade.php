@@ -6,7 +6,7 @@
 <div class="content content-full">
     <div class="block block-rounded block-bordered">
         <div class="block-header">
-            <h3 class="block-title">Utilisateurs</h3>
+            <h3 class="block-title">Liste Des Utilisateurs</h3>
             <div class="block-options">
                 <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle"
                     data-action-mode="demo">
@@ -33,7 +33,7 @@
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td class="d-sm-table-cell">
+                            <td class="d-sm-table-cell font-w700">
                                 <a href="/admin/users/{{ $user->id }}">
                                     {{ $user->last_name }} {{ $user->first_name }}
                                 </a>
@@ -43,7 +43,7 @@
                                 <span class="link-fx font-w600">{{ $role->name }}</span>
                             </td>
                             @endforeach
-                            <td class="d-sm-table-cell ">
+                            <td class="d-sm-table-cell font-w600">
                                 {{ $user->email }}
                             </td>
                             <td class="d-sm-table-cell text-center">
@@ -52,7 +52,7 @@
                             <td>
                                 <span class="font-w700 p-2 {{ $user->isActivated() ? 'badge badge-primary'
                                     : 'badge badge-danger'}}">
-                                    {{ $user->isActivated() ? 'Actif' :'Désactivé'}}</span>
+                                    {{ $user->isActivated() ? 'Actif' :'InaActif'}}</span>
                             </td>
                             @foreach ($user->roles as $role)
                             <td class="btn-group">
@@ -73,7 +73,7 @@
                                     {{ method_field('PUT') }}
                                     @csrf
                                     <button class="mr-2 btn btn-sm btn-primary" type="submit">
-                                        Reactiver
+                                        Activer
                                     </button>
                                 </form>
                                 @endif

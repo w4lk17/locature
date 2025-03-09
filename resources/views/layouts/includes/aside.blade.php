@@ -42,7 +42,7 @@
     <!-- Side Header -->
     <div class="content-header bg-white-5">
         <!-- Logo -->
-        <a class="font-w600 text-dual" href="/welcome">
+        <a class="font-w600 text-dual" href="/accueil">
             <i class="fa fa-circle-notch text-primary"></i>
             <span class="smini-hide">
                 <span class="font-w700 font-size-h5">LOCATURE</span>
@@ -138,7 +138,7 @@
         <ul class="nav-main">
             @if (Sentinel::check() && Sentinel::getUser()->inRole('admin'))
             <li class="nav-main-item ">
-                <a class="nav-main-link {{ set_active('admin/dashboard') }}" href="/admin/dashboard">
+                <a class="nav-main-link {{ set_active(['admin/dashboard']) }}" href="/admin/dashboard">
                     <i class="nav-main-link-icon si si-speedometer"></i>
                     <span class="nav-main-link-name">Tableau de bord</span>
                 </a>
@@ -216,7 +216,7 @@
             </li> --}}
             @elseif(Sentinel::check() && Sentinel::getUser()->inRole('manager'))
             <li class="nav-main-item">
-                <a class="nav-main-link {{ set_active('manager/dashboard') }}" href="/manager/dashboard">
+                <a class="nav-main-link {{ set_active(['manager/dashboard']) }}" href="/manager/dashboard">
                     <i class="nav-main-link-icon si si-speedometer"></i>
                     <span class="nav-main-link-name">Tableau de bord</span>
                 </a>
@@ -229,13 +229,13 @@
                 </a>
                 <ul class="nav-main-submenu">
                     <li class="nav-main-item">
-                        <a class="nav-main-link {{ set_active('manager/reservations/create') }}"
+                        <a class="nav-main-link {{ set_active(['manager/reservations/create']) }}"
                             href="/manager/reservations/create">
                             <span class="nav-main-link-name"> Nouvelle reservation</span>
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link {{ set_active('manager/reservations') }}" href="/manager/reservations">
+                        <a class="nav-main-link {{ set_active(['manager/reservations']) }}" href="/manager/reservations">
                             <span class="nav-main-link-name">Listes des reservations</span>
                         </a>
                     </li>

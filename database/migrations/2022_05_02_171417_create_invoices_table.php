@@ -17,6 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->increments('id');
             $table->string('invoice_number');
             $table->string('client')->nullable();
+            $table->string('cashier');
             $table->string('email')->nullable();
             $table->string('tax')->nullable();
             $table->string('client_address')->nullable();
@@ -27,6 +28,8 @@ class CreateInvoicesTable extends Migration
             $table->string('tax_1')->nullable();
             $table->string('discount')->nullable();
             $table->string('grand_total')->nullable();
+            $table->string('etat')->default('facturée');
+            $table->string('rap')->nullable();
             $table->string('other_information')->nullable();
             $table->softDeletes();
             $table->timestamps();

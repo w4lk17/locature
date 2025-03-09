@@ -29,9 +29,14 @@
                         readonly>
                 </div>
                 <div class="form-group">
+                    <label>TELEPHONE:</label>
+                    <input type="text" class="form-control form-control-alt" name="telephone" value="{{ $user->telephone }}"
+                        readonly>
+                </div>
+                <div class="form-group">
                     <label>ROLE:</label>
                     @foreach ($roles as $role)
-                    <input type="text" class="form-control form-control-alt" name="address" value="{{ $role->name }}"
+                    <input type="text" class="form-control form-control-alt" name="role" value="{{ $role->name }}"
                         readonly>
                     @endforeach
                 </div>

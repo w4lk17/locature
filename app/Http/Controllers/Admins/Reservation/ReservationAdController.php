@@ -146,6 +146,6 @@ class ReservationAdController extends Controller
 
         Toastr::success('Reservation refusée avec succes! :)', 'Success');
         return redirect('/admin/reservations') //->with('success', 'Reservation confirmee avec succes!');
-            ->with('flash', 'Reservation annulée avec succes! ');
+            ->with('flash', 'Reservation refusée avec succes! ');
     }
 }

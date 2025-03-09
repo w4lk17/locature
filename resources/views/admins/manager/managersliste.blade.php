@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-<!-- Page Content -->
 <div class="content content-full">
     <div class="block block-rounded block-bordered">
         <div class="block-header">
@@ -20,31 +18,39 @@
                     <thead>
                         <tr>
                             {{-- <th class="text-center" style="width: 80px;">ID</th> --}}
-                            <th >Nom </th>
-                            <th class="d-sm-table-cell">Email</th>
-                            <th class="d-sm-table-cell">Role</th>
-                            <th class="d-sm-table-cell">Enrégistré</th>
-                            <th class="d-md-table-cell text-center" style="width: 100px;">Actions</th>
+                            <th>Nom </th>
+                            <th>Email</th>
+                            <th>Adresse</th>
+                            <th>telephone</th>
+                            <th>Role</th>
+                            <th>Enrégistré</th>
+                            <th class="text-center" style="width: 100px;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($managers as $manager)
                         <tr>
                             {{-- <td class="text-center font-size-sm">{{ $manager->id }}</td> --}}
-                            <td class="font-w600 font-size-sm">
+                            <td class="font-w700 font-size-sm">
                                 <a href="/admin/users/{{ $manager->id }}">
-                                {{ $manager->last_name }} {{ $manager->first_name }}</a>
+                                    {{ $manager->last_name }} {{ $manager->first_name }}</a>
                             </td>
-                            <td class="d-sm-table-cell font-w600 font-size-sm">
+                            <td class="font-w700 font-size-sm">
                                 {{ $manager->email }}
                             </td>
+                            <td class="font-w700 font-size-sm">
+                                {{ $manager->address }}
+                            </td>
+                            <td class="font-w700 font-size-sm">
+                                {{ $manager->telephone }}
+                            </td>
                             @foreach ($manager->roles as $role)
-                            <td class="d-sm-table-cell ">
-                                <span class="badge badge-info font-w700">{{ $role->name }}</span>
+                            <td>
+                                <span class="badge badge-info font-w700 font-size-sm">{{ $role->name }}</span>
                             </td>
                             @endforeach
-                            <td class=" text-muted font-w600 font-size-sm">
-                                <em >{{ $manager->created_at->format('j/m/Y  H:i') }}</em>
+                            <td class="font-w700 font-size-sm">
+                                {{ $manager->created_at->format('j/m/Y H:i') }}
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">

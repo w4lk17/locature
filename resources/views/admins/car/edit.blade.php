@@ -14,21 +14,33 @@
                 {{ csrf_field() }}
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="marque">MARQUE:</label>
+                        <label for="marque">MARQUE :</label>
                         <input type="text" class="form-control" id="marque" name="marque" value="{{ $voiture->marque }}"
                             required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="modele">MODELE:</label>
+                        <label for="modele">MODELE :</label>
                         <input type="text" class="form-control" id="modele" name="modele" value="{{ $voiture->modele }}"
                             required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="carburant">carburant:</label>
+                        <label for="carburant">carburant :</label>
                         <input type="text" class="form-control" id="carburant" name="carburant"
                             value="{{ $voiture->carburant }}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="transmission">TRANSMISSION :</label>
+                        <input type="text" class="form-control" id="transmission" name="transmission"
+                            value="{{ $voiture->transmission }}" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="matricule">IMMATRICULATION :</label>
+                        <input type="text" class="form-control" id="matricule" name="matricule"
+                            value="{{ $voiture->matricule }}" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="prix">PRIX:</label>
@@ -38,12 +50,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="matricule">IMMATRICULATION:</label>
-                        <input type="text" class="form-control" id="matricule" name="matricule"
-                            value="{{ $voiture->matricule }}" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>IMAGE:</label>
+                        <label>IMAGE :</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input " data-toggle="custom-file-input"
                                 id="voiture_image" name="voiture_image" value="{{ $voiture->voiture_image}}">
@@ -52,8 +59,8 @@
                     </div>
                 </div>
                 <div class="block-content block-content-full text-right border-top">
-                    <a class="btn btn-sm btn-light" href="javascript:history.back()"> Annuler</a>
                     <button type="submit" class="btn btn-sm btn-success">Enrégistrer</button>
+                    <a class="btn btn-sm btn-light" href="javascript:history.back()"> Annuler</a>
                 </div>
             </form>
         </div>

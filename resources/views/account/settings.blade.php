@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="content content-boxed">
+<div class="content content-full">
     <div class="row">
         <div class="col-12">
             <form action="/account/settings" method="POST">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
-                                <label class="form-label">Nom</label>
+                                <label class="form-label">Nom :</label>
                                 <input type="text" class="form-control {{ $errors->has('last_name') ? 'error' : '' }}"
                                     value="{{ $user->last_name }}" name="last_name" id="lname" maxlength="20" />
 
@@ -51,7 +51,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label class="form-label">Prenoms</label>
+                                <label class="form-label">Prenom :</label>
                                 <input type="text" class="form-control {{ $errors->has('first_name') ? 'error' : '' }}"
                                     value="{{ $user->first_name}}" name="first_name" id="fname" maxlength="20" />
 
@@ -63,7 +63,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label class="form-label">Addresse</label>
+                                <label class="form-label">Adresse :</label>
                                 <input type="text" id="address"
                                     class="form-control {{ $errors->has('address') ? 'error' : '' }}"
                                     value="{{ $user->address}}" name="address" maxlength="50" />
@@ -90,7 +90,7 @@
                                 @endif
                             </div> --}}
                             <div class="col-md-4 mb-3">
-                                <label class="form-label">Téléphone</label>
+                                <label class="form-label">Téléphone :</label>
                                 <input type="text" id="telephone"
                                     class="form-control {{ $errors->has('telephone') ? 'error' : '' }}"
                                     value="{{ $user->telephone}}" name="telephone" maxlength="30">
@@ -103,7 +103,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label class="form-label">Email</label>
+                                <label class="form-label">Email :</label>
                                 <input type="email" id="email"
                                     class="form-control {{ $errors->has('email') ? 'error' : '' }}"
                                     value="{{ $user->email}}" name="email" maxlength="80">

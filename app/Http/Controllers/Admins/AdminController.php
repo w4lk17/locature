@@ -27,18 +27,38 @@ class AdminController extends Controller
         $clients  = $client->users()->latest()->limit(5)->get();
         $reservs  = Reservation::latest()->limit(5)->get();
 
-        $userData = User::select(DB::raw("COUNT(*) as count"))
+
+        $reservData  = Reservation::select(DB::raw('COUNT(*) as count'), DB::raw('MONTH(created_at) as month'))
+            ->where('etat', 1)
             ->whereYear('created_at', date('Y'))
-            ->groupBy(\DB::raw("Month(created_at)"))
-            ->pluck('count');
+            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->get();
 
-        $reservData = Reservation::select(DB::raw("COUNT(*) as count"))
+        $datar = array_fill(0, 12, 0);
+
+        foreach ($reservData  as $d) {
+            $datar[$d->month - 1] = $d->count;
+        }
+
+
+        $userData = User::select(DB::raw('COUNT(*) as count'), DB::raw('MONTH(created_at) as month'))
             ->whereYear('created_at', date('Y'))
-            ->groupBy(\DB::raw("Month(created_at)"))
-            ->pluck('count');
+            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->get();
+
+        $datau = array_fill(0, 12, 0);
+
+        foreach ($userData as $d) {
+            $datau[$d->month - 1] = $d->count;
+        }
+
+        $chartData = [
+            'dataU' => $datau,
+            'dataR' => $datar,
+        ];
 
 
-        return view('admins.a_dashboard', compact('userData', 'reservs', 'clients', 'UserCount', 'CarsCount', 'ReservCount', 'ClientsCount'));
+        return view('admins.a_dashboard', compact('chartData', 'reservs', 'clients', 'UserCount', 'CarsCount', 'ReservCount', 'ClientsCount'));
     }
 
 

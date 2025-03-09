@@ -6,6 +6,7 @@ use App\Http\Controllers\HighchartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LockscreenController;
 use App\Http\Controllers\ActivationController;
+use App\Http\Controllers\ActivitiesController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Clients\ClientController;
@@ -29,7 +30,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'WelcomeController@welcome');
+Route::redirect('/', '/login');
+
+Route::get('/accueil', 'WelcomeController@welcome');
 
 //visitor
 Route::group(['middleware' => 'visitors'], function () {
@@ -74,8 +77,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/reservations',         [ReservationAdController::class, 'index']);
     Route::post('/reservations',        [ReservationAdController::class, 'store']); //->name('reservations.store');
     Route::get('/reservations/{id}',    [ReservationAdController::class, 'show']);
+    Route::put('/confirmReserv/{id}',   [ReservationAdController::class, 'confirmReserv']);
+    Route::put('/cancelReserv/{id}',    [ReservationAdController::class, 'cancelReserv']);
 
-    Route::get('/chart',       [HighchartController::class, 'handleChart']);
     Route::get('/statistic',   [HighchartController::class, 'handleStat']);
 });
 
@@ -126,6 +130,7 @@ Route::post('/account/lock', [LockscreenController::class, 'postLockscreen']);
 
 Route::get('/activate/{email}/{activationCode}', [ActivationController::class, 'activate']);
 
-Route::get('/userChartData', 'ChartDataController@getMonthlyUserData');
-Route::get('/reservChartData', 'ChartDataController@getMonthlyReservData');
+Route::get('/activities',    [ActivitiesController::class, 'activitie']);
+Route::post('/mark-as-read', [ActivitiesController::class, 'markNotification'])->name('markNotification');
+
 Route::get('/search', 'SearchController@search')->name('search');
