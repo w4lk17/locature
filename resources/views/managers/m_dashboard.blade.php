@@ -36,7 +36,7 @@
             <a class="block block-rounded block-link-pop border-left border-primary border-4x"
                 href="javascript:void(0)">
                 <div class="block-content block-content-full bg-flat">
-                    <div class="font-size-sm font-w600 text-uppercase text-white">Total Montant Reservation</div>
+                    <div class="font-size-sm font-w600 text-uppercase text-white">Montant Total </div>
                     <div class="font-size-h2 font-w400 text-white">
                         {{ number_format($totalAmount, 2, ',', '') }} &#x20A3;
                     </div>
@@ -112,7 +112,7 @@
                             <a class="media py-2" href="/manager/voitures/{{ $latestCar->id }}">
                                 <div class="mr-3 ml-2 overlay-container overlay-bottom">
                                     <img class="img-avatar"
-                                        src="{{ asset('/storage/uploads/' . $latestCar->voiture_image) }}" alt="">
+                                        src="{{ $latestCar->chemin }}" alt="">
                                 </div>
                                 <div class="media-body py-2">
                                     <div class="font-w600">{{ $latestCar->marque }} {{ $latestCar->modele }}

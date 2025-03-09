@@ -40,7 +40,7 @@ class RegistrationController extends Controller
         {
             $message->to($user->email);
 
-            $message->subject("Hello M. $user->first_name, Activez votre compte.");
+            $message->subject("Bonjour M. $user->first_name, Activez votre compte.");
         });
     }
 }

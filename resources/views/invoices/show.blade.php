@@ -86,7 +86,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>ITEM</th>
+                                        <th>ARTICLE</th>
                                         <th class="d-none d-sm-table-cell">DESCRIPTION</th>
                                         <th>PRIX<sup><strong>/jour</strong></sup></th>
                                         <th>NBRE de jour</th>
@@ -117,12 +117,12 @@
                                             <table class="table mb-0">
                                                 <tbody>
                                                     <tr>
-                                                        <th>Subtotal:</th>
+                                                        <th>Total HT:</th>
                                                         <td class="text-right">{{ number_format($invoicesJoin[0]->total, thousands_separator: " ") }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax:<span class="text-regular">
-                                                            ({{ $invoicesJoin[0]->tax }}%)</span></th>
+                                                        <th>Total TVA <span class="text-regular">
+                                                            {{ $invoicesJoin[0]->tax }}% :</span></th>
                                                         <td class="text-right">{{$invoicesJoin[0]->tax_1 }}</td>
                                                     </tr>
                                                     <tr>
@@ -130,9 +130,21 @@
                                                         <td class="text-right">{{$invoicesJoin[0]->discount }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Total:</th>
+                                                        <th>Total TTC:</th>
                                                         <td class="text-right text-primary">
-                                                            <h5>{{ number_format($invoicesJoin[0]->grand_total, thousands_separator: " ") }} &#x20A3;</h5>
+                                                            <b>{{ number_format($invoicesJoin[0]->grand_total, thousands_separator: " ") }} &#x20A3;</b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Payé:</th>
+                                                        <td class="text-right text-primary">
+                                                            <strong>{{ number_format($invoicesJoin[0]->perçu, thousands_separator: " ") }} &#x20A3;</strong>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Reste à payer:</th>
+                                                        <td class="text-right text-primary">
+                                                            <b>{{ number_format($invoicesJoin[0]->rap, thousands_separator: " ") }} &#x20A3;</b>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -142,7 +154,7 @@
                                 </div>
                             </div>
                             <div class="invoice-info">
-                                <strong>Autres Information</strong>
+                                <strong>Autres Informations:</strong>
                                 <p class="text-muted">{{$invoicesJoin[0]->other_information }}</p>
                             </div>
                             <p class="font-size-sm text-muted text-center py-3 my-3 border-top">

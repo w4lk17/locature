@@ -15,7 +15,7 @@
                             <div class="block-options">
                                 <form action="/logout" method="post" id="logout_form">
                                     @csrf
-                                    <a class="btn-block-option" href="#" data-toggle="tooltip" data-placement="left"
+                                    <a class="btn-block-option" href="javascript:void(0)" data-toggle="tooltip" data-placement="left"
                                         title="Se connecter avec un autre compte"
                                         onclick="document.getElementById('logout_form').submit()">
                                         <i class="fa fa-sign-in-alt"></i>
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="content content-full font-size-sm text-white text-center">
-            <strong>LOCATURE 1.0.1</strong> &copy; <span data-toggle="year-copy"></span>
+            <strong>LOCATURE 1.0</strong> &copy; <span data-toggle="year-copy"></span>
         </div>
     </div>
 </div>

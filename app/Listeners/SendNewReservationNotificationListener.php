@@ -35,5 +35,13 @@ class SendNewReservationNotificationListener
 
         // $event->user->notify(new NewReservationNotification($event->reserv,$event->user));
         Notification::send($managers, new NewReservationNotification($event->reserv, $event->user));
+
+//        // Get all users with the 'admin' role
+//        $admins = Sentinel::findRoleBySlug('admin');
+//        $admins = $admins->users()->get();
+//        // Send the notification to each user
+//        foreach ($admins as $admin) {
+//            $admin->notify(new NewReservationNotification($event->reserv,$event->user));
+//        }
     }
 }

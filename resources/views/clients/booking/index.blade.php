@@ -45,16 +45,16 @@
                                     :($reservation->etat == 1 ?'Acceptée' :'Rejetée')}}</span>
                             </td>
                             <td class="text-center">
-                                <a href="/client/bookings/{{ $reservation->id }}" class="btn btn-sm btn-primary"> 
+                                <a href="/client/bookings/{{ $reservation->id }}" class="btn btn-sm btn-primary">
                                     voir
                                 </a>
                                 <a href="/client/bookings/{{ $reservation->id }}/edit" class="{{ $reservation->etat == 0
                                     ? 'btn btn-sm btn-success'
                                     : 'btn btn-sm btn-success disabled'}}"> Modifier
                                 </a>
-                                <button class="btn btn-sm btn-danger deleteBooking" data-id="{{ $reservation->id }}">
-                                    supprimer
-                                </button>
+{{--                                <button class="btn btn-sm btn-danger deleteBooking" data-id="{{ $reservation->id }}">--}}
+{{--                                    supprimer--}}
+{{--                                </button>--}}
                             </td>
                         </tr>
                         @empty

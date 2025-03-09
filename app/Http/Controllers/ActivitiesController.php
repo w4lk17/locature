@@ -25,4 +25,10 @@ class ActivitiesController extends Controller
 
         return response()->noContent();
     }
+
+    public function notificationsCount()
+    {
+        $count = Sentinel::getUser()->unreadNotifications->count();
+        return response()->json(['count' => $count]);
+    }
 }

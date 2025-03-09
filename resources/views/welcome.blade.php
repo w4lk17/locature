@@ -16,11 +16,11 @@
                 </h1>
                 <h2 class="h3 font-w400 text-white-50 mb-5 invisible" data-toggle="appear"
                     data-class="animated fadeInDown" data-timeout="300">
-                    Votre confort notre soucis
+                    Locature assure votre plaisir de rouler
                 </h2>
                 <span class="m-2 d-inline-block invisible" data-toggle="appear" data-class="animated fadeInUp"
                     data-timeout="600">
-                    <a class="btn btn-success px-4 py-2" data-toggle="click-ripple" href="#">
+                    <a class="btn btn-success px-4 py-2" data-toggle="click-ripple" href="javascript:void(0)">
                         <i class="fa fa-fw fa-shopping-cart mr-1"></i> Nous Contacter
                     </a>
                 </span>
@@ -112,7 +112,7 @@
     <div class="content content-full">
         <div class="py-5 text-center">
             <h2 class="h1 mb-2">
-                Nouvelles Arrivées
+                Nouvelles Arrivages
             </h2>
             <h3 class="font-w400 text-muted mb-5">
                 OneUI 4.3 was carefully crafted for your new projects using the latest tech.
@@ -124,10 +124,11 @@
                     <div class="block">
                         <div class="options-container">
                             <img class="img-fluid options-item"
-                                src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}">
+                                src="{{ $voiture->chemin }}" alt="">
+{{--                                src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}">--}}
                             <div class="options-overlay bg-black-75">
                                 <div class="options-overlay-content">
-                                    <a class="btn btn-sm btn-light" href="/client/bookings/create/{{ $voiture->id }}"">
+                                    <a class="btn btn-sm btn-light" href="/client/bookings/create/{{ $voiture->id }}">
                                         Voir
                                     </a>
                                     <a class=" btn btn-sm btn-light" href="javascript:void(0)">
@@ -139,7 +140,7 @@
                         <div class="block-content">
                             <div class="mb-2">
                                 <div class="h4 font-w600 text-success float-right ml-1">{{ $voiture->prix }} CFA</div>
-                                <a class="h4" href="">{{ $voiture->marque }} {{ $voiture->modele }} </a>
+                                <a class="h4" href="javascript:void(0)">{{ $voiture->marque }} {{ $voiture->modele }} </a>
                             </div>
                             <p class="font-size-sm text-muted">Beautifully crafted icon set</p>
                         </div>
@@ -260,7 +261,7 @@
     <div class="content py-5">
         <div class="row font-size-sm">
             <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-right">
-                by <a class="font-w600" href="#" target="_blank">3kTechnologies</a>
+{{--                by <a class="font-w600" href="#" target="_blank">3kTechnologies</a>--}}
             </div>
             <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-left">
                 <a class="font-w600" href="#" target="_blank">LOCATURE 1.0</a> &copy; <span

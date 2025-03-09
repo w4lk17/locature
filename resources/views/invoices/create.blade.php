@@ -291,7 +291,7 @@
         var unit_price = parseFloat($(this).closest("tr").find(".unit_price").val());
         var total = $(this).closest("tr").find(".total");
         total.val(qty * unit_price );
-        
+
         calc_total();
     });
 
@@ -301,7 +301,7 @@
             sum += parseFloat($(this).val());
         });
         $(".subtotal").text(sum);
-        
+
         var amounts = sum;
         var tax = 100;
         $(document).on("change keyup blur", "#qty, .discount", function () {
@@ -312,7 +312,7 @@
 
             var tax_ = amounts * tva / tax;
             var grd_t = amounts + tax_ - discount;
-            
+
             $("#sum_total").val(amounts);
             $("#tax_1").val(tax_);
             $("#grand_total").val(grd_t);
@@ -320,6 +320,10 @@
     }
 </script>
 <script>
+    // document.getElementById('tax').addEventListener('change', function() {
+    //     document.getElementById('tax_1').value = this.value;
+    // });
+
     $(document).on("change keyup blur", "#grand_total, #perçu", function () {
         var perçu = $("#perçu").val();
         var gr = $("#grand_total").val();

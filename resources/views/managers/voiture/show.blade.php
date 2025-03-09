@@ -18,19 +18,19 @@
                             <div class="row gutters-tiny js-gallery img-fluid-100">
                                 <div class="col-12 mb-3">
                                     <img class="img-fluid"
-                                        src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" alt="">
+                                       src="{{ $voiture->chemin }}" alt="">
                                 </div>
                                 <div class="col-4">
                                     <img class="img-fluid"
-                                        src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" alt="">
+                                        src="{{ $voiture->chemin }}" alt="">
                                 </div>
                                 <div class="col-4">
                                     <img class="img-fluid"
-                                        src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" alt="">
+                                        src="{{ $voiture->chemin }}" alt="">
                                 </div>
                                 <div class="col-4">
                                     <img class="img-fluid"
-                                        src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" alt="">
+                                        src="{{ $voiture->chemin }}" alt="">
                                 </div>
                             </div>
                             <!-- END Images -->

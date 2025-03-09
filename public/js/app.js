@@ -1,4 +1,3 @@
-
 // var rowIdx = 1;
 // $("#addBtn").on("click", function () {
 //     // Adding a row inside the tbody.
@@ -90,6 +89,29 @@
 //         $("#grand_total").val((parseInt(sum_amount)) - (parseInt(discount)));
 //     });
 // }
+
+/**
+ * auto refresh notification count and Dropdown
+ */
+function fetchNotificationsCount() {
+    $.ajax({
+        // url: "{{ route('notifications.count') }}",
+        url: '/notifications/count',
+        type: 'GET',
+        success: function (data) {
+            $('#notif .badge').text(data.count);
+            // console.log('récupération des notifications.'+ data.count);
+        },
+        error: function() {
+            console.log('Erreur lors de la récupération des notifications.');
+        }
+    });
+}
+// Appel initial pour charger les notifications au chargement de la page
+fetchNotificationsCount();
+
+// Appel périodique pour rafraîchir les notifications toutes les X secondes
+setInterval(fetchNotificationsCount, 30000); // Toutes les 30 secondes
 
 
 //sweetalert confirm dialog
@@ -288,17 +310,26 @@ $(document).on('click', '.deleteBooking', function (event) {
     })
 });
 //bootstrap notification
-jQuery(function () { One.helpers('notify'); });
+jQuery(function () {
+    One.helpers('notify');
+});
 
 //magnific galery poppup
-jQuery(function () { One.helpers('magnific-popup'); });
+jQuery(function () {
+    One.helpers('magnific-popup');
+});
 //flatpicker date
-jQuery(function () { One.helpers(['flatpickr', 'datepicker']); });
+jQuery(function () {
+    One.helpers(['flatpickr', 'datepicker']);
+});
 //Page JS Helpers (Select2 plugin)
-jQuery(function () { One.helpers('select2'); });
+jQuery(function () {
+    One.helpers('select2');
+});
 //Page JS Helpers (carousel)
-jQuery(function () { One.helpers('slick'); });
-
+jQuery(function () {
+    One.helpers('slick');
+});
 
 
 // $('.btnUpdate').click(function (event) {

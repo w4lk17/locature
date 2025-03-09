@@ -18,7 +18,7 @@
                             <div class="row items-push">
                                 <div class="col-md-4">
                                     <img class="img-fluid"
-                                        src="{{ asset('/storage/uploads/' . $voiture->voiture_image) }}" />
+                                        src="{{$voiture->chemin }}"  alt=""/>
                                 </div>
                                 <div class="col-md-8">
                                     <div>

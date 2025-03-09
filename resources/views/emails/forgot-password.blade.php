@@ -26,7 +26,8 @@
 
 <p>Aucune modification n'a encore été apportée à votre compte.</p>
 
-<p>Vous pouvez réinitialiser votre mot de passe en cliquant sur le lien ci-dessous : <br><a href="{{ env('APP_URL') }}/reset/{{ $user->email }}/{{ $code }}" /a></p>
+<p>Vous pouvez réinitialiser votre mot de passe en cliquant sur le lien ci-dessous : </p><br>
+<a href="{{ env('APP_URL') }}/reset/{{ $user->email }}/{{ $code }}" />
 
 <p>Si vous n'avez pas demandé de nouveau mot de passe, veuillez nous en informer immédiatement en répondant à cet
 	e-mail.</p>

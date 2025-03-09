@@ -31,8 +31,8 @@
                             value="{{ $voiture->carburant }}" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="prix">TRANSMISSION :</label>
-                        <input type="text" class="form-control" id="prix" name="prix"
+                        <label for="transmission">TRANSMISSION :</label>
+                        <input type="text" class="form-control" id="transmission" name="transmission"
                             value="{{ $voiture->transmission }}" required>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>IMAGE :</label>
+                        <label for="voiture_image">IMAGE :</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input " data-toggle="custom-file-input"
                                 id="voiture_image" name="voiture_image" value="{{ $voiture->voiture_image}}">

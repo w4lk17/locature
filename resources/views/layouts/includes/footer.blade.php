@@ -7,7 +7,7 @@
                 {{-- by <a class="font-w600" href="#" target="_blank">3kTechnologie</a> --}}
             </div>
             <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-left">
-                <a class="font-w600" href="#" target="_blank">Locature 1.0.1</a> &copy;
+                <a class="font-w600" href="#" target="_blank">Locature 1.0</a> &copy;
                 <span data-toggle="year-copy"></span>
             </div>
         </div>

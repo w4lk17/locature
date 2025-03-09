@@ -107,7 +107,7 @@
         <div class="col-md-6">
             <div class="card card-table">
                 <div class="card-header">
-                    <h3 class="card-title mb-0">Nos récentes Reservations</h3>
+                    <h3 class="card-title mb-0">Récentes Reservations</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
